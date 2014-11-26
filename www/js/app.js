@@ -298,7 +298,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		newsItemsFactory.getNewsRssFeed.success(function(data){
 			news = x2js.xml_str2json(data);
 			$scope.newsItems = news.rss.channel.item;
-		});
+		}).error(function(data, status, headers, config) {
+			//$scope.testData = "Auth.signin.error!";
+			console.log("Auth.signin.error!");
+	    });
 	}
 })
 .controller('PriceListCtrl', function($scope, stockFactory) {
