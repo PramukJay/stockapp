@@ -1,0 +1,67 @@
+
+<ion-view title="<img src='img/logo.png' class='logo-bind'/>">
+  <ion-content >
+  <center>
+  	<!--input type="text" ng-model="testData" /><br /-->
+  	<!--input type="text" ng-model="testRes" /><br /-->
+  	<div class="item-header">
+  		<span class="market-sum"><img src='img/ico-market-sum.png'/></span>
+  		Market Summary
+  		<span class="reload"><img src='img/ico-reload.png'/></span>
+  	</div>
+  	<center  ng-show="loading"><i class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></i></center>
+    <table style="color: white; width: 100%;">
+		<tr style="background-color: #0039a9; font-size: 12px;">
+			<th>Symbol</th>
+			<th style="text-align: right;">Share<br/>Volume</th>
+			<th style="text-align: right;">Previous<br/>Close</th>
+			<th style="text-align: right;">High</th>
+			<th style="text-align: right;">Low</th>
+			<th style="text-align: right;">Last Traded</th>
+			<th>&nbsp;</th>
+		</tr>
+		<tr ng-repeat="comp in stocks" style="font-size: 10px;">
+			<td style="text-align: center;">{{comp.symbol}}</td>
+			<td style="text-align: right;">{{comp.sharevolume}}</td>
+			<td style="text-align: right;">{{comp.prevclose}}</td>
+			<td style="text-align: right;">{{comp.high}}</td>
+			<td style="text-align: right;">{{comp.low}}</td>
+			<td style="text-align: right;">{{comp.lasttraded}}</td>
+			<td>
+				<div ng-class="{showup: comp.change > 0 , showuphide: comp.change < 0 , shownothing: comp.change == 0.00}" class="icon ion-chevron-up"></div>
+				<div ng-class="{showdown: comp.change < 0 , showdownhide: comp.change > 0 , shownothing: comp.change == 0.00}" class="icon ion-chevron-down"></div>
+			</td>
+		</tr>
+	</table>
+	</center>
+  </ion-content>
+</ion-view>
+<style type="text/css">
+	.pane, .view {
+    margin: 0 auto;
+    width: 100% !important;
+}
+.has-header {
+    top: 100px;
+}
+.bar.bar-stable {
+	border-bottom: 0 !important;
+}
+.showup{
+	display: block;
+	color: green;
+}
+.showuphide{
+	display:  none;
+}
+.showdown{
+	display: block;
+	color: red;
+}
+.showdownhide{
+	display: none;
+}
+.shownothing{
+	display: none;
+}
+</style>

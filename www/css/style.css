@@ -1,0 +1,343 @@
+/* Empty. Add your own CSS if you like */
+body {
+	/*background-position: center bottom;
+	 background: -moz-radial-gradient(center, ellipse cover, rgba(48,46,46,1) 0%, rgba(0,0,0,1) 100%);
+	 background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(48,46,46,1)), color-stop(100%, rgba(0,0,0,1)));
+	 background: -webkit-radial-gradient(center, ellipse cover, rgba(48,46,46,1) 0%, rgba(0,0,0,1) 100%);
+	 background: -o-radial-gradient(center, ellipse cover, rgba(48,46,46,1) 0%, rgba(0,0,0,1) 100%);
+	 background: -ms-radial-gradient(center, ellipse cover, rgba(48,46,46,1) 0%, rgba(0,0,0,1) 100%);
+	 background: radial-gradient(ellipse at center, rgba(48,46,46,1) 0%, rgba(0,0,0,1) 100%);
+	 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#302e2e', endColorstr='#000000', GradientType=1 );*/
+	background-image: url(../img/bg.png);
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-color: #000;
+	font-family: arial;
+}
+.pane, .view {
+	background: none;
+}
+.ion-nav-view {
+	background: none;
+}
+.tabs {
+	background-color: #000 !important;
+	color: #0039a9 !important;
+}
+.bar.bar-stable {
+	border-color: #0039a9;
+	background-color: #000;
+	color: #0039a9;
+	height: 100px;
+	border-bottom: 5px solid #0039a9 !important;
+}
+.bar.bar-stable .title {
+	color: #0039a9;
+}
+.bar.bar-stable {
+	border: 0;
+}
+.app-logo {
+	width: 100%;
+	text-align: center;
+	border-bottom: 5px solid #0039a9;
+	padding: 10px 0 10px;
+	background: black;
+}
+.app-logo img {
+	max-width: 60%;
+}
+.login-title {
+	width: 100%;
+	margin: 30px auto;
+	color: #fff;
+	font-size: 30px;
+	text-align: center;
+}
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+	border: 0 none;
+	border-radius: 30px;
+	padding: 10px 22px;
+	height: 45px;
+	background-color: #0039a9;
+	color: #fff;
+}
+.item-input, .item {
+	background: none;
+	border: none;
+	padding: 5px 0;
+}
+.item {
+	display: inline-block;
+	font-size: 14px;
+}
+.tabs {
+	background-color: #000 !important;
+	color: #fff !important;
+	height: 68px;
+	padding: 10px;
+}
+.tabs a:hover {
+	color: #163eb9 !important;
+}
+.menu-container {
+	text-align: center;
+	float: left;
+	width: 50%;
+}
+.tabs {
+	border: none;
+}
+.button.button-positive {
+	border: none;
+	background-color: #000;
+	color: #fff;
+	border-radius: 30px;
+}
+
+.menu-ico {
+	width: 50%;
+	float: left;
+}
+.menu-ico {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 0;
+	padding-bottom: 100%;
+	background: #163eb9;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	float: left;
+	margin-bottom: 8px;
+}
+.item-content {
+	float: left;
+}
+.item-complex
+.item-content, .item-radio .item-content {
+	padding: 5px;
+	border-radius: 20px;
+	text-align: center;
+	font-size: 14px;
+	background: transparent;
+	color: #fff;
+	text-transform: uppercase;
+}
+.item-content-new {
+	float: left;
+	padding: 5px 10px !important;
+	width: 135px;
+}
+.item-content-new:hover {
+	background-color: #163eb9;
+	color: #fff;
+}
+.item-content-new, .item-radio .item-content-new {
+	padding: 5px;
+	border-radius: 20px;
+	text-align: center;
+	font-size: 12px;
+	background-color: #000;
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+table td {
+	font-size: 12px;
+}
+.menu-ico:hover {
+	border: none;
+	background: #fff;
+}
+.item.active, .item.activated, .item-complex.active .item-content, .item-complex.activated .item-content, .item .item-content.active, .item .item-content.activated {
+	border: none;
+	background: transparent;
+}
+.list {
+	padding: 0 15px;
+}
+.list a:nth-child(3) {
+	padding: 30px;
+}
+.bar .title {
+	height: auto;
+}
+.bar .title img {
+	width: 180px;
+	margin-top: 20px;
+}
+.has-header {
+	top: 106px;
+}
+
+.bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before {
+	color: #fff;
+}
+.bar-positive .button {
+	background-color: #000;
+	color: #fff;
+}
+.popup-body {
+	overflow: hidden;
+	padding: 10px;
+	text-align: center;
+}
+.popup-container.active .popup {
+	padding: 15px;
+}
+
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+ion-nav-view {
+	background: transparent;
+}
+.back-button {
+	height: 25px;
+	position: absolute;
+	top: 30px;
+	left: 10px;
+}
+.item-header {
+	height: 53px;
+	width: 100%;
+	background: rgba(16,48,148,1);
+	background: -moz-linear-gradient(top, rgba(16,48,148,1) 0%, rgba(24,62,180,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(16,48,148,1)), color-stop(100%, rgba(24,62,180,1)));
+	background: -webkit-linear-gradient(top, rgba(16,48,148,1) 0%, rgba(24,62,180,1) 100%);
+	background: -o-linear-gradient(top, rgba(16,48,148,1) 0%, rgba(24,62,180,1) 100%);
+	background: -ms-linear-gradient(top, rgba(16,48,148,1) 0%, rgba(24,62,180,1) 100%);
+	background: linear-gradient(to bottom, rgba(16,48,148,1) 0%, rgba(24,62,180,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#103094', endColorstr='#183eb4', GradientType=0 );
+	color: #fff;
+	text-transform: uppercase;
+	padding-top: 15px;
+	border-bottom: 1px #020d2e solid;
+	font-size: 16px;
+}
+.market-sum {
+	border: 2px solid #fff;
+	border-radius: 50px;
+	height: 35px;
+	width: 35px;
+	padding: 3px 0 0;
+	margin: -8px 0 0 12px;
+	float: left;
+}
+.reload {
+	border: 2px solid #fff;
+	border-radius: 50px;
+	height: 35px;
+	width: 33px;
+	padding: 4px 1px 0 0;
+	margin: -8px 12px 0 0;
+	float: right;
+}
+.market-sum img, .reload img {
+	width: 23px;
+	height: 23px;
+}
+.scroll table tr th {
+	background: rgba(16,47,146,1);
+	background: -moz-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(16,47,146,1)), color-stop(100%, rgba(6,31,108,1)));
+	background: -webkit-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	background: -o-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	background: -ms-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	background: linear-gradient(to bottom, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#102f92', endColorstr='#061f6c', GradientType=0 );
+	font-weight: bold;
+}
+.scroll table td {
+	padding: 4px;
+}
+.scroll table tr:nth-child(even) {
+	background: #051549;
+	border-bottom: 1px #274fc9 solid;
+}
+.scroll table tr:nth-child(odd) {
+	background: #020d2e;
+	border-bottom: 1px #274fc9 solid;
+}
+
+.item-divider {
+	background: rgba(13,42,133,1);
+	background: -moz-linear-gradient(top, rgba(13,42,133,1) 0%, rgba(6,30,106,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(13,42,133,1)), color-stop(100%, rgba(6,30,106,1)));
+	background: -webkit-linear-gradient(top, rgba(13,42,133,1) 0%, rgba(6,30,106,1) 100%);
+	background: -o-linear-gradient(top, rgba(13,42,133,1) 0%, rgba(6,30,106,1) 100%);
+	background: -ms-linear-gradient(top, rgba(13,42,133,1) 0%, rgba(6,30,106,1) 100%);
+	background: linear-gradient(to bottom, rgba(13,42,133,1) 0%, rgba(6,30,106,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d2a85', endColorstr='#061e6a', GradientType=0 );
+	color: #fff;
+	font-weight: normal !important;
+	min-height: 25px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	border-bottom: 1px #153fc1 solid;
+}
+.marketSM, .announceMnt, .priceLst, .gainLoose, .listedSecu, .myPortfolio {
+	background-image: url('../img/ico-market-sum.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.announceMnt {
+	background-image: url('../img/ico-announce.png');
+}
+.priceLst {
+	background-image: url('../img/ico-price-list.png');
+}
+.gainLoose {
+	background-image: url('../img/ico-gainloose.png');
+}
+.listedSecu {
+	background-image: url('../img/ico-securities.png');
+}
+.myPortfolio {
+	background-image: url('../img/ico-portfolio.png');
+}
+.marketSM:hover, .announceMnt:hover, .priceLst:hover, .gainLoose:hover, .listedSecu:hover, .myPortfolio:hover {
+	background-image: url('../img/ico-market-sum-ov.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.announceMnt:hover {
+	background-image: url('../img/ico-announce-ov.png');
+}
+.priceLst:hover {
+	background-image: url('../img/ico-price-list-ov.png');
+}
+.gainLoose:hover {
+	background-image: url('../img/ico-gainloose-ov.png');
+}
+.listedSecu:hover {
+	background-image: url('../img/ico-securities-ov.png');
+}
+.myPortfolio:hover {
+	background-image: url('../img/ico-portfolio-ov.png');
+}
+.red {
+    color: red;
+}
+.green {
+    color: #21DB27;
+}
+@media only screen and (min-width: 590px) and (max-width: 980px) {
+	.pane, .view {
+		width: 92%;
+		margin: 0 auto;
+	}
+	.has-header {
+		top: 115px;
+	}
+	.menu-container {
+		text-align: center;
+		float: left;
+		width: 33.2%;
+	}
+}
