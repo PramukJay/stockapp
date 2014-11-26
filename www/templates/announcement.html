@@ -7,7 +7,18 @@
   		Announcement
   		<span class="reload"><img src='img/ico-reload.png'/></span>
   	</div>
-    
+    			<div ng-repeat="item in news">
+				<div style="background-color:#040F2D ">
+					<table style="width:100%; font-size: 12px; color: white">
+						<tr>
+							<td>{{item.title}}</td>
+						</tr>
+						<tr>
+							<td>{{item.description}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
   </ion-content>
 </ion-view>
 <style type="text/css">
