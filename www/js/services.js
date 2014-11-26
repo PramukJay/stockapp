@@ -49,4 +49,12 @@ angular.module('starter.services', [])
 		//return $http.get("http://councilofcoders.com/stock.xml");
 	};
 	return company;
+})
+.factory('newsItemsFactory', function($http){
+	var company = [];
+	company.getNewsRssFeed = function(){
+		return $http.get("http://127.0.0.1:8020/stockapp/www/js/rssStockList.xml");
+		//return $http.get("http://councilofcoders.com/stock.xml");
+	};
+	return company;
 });
