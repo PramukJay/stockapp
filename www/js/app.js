@@ -295,8 +295,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	loadNewsItems();
 	
 	function loadNewsItems(){
-		$scope.testData = "test";
-		
+		newsItemsFactory.getNewsRssFeed().success(function(data){
+			news = x2js.xml_str2json(data);
+			$scope.testData = data;
+			$scope.newsItems = news.rss.channel.item;
+		});
 	}
 })
 .controller('PriceListCtrl', function($scope, stockFactory) {

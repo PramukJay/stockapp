@@ -6,8 +6,17 @@
   		Announcement
   		<span class="reload"><img src='img/ico-reload.png'/></span>
   	</div>
-  	<br />
-  	<input type="text" ng-model="testData" />
+  	<!--input type="text" ng-model="testData" /-->
+  	<div ng-repeat="newsItem in newsItems" >
+  		<table style="width:100%; color: white;">
+  			<tr>
+  				<td style="font-size: 14px">{{newsItem.title}}</td>
+  			</tr>
+  			<tr>
+  				<td style="font-size: 10px">{{newsItem.description}}</td>
+  			</tr>
+  		</table>
+  	</div>
   </ion-content>
 </ion-view>
 <style type="text/css">
