@@ -296,8 +296,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 })
 .controller('AnnouncementsCtrl', function($scope, newsItemsFactory) {
 	$scope.newsItems = [];
+	//$scope.loading = false;
 	loadNewsItems();
 	
+	//$scope.loading = true;
 	function loadNewsItems(){
 		newsItemsFactory.getNewsRssFeed().success(function(data){
 			news = x2js.xml_str2json(data);
@@ -305,6 +307,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			$scope.newsItems = news.rss.channel.item;
 		});
 	}
+	$scope.loading = false;
 })
 .controller('PriceListCtrl', function($scope, stockFactory) {
 	$scope.stocks = [];
