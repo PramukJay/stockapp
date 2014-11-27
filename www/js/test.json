@@ -1,0 +1,12 @@
+{
+	"success":true,
+	"data":
+		{
+			"id":1952,
+			"shareVolume":"21,721,754",
+			"status":"Regular Trading",
+			"tradeDate":"2014-11-27T05:22:17Z",
+			"turnover":"358,039,812.00"
+		},
+	"count":1
+}

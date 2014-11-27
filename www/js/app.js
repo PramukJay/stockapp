@@ -218,24 +218,26 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	};
 })
 
-.controller('MarketSummaryCtrl', function($scope, $cordovaSQLite, $interval, stockFactory) {
+.controller('MarketSummaryCtrl', function($scope, $cordovaSQLite, $interval, $http, stockFactory) {
 	$scope.stocks = [];
 	$scope.stockComps = [];
 	$scope.loading = false;
 	loadCompanies();
+	loadMarketDetails();
 	
-	var i = 0;
-	
-	/*var promise = $interval(function(){
-		$scope.testData = ++i;
-		loadCompanies();
-	}, 5000);*/
+	function loadMarketDetails(){
+		$scope.url = "http://222.165.133.165:8080/cses/json/market?code=gvt123";
+		
+		$http.get($scope.url).success(function(res, status){
+			$scope.response = res;
+			
+		});
+	}
 	
 	
 	function loadCompanies(){
 		$scope.loading = true;
 		stockFactory.getRssFeed().success(function(data){
-			//$scope.testData = "data";
 			companies = x2js.xml_str2json(data);
             $scope.stocks = companies.stock.company;
             /*$cordovaSQLite.execute(db, "DELETE FROM marketshare", []).then(function(res) {
