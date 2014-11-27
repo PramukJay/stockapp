@@ -225,6 +225,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	loadCompanies();
 	loadMarketDetails();
 	
+	$interval(function(){
+		loadMarketDetails();
+	},5000);
+	
 	function loadMarketDetails(){
 		$scope.loading = true;
 		$scope.url = "http://222.165.133.165:8080/cses/json/market?code=gvt123";
