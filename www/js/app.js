@@ -303,7 +303,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	//$scope.loading = false;
 	loadNewsItems();
 	
-	//$scope.loading = true;
+	$scope.loading = true;
 	function loadNewsItems(){
 		newsItemsFactory.getNewsRssFeed().success(function(data){
 			news = x2js.xml_str2json(data);
