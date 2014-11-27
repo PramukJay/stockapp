@@ -226,17 +226,19 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	loadMarketDetails();
 	
 	function loadMarketDetails(){
+		$scope.loading = true;
 		$scope.url = "http://222.165.133.165:8080/cses/json/market?code=gvt123";
 		
 		$http.get($scope.url).success(function(res, status){
 			$scope.response = res;
 			
 		});
+		$scope.loading = false;
 	}
 	
 	
 	function loadCompanies(){
-		$scope.loading = true;
+		//$scope.loading = true;
 		stockFactory.getRssFeed().success(function(data){
 			companies = x2js.xml_str2json(data);
             $scope.stocks = companies.stock.company;
@@ -260,7 +262,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			//$scope.testData = "Auth.signin.error!";
 			console.log("Auth.signin.error!");
 	    });
-	    $scope.loading = false;
+	    //$scope.loading = false;
 	}
 	function displayCompanies(){
 		var query = "SELECT name, symbol, isin, sharevolume, prevclose, high, low, lasttraded, change, changeperc FROM marketshare";
