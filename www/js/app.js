@@ -35,98 +35,55 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	$stateProvider
 
 	// setup an abstract state for the tabs directive
-	.state('tab', {
-		url : "/tab",
-		abstract : true,
-		templateUrl : "templates/tabs.html"
-	})
-
 	// Each tab has its own nav history stack:
-
-	.state('tab.dash', {
-		url : '/dash',
-		views : {
-			'tab-dash' : {
-				templateUrl : 'templates/tab-dash.html',
-				controller : 'DashCtrl'
-			}
-		}
-	}).state('tab.menu', {
+	.state('menu', {
 		url : '/menu',
-		views : {
-			'tab-menu' : {
-				templateUrl : 'templates/tab-menu.html',
-				controller : 'MenusCtrl'
-			}
-		}
-	}).state('tab.price-list-detail', {
+		templateUrl : 'templates/tab-menu.html',
+		controller : 'MenusCtrl'
+	})
+	.state('price-list-detail', {
 		url : '/detail/:compSymbol',
-		views : {
-			'tab-menu' : {
-				templateUrl : 'templates/price-list-detail.html',
-				controller : 'PriceListDetailCtrl'
-			}
-		}
-	}).state('tab.help', {
+		templateUrl : 'templates/price-list-detail.html',
+		controller : 'PriceListDetailCtrl'
+	})
+	.state('help', {
 		url : '/help',
-		views : {
-			'tab-help' : {
-				templateUrl : 'templates/tab-help.html',
-				controller : 'HelpCtrl'
-			}
-		}
-	}).state('tab.market', {
+		templateUrl : 'templates/tab-help.html',
+		controller : 'HelpCtrl'
+	})
+	.state('market', {
 		url : '/market',
-		views : {
-			'tab-menu' : {
-				templateUrl : 'templates/market-summary.html',
-				controller : 'MarketSummaryCtrl'
-			}
-		}
-	}).state('tab.announcements', {
+		templateUrl : 'templates/market-summary.html',
+		controller : 'MarketSummaryCtrl'
+	})
+	.state('announcements', {
 		url : '/announcements',
-		views : {
-			'tab-menu' : {
-				templateUrl : 'templates/announcement.html',
-				controller : 'AnnouncementsCtrl'
-			}
-		}
-	}).state('tab.pricelists', {
+		templateUrl : 'templates/announcement.html',
+		controller : 'AnnouncementsCtrl'
+	})
+	.state('pricelists', {
 		url : '/pricelists',
-		views : {
-			'tab-menu' : {
-				templateUrl : 'templates/price-list.html',
-				controller : 'PriceListCtrl'
-			}
-		}
-	}).state('tab.gainerslosers', {
+		templateUrl : 'templates/price-list.html',
+		controller : 'PriceListCtrl'
+	})
+	.state('gainerslosers', {
 		url : '/gainerslosers',
-		views : {
-			'tab-menu' : {
-				templateUrl : 'templates/gainers-losers.html',
-				controller : 'GainersLosersCtrl'
-			}
-		}
-	}).state('tab.listedsecurities', {
+		templateUrl : 'templates/gainers-losers.html',
+		controller : 'GainersLosersCtrl'
+	})
+	.state('listedsecurities', {
 		url : '/listedsecurities',
-		views : {
-			'tab-menu' : {
-				templateUrl : 'templates/listed-securities.html',
-				controller : 'ListedSecuritiesCtrl'
-			}
-		}
-	}).state('tab.myportfolio', {
+		templateUrl : 'templates/listed-securities.html',
+		controller : 'ListedSecuritiesCtrl'
+	})
+	.state('myportfolio', {
 		url : '/myportfolio',
-		views : {
-			'tab-menu' : {
-				templateUrl : 'templates/my-portfolio.html',
-				controller : 'MyPortfolioCtrl'
-			}
-		}
+		templateUrl : 'templates/my-portfolio.html',
+		controller : 'MyPortfolioCtrl'
 	});
 
 	// if none of the above states are matched, use this as the fallback
-	$urlRouterProvider.otherwise('/tab/dash');
+	$urlRouterProvider.otherwise('/menu');
 
 })
 .controller('DashCtrl', function($scope, $cordovaSQLite, $ionicPopup, $ionicLoading, $timeout, stockFactory) {
@@ -166,7 +123,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
             	}
             }
             if(userFound){            	
-            	window.location.href="menu.html#/tab/menu";
+            	window.location.href="menu.html#/menu";
             	//$scope.loading = false;
             }else{
             	$scope.loading = false;
