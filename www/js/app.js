@@ -80,6 +80,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		url : '/myportfolio',
 		templateUrl : 'templates/my-portfolio.html',
 		controller : 'MyPortfolioCtrl'
+	})
+	.state('myaccount', {
+		url : '/myaccount',
+		templateUrl : 'templates/account.html',
+		controller : 'MyAccountCtrl'
 	});
 
 	// if none of the above states are matched, use this as the fallback
@@ -142,8 +147,21 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	};
 })
 
-.controller('MenusCtrl', function($scope, Menus) {
-	$scope.menus = Menus.all();
+.controller('MenusCtrl', function($scope, $ionicModal, $ionicPopup, Menus) {
+	//$scope.menus = Menus.all();
+	$ionicModal.fromTemplateUrl('templates/account.html', {
+	   scope: $scope
+	}).then(function(modal) {
+	   $scope.modalAccount = modal;
+	});
+	    
+	//Open the account modal
+	$scope.showAccount = function(){
+		//$ionicPopup.alert({title: 'Stock App', template: 'test pop up'});
+		$scope.modalAccount.show();
+	};
+	
+	
 })
 
 .controller('PriceListDetailCtrl', function($scope, $stateParams, stockFactory) {
@@ -296,5 +314,21 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 })
 .controller('MyPortfolioCtrl', function($scope) {
 	$scope.username = userName;
+})
+.controller('MyAccountCtrl', function($scope, $ionicModal, $ionicPopup){
+	$scope.username = userName;
+	
+	$ionicModal.fromTemplateUrl('templates/account.html', {
+	   scope: $scope
+	}).then(function(modal) {
+	   $scope.modalAccount = modal;
+	});
+
+	    
+	//Open the account modal
+	$scope.hideAccount = function(){
+		//$ionicPopup.alert({title: 'Stock App', template: 'test pop up'});
+		$scope.modalAccount.hide();
+	};
 });
 
