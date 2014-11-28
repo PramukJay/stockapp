@@ -148,7 +148,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 	color: #fff;
 	text-transform: uppercase;
 	text-decoration: none;
-	margin-top:-37px;
+	/*margin-top:-37px;*/
 }
 table td {
 	font-size: 12px;
@@ -291,7 +291,7 @@ ion-nav-view {
 .marketSM, .announceMnt, .priceLst, .gainLoose, .listedSecu, .myPortfolio {
 	background-image: url('../img/ico-market-sum.png');
 	background-repeat: no-repeat;
-	background-position: center 35%;
+	background-position: center 50%;
 	background-size: 55px 55px;
 }
 .announceMnt {
