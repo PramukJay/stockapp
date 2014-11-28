@@ -338,10 +338,6 @@ ion-nav-view {
 .green {
     color: #21DB27;
 }
-.custom-user {
-	color: white;
-	font-size: 35px;
-}
 @media only screen and (min-width: 590px) and (max-width: 980px) {
 	.pane, .view {
 		width: 92%;
