@@ -46,9 +46,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		templateUrl : 'templates/price-list-detail.html',
 		controller : 'PriceListDetailCtrl'
 	})
-	.state('help', {
-		url : '/help',
-		templateUrl : 'templates/tab-help.html',
+	.state('acc', {
+		url : '/acc',
+		templateUrl : 'templates/account.html',
 		controller : 'HelpCtrl'
 	})
 	.state('market', {
@@ -81,10 +81,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		templateUrl : 'templates/my-portfolio.html',
 		controller : 'MyPortfolioCtrl'
 	})
-	.state('account', {
-		url : '/account',
+	.state('prof', {
+		url : '/prof',
 		templateUrl : 'templates/account.html',
-		controller : 'AccountCtrl'
+		controller : 'HelpCtrl'
 	});
 
 	// if none of the above states are matched, use this as the fallback
@@ -314,21 +314,5 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 })
 .controller('MyPortfolioCtrl', function($scope) {
 	$scope.username = userName;
-})
-.controller('MyAccountCtrl', function($scope, $ionicModal, $ionicPopup){
-	$scope.username = userName;
-	
-	$ionicModal.fromTemplateUrl('templates/account.html', {
-	   scope: $scope
-	}).then(function(modal) {
-	   $scope.modalAccount = modal;
-	});
-
-	    
-	//Open the account modal
-	$scope.hideAccount = function(){
-		//$ionicPopup.alert({title: 'Stock App', template: 'test pop up'});
-		$scope.modalAccount.hide();
-	};
 });
 
