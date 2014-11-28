@@ -81,10 +81,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		templateUrl : 'templates/my-portfolio.html',
 		controller : 'MyPortfolioCtrl'
 	})
-	.state('myaccount', {
-		url : '/myaccount',
+	.state('account', {
+		url : '/account',
 		templateUrl : 'templates/account.html',
-		controller : 'MyAccountCtrl'
+		controller : 'AccountCtrl'
 	});
 
 	// if none of the above states are matched, use this as the fallback
