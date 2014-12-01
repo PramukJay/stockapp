@@ -158,7 +158,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	    
 	//Open the account modal
 	$scope.showAccount = function(){
-		$scope.username = userName;
+		$scope.username = userName.toUpperCase();
 		//$ionicPopup.alert({title: 'Stock App', template: 'test pop up'});
 		$scope.modalAccount.show();
 	};

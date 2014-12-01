@@ -4,11 +4,27 @@
 		<uid>1</uid>
 		<uname>admin</uname>
 		<password>admin</password>
+		<portfolio>
+			<compsymbol>
+				AFF.N00000
+			</compsymbol>
+			<compsymbol>
+				AGO00000
+			</compsymbol>
+		</portfolio>
 	</user>
 	<user>
 		<uid>2</uid>
 		<uname>admin2</uname>
 		<password>admin2p</password>
+		<portfolio>
+			<compsymbol>
+				AFF.N00000
+			</compsymbol>
+			<compsymbol>
+				AGO00000
+			</compsymbol>
+		</portfolio>
 	</user>
 	<company number="1">
 		<name>Asia Asset Finance PLC</name>

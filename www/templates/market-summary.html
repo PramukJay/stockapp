@@ -31,7 +31,7 @@
   	</div>
     <table class="mk1">
 		<tr>
-			<th style="text-align: left;">Symbol</th>
+			<th style="text-align: left;" colspan="2">Symbol</th>
 			<th>Share Volume</th>
 			<th>Previous Close</th>
 			<th>High</th>
@@ -39,6 +39,10 @@
 			<th colspan="2">Last Traded</th>
 		</tr>
 		<tr ng-repeat="comp in stocks">
+			<td style="text-align: right; width: 15px;">
+				<!--span class="ion-ios7-plus" style="color: #21DB27;"></span-->
+				<span class="ion-ios7-minus" style="color: red;"></span>
+			</td>
 			<td style="text-align: left;">{{comp.symbol}}</td>
 			<td>{{comp.sharevolume}}</td>
 			<td>{{comp.prevclose}}</td>
@@ -70,7 +74,7 @@
 }
 .showup{
 	display: block;
-	color: green;
+	color: #21DB27;
 }
 .showuphide{
 	display:  none;

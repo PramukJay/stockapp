@@ -192,6 +192,9 @@ font-size: 14px;
 .account-user img{
 	width: 125px;
 	border-radius: 50%;
+	box-shadow: 0 0 5px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 5px rgba(0, 0, 0, .8);
 }
 
 .account-user-name{
