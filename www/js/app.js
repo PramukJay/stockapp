@@ -153,6 +153,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	   scope: $scope
 	}).then(function(modal) {
 	   $scope.modalAccount = modal;
+	   
 	});
 	    
 	//Open the account modal
