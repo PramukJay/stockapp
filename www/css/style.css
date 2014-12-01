@@ -105,12 +105,6 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 	margin-right: 10px;
 }
 
-.account-close-button{
-	color: white;
-	font-size: 40px;
-	margin-left: 20px;
-}
-
 .account-logout-button{
 	color: white;
 	font-size: 25px;
@@ -126,6 +120,11 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 .account-close{
 	width: 100%;
 	margin-top: 20px;
+}
+
+.account-close img{
+	width: 75px;
+	height: auto;
 }
 
 .account-user{
