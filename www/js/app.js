@@ -157,11 +157,23 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	    
 	//Open the account modal
 	$scope.showAccount = function(){
+		$scope.username = userName;
 		//$ionicPopup.alert({title: 'Stock App', template: 'test pop up'});
 		$scope.modalAccount.show();
 	};
 	
+	//Close the account modal
+	$scope.hideAccount = function(){
+		//$ionicPopup.alert({title: 'Stock App', template: 'test pop up'});
+		$scope.modalAccount.hide();
+	};
 	
+	//Logout
+	$scope.logout = function(){
+		
+		window.localStorage.clear();
+		window.location.href = "index.html#/tab/dash";
+	};
 })
 
 .controller('PriceListDetailCtrl', function($scope, $stateParams, stockFactory) {

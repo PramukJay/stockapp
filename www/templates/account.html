@@ -1,10 +1,9 @@
-<div class="modal">
+<div class="modal" style="background: #163eb9;">
 	<ion-view title="Account" >
 	  <ion-content >
-		  <center>
-		  	<input type="text" ng-model="testData" />
-		  	<a class="icon ion-log-out" ng-click="logout()" style="font-size: 35px">Logout</a>
-		  </center>
+	  <br />
+		<a style="color: white; font-size: 25px;" ng-click="hideAccount()">Close</a><br /><br />
+		<a class="icon ion-log-out" ng-click="logout()" style="color: white;"> Logout {{username}}</a>
 	  </ion-content>
 	</ion-view>
 </div>
