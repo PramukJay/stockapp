@@ -121,11 +121,26 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 
 .account-logout{
 	width: 100%;
-	margin-top: 100px;
+	margin-top: 20px;
 }
 .account-close{
 	width: 100%;
 	margin-top: 20px;
+}
+
+.account-user{
+	width: 100%;
+	margin-top: 20px;
+}
+
+.account-user img{
+	width: 125px;
+	border-radius: 50%;
+}
+
+.account-user-name{
+	color: white;
+	font-size: 20px;
 }
 
 
