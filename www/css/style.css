@@ -99,6 +99,12 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 	border-radius: 30px;
 }
 
+.menu-user{
+	font-size: xx-large;
+	margin-top: 20px;
+	margin-right: 10px;
+}
+
 .menu-ico {
 	width: 50%;
 	float: left;
