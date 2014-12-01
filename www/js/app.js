@@ -171,7 +171,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	
 	//Logout
 	$scope.logout = function(){
-		
 		window.localStorage.clear();
 		window.location.href = "index.html#/tab/dash";
 	};
