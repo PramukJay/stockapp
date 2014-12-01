@@ -1,9 +1,12 @@
 <div class="modal" style="background: #163eb9;">
 	<ion-view title="Account" >
 	  <ion-content >
-	  <br />
-		<a style="color: white; font-size: 25px;" ng-click="hideAccount()">Close</a><br /><br />
-		<a class="icon ion-log-out" ng-click="logout()" style="color: white;"> Logout {{username}}</a>
+	  	<div class="account-close">
+			<a class="ion-ios7-close account-close-button" ng-click="hideAccount()"></a>
+		</div>
+		<div class="account-logout">
+			<center><a class="icon ion-log-out account-logout-button" ng-click="logout()"> Logout {{username}}</a></center>
+		</div>
 	  </ion-content>
 	</ion-view>
 </div>

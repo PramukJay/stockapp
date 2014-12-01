@@ -105,6 +105,30 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 	margin-right: 10px;
 }
 
+.account-close-button{
+	color: white;
+	font-size: 40px;
+	margin-left: 20px;
+}
+
+.account-logout-button{
+	color: white;
+	font-size: 25px;
+	background: cornflowerblue;
+	padding: 10px;
+	border-radius: 20px;
+}
+
+.account-logout{
+	width: 100%;
+	margin-top: 100px;
+}
+.account-close{
+	width: 100%;
+	margin-top: 20px;
+}
+
+
 .menu-ico {
 	width: 50%;
 	float: left;
