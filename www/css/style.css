@@ -92,6 +92,63 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 .tabs {
 	border: none;
 }
+
+.market-summary{
+	width: 100%;
+}
+
+.market-summary tr {
+	background: #08187a;
+	border-bottom: 1px #ffffff solid;
+}
+
+.market-summary td {
+	text-align: center;
+	padding: 5px !important;
+}
+
+.market-summary2{
+	width: 100%;
+}
+
+.market-summary2 tr {
+	background: #08187a;
+}
+
+.market-summary2 td {
+	text-align: left;
+	padding: 10px !important;
+}
+
+
+.aspi{
+	background: rgba(35,194,10,1);
+background: -moz-linear-gradient(top, rgba(35,194,10,1) 0%, rgba(30,133,12,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(35,194,10,1)), color-stop(100%, rgba(30,133,12,1)));
+background: -webkit-linear-gradient(top, rgba(35,194,10,1) 0%, rgba(30,133,12,1) 100%);
+background: -o-linear-gradient(top, rgba(35,194,10,1) 0%, rgba(30,133,12,1) 100%);
+background: -ms-linear-gradient(top, rgba(35,194,10,1) 0%, rgba(30,133,12,1) 100%);
+background: linear-gradient(to bottom, rgba(35,194,10,1) 0%, rgba(30,133,12,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23c20a', endColorstr='#1e850c', GradientType=0 );
+
+padding: 5px 41px;
+font-size: 14px;
+}
+
+.sp{
+background: rgba(179,1,1,1);
+background: -moz-linear-gradient(top, rgba(179,1,1,1) 0%, rgba(254,0,0,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(179,1,1,1)), color-stop(100%, rgba(254,0,0,1)));
+background: -webkit-linear-gradient(top, rgba(179,1,1,1) 0%, rgba(254,0,0,1) 100%);
+background: -o-linear-gradient(top, rgba(179,1,1,1) 0%, rgba(254,0,0,1) 100%);
+background: -ms-linear-gradient(top, rgba(179,1,1,1) 0%, rgba(254,0,0,1) 100%);
+background: linear-gradient(to bottom, rgba(179,1,1,1) 0%, rgba(254,0,0,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b30101', endColorstr='#fe0000', GradientType=0 );
+padding: 5px 25px;
+font-size: 14px;
+}
+
+
 .button.button-positive {
 	border: none;
 	background-color: #000;
@@ -293,7 +350,10 @@ ion-nav-view {
 	width: 23px;
 	height: 23px;
 }
-.scroll table tr th {
+.mk1{
+	width: 100%;
+}
+.mk1 tr th {
 	background: rgba(16,47,146,1);
 	background: -moz-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
 	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(16,47,146,1)), color-stop(100%, rgba(6,31,108,1)));
@@ -302,16 +362,22 @@ ion-nav-view {
 	background: -ms-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
 	background: linear-gradient(to bottom, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#102f92', endColorstr='#061f6c', GradientType=0 );
-	font-weight: bold;
+	font-weight: 500;
+	font-size: 12px;
+	color: white;
+	text-align: right;
 }
-.scroll table td {
+.mk1 td {
 	padding: 4px;
+	color: white;
+	text-align: right;
+	font-size: 12px;
 }
-.scroll table tr:nth-child(even) {
+.mk1 tr:nth-child(even) {
 	background: #051549;
 	border-bottom: 1px #274fc9 solid;
 }
-.scroll table tr:nth-child(odd) {
+.mk1 tr:nth-child(odd) {
 	background: #020d2e;
 	border-bottom: 1px #274fc9 solid;
 }
