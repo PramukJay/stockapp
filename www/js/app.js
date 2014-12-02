@@ -22,8 +22,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			// org.apache.cordova.statusbar required
 			StatusBar.styleDefault();
 		}
-		db = $cordovaSQLite.openDB({ name: "my.db" });
-    	$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS marketshare (id integer primary key, name text, symbol text, isin text, sharevolume integer, prevclose real, high real, low real, lasttraded real, change real, changeperc real)");
+		//db = $cordovaSQLite.openDB({ name: "my.db" });
+    	//$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS marketshare (id integer primary key, name text, symbol text, isin text, sharevolume integer, prevclose real, high real, low real, lasttraded real, change real, changeperc real)");
 	});
 })
 .config(function($stateProvider, $urlRouterProvider) {
@@ -244,7 +244,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		});				
 	}
 	
-	
+	/*
 	function loadCompanies(){
 		//$scope.loading = true;
 		stockFactory.getRssFeed().success(function(data){
@@ -254,7 +254,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		            //$scope.testRes = "deleted";
 		    }, function (err) {
 		            console.error(err);
-		    });*/
+		    });
             /*for(var x = 0;x<$scope.stocks.length;x++){
             	//$scope.testData = "inside for" + x;
             	var query = "INSERT INTO marketshare (name, symbol, isin, sharevolume, prevclose, high, low, lasttraded, change, changeperc) VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -264,7 +264,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		        }, function (err) {
 		            console.error(err);
 		        });
-            }*/
+            }
             //displayCompanies();
 		}).error(function(data, status, headers, config) {
 			//$scope.testData = "Auth.signin.error!";
@@ -301,6 +301,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
         });
         //$scope.loading = false;
 	}
+	*/
 	//$scope.loading = false;
 	//hide();
 })
