@@ -107,17 +107,23 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 	padding: 5px !important;
 }
 
-.market-summary2{
+.market-summary-2{
 	width: 100%;
 }
 
-.market-summary2 tr {
+.market-summary-2 tr {
 	background: #08187a;
 }
 
-.market-summary2 td {
+.market-summary-2 td {
 	text-align: left;
-	padding: 10px !important;
+	padding-left: 10px;
+}
+
+.vertical-center{
+	display: inline-block; 
+	vertical-align: -webkit-baseline-middle; 
+	margin-top: 10px;
 }
 
 
@@ -353,10 +359,10 @@ ion-nav-view {
 	width: 23px;
 	height: 23px;
 }
-.mk1{
+.default{
 	width: 100%;
 }
-.mk1 tr th {
+.default tr th {
 	background: rgba(16,47,146,1);
 	background: -moz-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
 	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(16,47,146,1)), color-stop(100%, rgba(6,31,108,1)));
@@ -370,17 +376,17 @@ ion-nav-view {
 	color: white;
 	text-align: right;
 }
-.mk1 td {
+.default td {
 	padding: 4px;
 	color: white;
 	text-align: right;
 	font-size: 12px;
 }
-.mk1 tr:nth-child(even) {
+.default tr:nth-child(even) {
 	background: #051549;
 	border-bottom: 1px #274fc9 solid;
 }
-.mk1 tr:nth-child(odd) {
+.default tr:nth-child(odd) {
 	background: #020d2e;
 	border-bottom: 1px #274fc9 solid;
 }
