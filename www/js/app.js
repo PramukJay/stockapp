@@ -205,7 +205,17 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	};
 })
 
-.controller('MarketSummaryCtrl', function($scope, $cordovaSQLite, $interval, $http, stockFactory) {
+.controller('MarketSummaryCtrl', function($scope, $cordovaSQLite, $interval, $http, $ionicLoading, stockFactory) {
+	function show() {
+	    $ionicLoading.show({
+	      template: '<span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>',
+	      duration: 3500
+	    });
+    }
+    function hide(){
+    	$ionicLoading.hide();
+    }
+  
 	$scope.stocks = [];
 	$scope.stockComps = [];
 	$scope.marketArr = [];
@@ -217,24 +227,21 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		loadMarketDetails();
 	},5000);
 	
+	show();
+	//$scope.loading = true;
 	function loadMarketDetails(){
-		$scope.loading = true;
 		$scope.url = "http://222.165.133.165:8080/cses/json/market?code=gvt123";
 		$scope.marketSummaryUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
 		
-		
 		$http.get($scope.url).success(function(res, status){
 			$scope.response = res;
-			
 		});
 		
 		$http.get($scope.marketSummaryUrl).success(function(res, status){
 			$scope.marketResponse = res;
 			$scope.testData = $scope.marketResponse.results[0].symbol_text; 
 			$scope.marketArr = $scope.marketResponse.results;
-		});
-		
-		$scope.loading = false;
+		});				
 	}
 	
 	
@@ -292,8 +299,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
         }, function (err) {
             console.error(err);
         });
-        $scope.loading = false;
+        //$scope.loading = false;
 	}
+	//$scope.loading = false;
+	//hide();
 })
 .controller('AnnouncementsCtrl', function($scope, newsItemsFactory) {
 	$scope.newsItems = [];
@@ -310,7 +319,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	}
 	$scope.loading = false;
 })
-.controller('PriceListCtrl', function($scope,$interval, $http, stockFactory) {
+.controller('PriceListCtrl', function($scope,$interval, $http, $ionicLoading, stockFactory) {
+	function show() {
+	    $ionicLoading.show({
+	      template: '<span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>',
+	      duration: 3500
+	    });
+    }
+    function hide(){
+    	$ionicLoading.hide();
+    }
 	$scope.stocks = [];
 	$scope.marketArr = [];
 	//loadCompanies();
@@ -320,6 +338,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		loadMarketDetails();
 	},5000);
 	
+	show();
 	function loadMarketDetails(){
 		$scope.loading = true;
 		$scope.marketSummaryUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
@@ -352,24 +371,20 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		$scope.testData = "test is working";
 	}
 })
-.controller('NewsCtrl', function($scope) {
+.controller('NewsCtrl', function($scope, newsItemsFactory) {
+	$scope.newsItems = [];
+	//$scope.loading = false;
+	loadNewsItems();
 	
-	$scope.newsArr = [];
-	$scope.loading = false;
-	loadNews();
-	
-	function loadNews(){
-
-		$scope.newsUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
-		
-		
-		$http.get($scope.newsUrl).success(function(res, status){
-			$scope.newsResponse = res;
-			$scope.newsArr = $scope.newsResponse.results;
+	$scope.loading = true;
+	function loadNewsItems(){
+		newsItemsFactory.getNewsRssFeed().success(function(data){
+			news = x2js.xml_str2json(data);
+			$scope.testData = data;
+			$scope.newsItems = news.rss.channel.item;
 		});
-		
-		$scope.loading = false;
 	}
+	$scope.loading = false;
 	
 })
 .controller('ListedSecuritiesCtrl', function($scope,$http) {
