@@ -66,10 +66,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		templateUrl : 'templates/price-list.html',
 		controller : 'PriceListCtrl'
 	})
-	.state('gainerslosers', {
-		url : '/gainerslosers',
-		templateUrl : 'templates/gainers-losers.html',
-		controller : 'GainersLosersCtrl'
+	.state('news', {
+		url : '/news',
+		templateUrl : 'templates/news.html',
+		controller : 'NewsCtrl'
 	})
 	.state('listedsecurities', {
 		url : '/listedsecurities',
@@ -328,10 +328,44 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		$scope.testData = "test is working";
 	}
 })
-.controller('GainersLosersCtrl', function($scope) {
+.controller('NewsCtrl', function($scope) {
+	
+	$scope.newsArr = [];
+	$scope.loading = false;
+	loadNews();
+	
+	function loadNews(){
+
+		$scope.newsUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
+		
+		
+		$http.get($scope.newsUrl).success(function(res, status){
+			$scope.newsResponse = res;
+			$scope.newsArr = $scope.newsResponse.results;
+		});
+		
+		$scope.loading = false;
+	}
 	
 })
-.controller('ListedSecuritiesCtrl', function($scope) {
+.controller('ListedSecuritiesCtrl', function($scope,$http) {
+
+	$scope.secutiryArr = [];
+	$scope.loading = false;
+	loadListedsSequrities();
+	
+	function loadListedsSequrities(){
+
+		$scope.sequrityUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
+		
+		
+		$http.get($scope.sequrityUrl).success(function(res, status){
+			$scope.sequrityResponse = res;
+			$scope.secutiryArr = $scope.sequrityResponse.results;
+		});
+		
+		$scope.loading = false;
+	}
 	
 })
 .controller('MyPortfolioCtrl', function($scope) {

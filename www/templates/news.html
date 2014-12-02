@@ -2,7 +2,16 @@
   <ion-content >
   <center>
   	<!--input type="text" ng-model="testData" /><br /-->
-    
+  	<div style="color: white;">
+  		  	    <table class="default">
+
+		<tr ng-repeat="comp in newsArr">
+			<td style="text-align: left;">{{comp.symbol_text}}</td>
+			<td style="text-align: left;">{{comp.name_link_text}}</td>
+		</tr>
+	</table>
+  		</div>
+    </center>
   </ion-content>
 </ion-view>
 <style type="text/css">
