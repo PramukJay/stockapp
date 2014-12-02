@@ -208,8 +208,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 .controller('MarketSummaryCtrl', function($scope, $cordovaSQLite, $interval, $http, stockFactory) {
 	$scope.stocks = [];
 	$scope.stockComps = [];
+	$scope.marketArr = [];
 	$scope.loading = false;
-	loadCompanies();
+	//loadCompanies();
 	loadMarketDetails();
 	
 	$interval(function(){
@@ -219,11 +220,20 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	function loadMarketDetails(){
 		$scope.loading = true;
 		$scope.url = "http://222.165.133.165:8080/cses/json/market?code=gvt123";
+		$scope.marketSummaryUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
+		
 		
 		$http.get($scope.url).success(function(res, status){
 			$scope.response = res;
 			
 		});
+		
+		$http.get($scope.marketSummaryUrl).success(function(res, status){
+			$scope.marketResponse = res;
+			$scope.testData = $scope.marketResponse.results[0].symbol_text; 
+			$scope.marketArr = $scope.marketResponse.results;
+		});
+		
 		$scope.loading = false;
 	}
 	
