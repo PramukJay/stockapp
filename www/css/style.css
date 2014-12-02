@@ -380,7 +380,7 @@ ion-nav-view {
 	padding: 4px;
 	color: white;
 	text-align: right;
-	font-size: 12px;
+	font-size: 10px;
 }
 .default tr:nth-child(even) {
 	background: #051549;

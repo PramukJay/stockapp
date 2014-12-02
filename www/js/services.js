@@ -46,8 +46,13 @@ angular.module('starter.services', [])
 	var company = [];
 	company.getRssFeed = function(){
 		//return $http.get("http://127.0.0.1:8020/stockapp/www/js/stock.xml");
+<<<<<<< HEAD
 		return $http.get("http://127.0.0.1:8020/stockapp/stockapp/www/js/stock.xml");
 		//return $http.get("http://councilofcoders.com/stock.xml");
+=======
+		//return $http.get("http://127.0.0.1:8020/stockapp/stockapp/www/js/stock.xml");
+		return $http.get("http://councilofcoders.com/stock.xml");
+>>>>>>> origin/master
 	};
 	return company;
 })
@@ -55,8 +60,13 @@ angular.module('starter.services', [])
 	var company = [];
 	company.getNewsRssFeed = function(){
 		//return $http.get("http://127.0.0.1:8020/stockapp/www/js/news.html");
+<<<<<<< HEAD
 		return $http.get("http://127.0.0.1:8020/stockapp/stockapp/www/js/news.html");
 		//return $http.get("http://lk.duinvest.com/portal/LKCSE/rssStoryList.html");
+=======
+		//return $http.get("http://127.0.0.1:8020/stockapp/stockapp/www/js/news.html");
+		return $http.get("http://lk.duinvest.com/portal/LKCSE/rssStoryList.html");
+>>>>>>> origin/master
 	};
 	return company;
 });
