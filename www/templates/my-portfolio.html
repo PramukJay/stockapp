@@ -2,11 +2,22 @@
   <ion-content >
   <center>
   	<!--input type="text" ng-model="testData" /><br /-->
-  	<table style="color: white; width: 100%;">
-  		<tr>
-  			<th>{{username}}</th>
-  		</tr>
-  	</table>
+  	<div style="width: 100%;">
+		<img style="width: 70%; margin: 0 auto;" src="./img/vstox.png" />
+	</div>
+  	<form ng-submit="" novalidate>
+		<div class="list">
+			<label style="width: 100%;" class="item item-input">
+				<input type="text" ng-model="loginData.username" placeholder="Username">
+			</label>
+			<label style="width: 100%;" class="item item-input">
+				<input type="password" ng-model="loginData.pwd" placeholder="Password">
+			</label>
+			<label style="width: 100%;" class="item">
+				<button  class="button button-block button-positive" type="submit">LOGIN</button>
+			</label>
+		</div>
+	</form>
   </ion-content>
 </ion-view>
 <style type="text/css">
