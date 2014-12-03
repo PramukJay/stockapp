@@ -375,6 +375,7 @@ ion-nav-view {
 	font-size: 12px;
 	color: white;
 	text-align: right;
+	padding: 0 10px;
 }
 .default td {
 	padding: 4px;

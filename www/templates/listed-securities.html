@@ -4,10 +4,13 @@
   	<div style="color: white;">
   	<!--input type="text" ng-model="testData" /><br /-->
   	    <table class="default">
-
+		<tr>
+			<th style="text-align: left;">Symbol</th>
+			<th style="text-align: left;">Company Name</th>
+		</tr>
 		<tr ng-repeat="comp in secutiryArr">
-			<td style="text-align: left;">{{comp.symbol_text}}</td>
-			<td style="text-align: left;">{{comp.name_link_text}}</td>
+			<td style="text-align: left;">{{comp['symbol_text']}}</td>
+			<td style="text-align: left;">{{comp['name_link/_text']}}</td>
 		</tr>
 	</table>
 	</div>

@@ -1,19 +1,20 @@
--<ion-view title="Announcements">
+<ion-view title="Announcements">
   <ion-content >
   <center>
-  	<center ng-show="loading"><i class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></i></center>
-  	<!--input type="text" ng-model="testData" /-->
-  	<div ng-repeat="newsItem in newsItems" style="margin-bottom: 5px;">
-  		<table class="default">
-  			<tr>
-  				<td style="font-size: 14px; text-align: left;">{{newsItem.title}}</td>
-  			</tr>
-  			<tr>
-  				<td style="font-size: 10px; text-align: left;">{{newsItem.description}}</td>
-  			</tr>
-  		</table>
-  	</div>
-  	<center>
+  	<div style="color: white;">
+  	<!--input type="text" ng-model="testData" /><br /-->
+  	    <table class="default">
+		<tr>
+			<th style="text-align: left;">Date</th>
+			<th style="text-align: left;">Title</th>
+		</tr>
+		<tr ng-repeat="comp in annArr">
+			<td style="text-align: left;">{{comp['datecell_text']}}</td>
+			<td style="text-align: left;">{{comp['read_more_link/_text']}}</td>
+		</tr>
+	</table>
+	</div>
+   </center>
   </ion-content>
 </ion-view>
 <style type="text/css">

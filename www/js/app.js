@@ -241,7 +241,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			$scope.marketResponse = res;
 			$scope.testData = $scope.marketResponse.results[0].symbol_text; 
 			$scope.marketArr = $scope.marketResponse.results;
-			console.log($scope.marketArr);
 		});				
 	}
 	
@@ -306,20 +305,23 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	//$scope.loading = false;
 	//hide();
 })
-.controller('AnnouncementsCtrl', function($scope, newsItemsFactory) {
-	$scope.newsItems = [];
-	//$scope.loading = false;
-	loadNewsItems();
-	
-	$scope.loading = true;
-	function loadNewsItems(){
-		newsItemsFactory.getNewsRssFeed().success(function(data){
-			news = x2js.xml_str2json(data);
-			$scope.testData = data;
-			$scope.newsItems = news.rss.channel.item;
-		});
-	}
+.controller('AnnouncementsCtrl', function($scope, $http) {
+	$scope.annArr = [];
 	$scope.loading = false;
+	loadListedAnn();
+	
+	function loadListedAnn(){
+
+		$scope.annUrl = "https://api.import.io/store/data/ad762c1f-8129-4880-946f-c9560174cae6/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FlistMarketAnnouncements.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
+		
+		
+		$http.get($scope.annUrl).success(function(res, status){
+			$scope.annResponse = res;
+			$scope.annArr = $scope.annResponse.results;
+		});
+		
+		$scope.loading = false;
+	}
 })
 .controller('PriceListCtrl', function($scope,$interval, $http, $ionicLoading, stockFactory) {
 	function show() {
