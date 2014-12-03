@@ -8,6 +8,7 @@
 var db = null;
 var userId = window.localStorage["userId"];
 var userName = window.localStorage["userName"];
+var json = window.localStorage["jsonObj"];
 //exports.db = db;
 angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 
@@ -147,8 +148,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	};
 })
 
-.controller('MenusCtrl', function($scope, $ionicModal, $ionicPopup, Menus) {
+.controller('MenusCtrl', function($scope, $ionicModal, $ionicPopup, $state, Menus) {
 	//$scope.menus = Menus.all();
+	//$state.reload();
+	
 	$ionicModal.fromTemplateUrl('templates/account.html', {
 	   scope: $scope
 	}).then(function(modal) {
@@ -205,7 +208,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	};
 })
 
-.controller('MarketSummaryCtrl', function($scope, $cordovaSQLite, $interval, $http, $ionicLoading, stockFactory) {
+.controller('MarketSummaryCtrl', function($scope, $cordovaSQLite, $interval, $http, $ionicLoading, $ionicPopup, stockFactory) {
 	function show() {
 	    $ionicLoading.show({
 	      template: '<span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>',
@@ -215,34 +218,56 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     function hide(){
     	$ionicLoading.hide();
     }
-  
-	$scope.stocks = [];
-	$scope.stockComps = [];
+  	
+	//$scope.stocks = [];
+	//$scope.stockComps = [];
 	$scope.marketArr = [];
-	$scope.loading = false;
+	//$scope.loading = false;
 	//loadCompanies();
 	loadMarketDetails();
+	loadMarketSummary();
 	
-	$interval(function(){
-		loadMarketDetails();
-	},5000);
-	
-	show();
-	//$scope.loading = true;
-	function loadMarketDetails(){
-		$scope.url = "http://222.165.133.165:8080/cses/json/market?code=gvt123";
-		$scope.marketSummaryUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
-		
-		$http.get($scope.url).success(function(res, status){
-			$scope.response = res;
+	var refresh = $interval(function(){
+		$scope.$apply(function(){
+			loadMarketDetails();
+			loadMarketSummary();
 		});
 		
-		$http.get($scope.marketSummaryUrl).success(function(res, status){
-			$scope.marketResponse = res;
-			$scope.testData = $scope.marketResponse.results[0].symbol_text; 
-			$scope.marketArr = $scope.marketResponse.results;
-		});				
+	});
+	
+	var load = true;
+	function loadMarketDetails(){
+		var url = "http://222.165.133.165:8080/cses/json/market?code=gvt123";
+		
+		$http.get(url).success(function(res, status){
+			$scope.response = res;
+			var status = $scope.response.data.status;
+			if(!(status == 'Regular Trading') & !(status == 'Market Close')){
+				$ionicPopup.alert({title: 'Stock App', template: 'Regular trading session will start at 9.30AM.'});
+				//hide();
+				$interval.cancel(refresh);
+			}else{
+				if(load){
+					show();
+					load = false;
+				}				
+			}
+		});		
 	}
+	
+	function loadMarketSummary(){
+		var marketSummaryUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
+		
+		$http.get(marketSummaryUrl).success(function(res, status){
+			$scope.testData = res;
+			$scope.marketResponse = res;
+			$scope.marketArr = $scope.marketResponse.results;
+
+			console.log($scope.marketArr);
+			hide();
+		});
+	}
+	
 	
 	/*
 	function loadCompanies(){
@@ -323,7 +348,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		$scope.loading = false;
 	}
 })
-.controller('PriceListCtrl', function($scope,$interval, $http, $ionicLoading, stockFactory) {
+.controller('PriceListCtrl', function($scope,$interval, $http, $ionicLoading, $ionicPopup, stockFactory) {
 	function show() {
 	    $ionicLoading.show({
 	      template: '<span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>',
@@ -333,32 +358,49 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     function hide(){
     	$ionicLoading.hide();
     }
-	$scope.stocks = [];
+	//$scope.stocks = [];
 	$scope.marketArr = [];
 	//loadCompanies();
 	loadMarketDetails();
+	loadPriceList();
 	
-	$interval(function(){
-		loadMarketDetails();
-	},5000);
+	var refresh = $interval(function(){
+		$scope.$apply(function(){
+			loadMarketDetails();
+			loadMarketSummary();
+		});
+	});
 	
-	show();
+	var load = true;
+	var load = true;
 	function loadMarketDetails(){
-		$scope.loading = true;
-		$scope.marketSummaryUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
-				
-		$http.get($scope.url).success(function(res, status){
+		var url = "http://222.165.133.165:8080/cses/json/market?code=gvt123";
+		
+		$http.get(url).success(function(res, status){
 			$scope.response = res;
-			
-		});
+			var status = $scope.response.data.status;
+			if(!(status == 'Regular Trading') & !(status == 'Market Close')){
+				$ionicPopup.alert({title: 'Stock App', template: 'Regular trading session will start at 9.30AM.'});
+				//hide();
+				$interval.cancel(refresh);
+			}else{
+				if(load){
+					show();
+					load = false;
+				}				
+			}
+		});		
+	}
+	
+	function loadPriceList(){
+		var marketSummaryUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
 		
-		$http.get($scope.marketSummaryUrl).success(function(res, status){
+		$http.get(marketSummaryUrl).success(function(res, status){
 			$scope.marketResponse = res;
-			//$scope.testData = $scope.marketResponse.results[0].symbol_text; 
 			$scope.marketArr = $scope.marketResponse.results;
-		});
-		
-		$scope.loading = false;
+			console.log($scope.marketArr);
+			hide();
+		});	
 	}
 	
 	function loadCompanies(){
@@ -371,9 +413,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			console.log("Auth.signin.error!");
 	    });
 	}
-	function testFunc(){
-		$scope.testData = "test is working";
-	}
+	
 })
 .controller('NewsCtrl', function($scope, newsItemsFactory) {
 	$scope.newsItems = [];
