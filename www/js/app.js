@@ -330,11 +330,22 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	//$scope.loading = false;
 	//hide();
 })
-.controller('AnnouncementsCtrl', function($scope, $http) {
+.controller('AnnouncementsCtrl', function($scope, $http, $ionicLoading) {
+		function show() {
+	    $ionicLoading.show({
+	      template: '<span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>',
+	      duration: 3500
+	    });
+    }
+    function hide(){
+    	$ionicLoading.hide();
+    }
+  	
 	$scope.annArr = [];
 	$scope.loading = false;
 	loadListedAnn();
 	
+	show();
 	function loadListedAnn(){
 
 		$scope.annUrl = "https://api.import.io/store/data/ad762c1f-8129-4880-946f-c9560174cae6/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FlistMarketAnnouncements.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
@@ -343,6 +354,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		$http.get($scope.annUrl).success(function(res, status){
 			$scope.annResponse = res;
 			$scope.annArr = $scope.annResponse.results;
+			hide();
 		});
 		
 		$scope.loading = false;
