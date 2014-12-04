@@ -165,7 +165,7 @@ font-size: 14px;
 
 .menu-user{
 	font-size: xx-large;
-	margin-top: 20px;
+	line-height: 80px;
 	margin-right: 10px;
 }
 
@@ -280,6 +280,7 @@ table td {
 }
 .bar .title {
 	height: auto;
+	height: 80px;
 	line-height:95px;
 }
 .bar .title img {
