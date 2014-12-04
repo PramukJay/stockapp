@@ -459,7 +459,7 @@ ion-nav-view {
     color: #21DB27;
 }
 
-@media only screen and (min-width: 590px) and (max-width: 980px) {
+@media only screen and (min-width: 590px) and (max-width: 1280px) {
 	.pane, .view {
 		width: 92%;
 		margin: 0 auto;

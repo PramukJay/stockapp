@@ -221,15 +221,18 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	//$scope.stocks = [];
 	//$scope.stockComps = [];
 	$scope.marketArr = [];
+	$scope.aspi_Val = [];
 	//$scope.loading = false;
 	//loadCompanies();
 	loadMarketDetails();
+	loadAspiSummary();
 	loadMarketSummary();
 	var it = 0;
 	var refresh = $interval(function(){
 		//$scope.$apply(function(){
 			$scope.testRes = ++it;
 			loadMarketDetails();
+			loadAspiSummary();
 			loadMarketSummary();
 		//});
 	},2000);
@@ -254,6 +257,15 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		});		
 	}
 	
+	function loadAspiSummary(){
+		var aspiUrl = "https://api.import.io/store/data/5ad7e3c0-5709-42a9-a002-588479783a30/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FindexDetails.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
+		
+		$http.get(aspiUrl).success(function(res, status){
+			$scope.aspiResponse = res;
+			$scope.aspi_Val = $scope.aspiResponse.results;
+		});
+	}
+	
 	function loadMarketSummary(){
 		var marketSummaryUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
 		
@@ -261,8 +273,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			//$scope.testData = res;
 			$scope.marketResponse = res;
 			$scope.marketArr = $scope.marketResponse.results;
-
-			console.log($scope.marketArr);
 			hide();
 		});
 	}
