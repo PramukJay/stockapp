@@ -221,18 +221,19 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	//$scope.stocks = [];
 	//$scope.stockComps = [];
 	$scope.marketArr = [];
-	$scope.aspi_Val = [];
 	//$scope.loading = false;
 	//loadCompanies();
 	loadMarketDetails();
 	loadAspiSummary();
+	loadSpslSummary();
 	loadMarketSummary();
 	var it = 0;
 	var refresh = $interval(function(){
 		//$scope.$apply(function(){
-			$scope.testRes = ++it;
+			//$scope.testRes = ++it;
 			loadMarketDetails();
 			loadAspiSummary();
+			loadSpslSummary();
 			loadMarketSummary();
 		//});
 	},2000);
@@ -258,11 +259,26 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	}
 	
 	function loadAspiSummary(){
-		var aspiUrl = "https://api.import.io/store/data/5ad7e3c0-5709-42a9-a002-588479783a30/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FindexDetails.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
+		var aspiUrl = "https://api.import.io/store/data/dbd81b89-b648-4ecf-bad7-2b735e03e9b4/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FindexDetails.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
 		
 		$http.get(aspiUrl).success(function(res, status){
 			$scope.aspiResponse = res;
-			$scope.aspi_Val = $scope.aspiResponse.results;
+			$scope.aspi = res.results[1].column_1;
+			$scope.aspi_change = res.results[2].column_2_number;
+			//$scope.aspi_Val = $scope.aspiResponse.results;
+			//$scope.testRes = $scope.aspiResponse.results.column_1;
+		});
+	}
+	
+	function loadSpslSummary(){
+		var spslUrl = "https://api.import.io/store/data/f48fdfff-1d71-43cf-8437-76b7c0998ee6/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FindexDetails.html%3FindexId2%3D114%26goToHomePageParam%3Dtrue&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
+		
+		$http.get(spslUrl).success(function(res, status){
+			$scope.spslResponse = res;
+			$scope.spsl = res.results[1].column_1;
+			$scope.spsl_change = res.results[2].column_2_number;
+			//$scope.aspi_Val = $scope.aspiResponse.results;
+			//$scope.testRes = $scope.aspiResponse.results.column_1;
 		});
 	}
 	

@@ -14,6 +14,14 @@ body {
 	background-color: #000;
 	font-family: arial;
 }
+
+/* iOS Specific Overrides to fix logo overlap */
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
+	height: 80px !important;
+}
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+	margin-top: 0 !important; 
+}
 .pane, .view {
 	background: none;
 }
@@ -117,15 +125,8 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 
 .market-summary-2 td {
 	text-align: left;
-	padding-left: 10px;
+	padding: 10px;
 }
-
-.vertical-center{
-	display: inline-block; 
-	vertical-align: -webkit-baseline-middle; 
-	margin-top: 10px;
-}
-
 
 .aspi{
 	background: rgba(35,194,10,1);
