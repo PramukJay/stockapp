@@ -128,6 +128,16 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 	padding: 10px;
 }
 
+.aspi_padding{
+	padding: 5px 41px;
+	font-size: 14px;
+}
+
+.sp_padding{
+	padding: 5px 25px;
+	font-size: 14px;
+}
+
 .aspi{
 	background: rgba(35,194,10,1);
 background: -moz-linear-gradient(top, rgba(35,194,10,1) 0%, rgba(30,133,12,1) 100%);
@@ -137,9 +147,6 @@ background: -o-linear-gradient(top, rgba(35,194,10,1) 0%, rgba(30,133,12,1) 100%
 background: -ms-linear-gradient(top, rgba(35,194,10,1) 0%, rgba(30,133,12,1) 100%);
 background: linear-gradient(to bottom, rgba(35,194,10,1) 0%, rgba(30,133,12,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23c20a', endColorstr='#1e850c', GradientType=0 );
-
-padding: 5px 41px;
-font-size: 14px;
 }
 
 .sp{
@@ -151,8 +158,6 @@ background: -o-linear-gradient(top, rgba(179,1,1,1) 0%, rgba(254,0,0,1) 100%);
 background: -ms-linear-gradient(top, rgba(179,1,1,1) 0%, rgba(254,0,0,1) 100%);
 background: linear-gradient(to bottom, rgba(179,1,1,1) 0%, rgba(254,0,0,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b30101', endColorstr='#fe0000', GradientType=0 );
-padding: 5px 25px;
-font-size: 14px;
 }
 
 
