@@ -225,13 +225,14 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	//loadCompanies();
 	loadMarketDetails();
 	loadMarketSummary();
-	
+	var it = 0;
 	var refresh = $interval(function(){
-		$scope.$apply(function(){
+		//$scope.$apply(function(){
+			$scope.testRes = ++it;
 			loadMarketDetails();
 			loadMarketSummary();
-		});
-	},5000);
+		//});
+	},2000);
 	
 	var load = true;
 	function loadMarketDetails(){
@@ -257,7 +258,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		var marketSummaryUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
 		
 		$http.get(marketSummaryUrl).success(function(res, status){
-			$scope.testData = res;
+			//$scope.testData = res;
 			$scope.marketResponse = res;
 			$scope.marketArr = $scope.marketResponse.results;
 
@@ -265,6 +266,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			hide();
 		});
 	}
+	
+	
+	$scope.$on('$destroy', function() {
+        // Make sure that the interval is destroyed too
+        $interval.cancel(refresh);
+      });
 	
 	
 	/*
@@ -347,8 +354,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 
 	function loadListedAnn(){
 		show();
-		$scope.annUrl = "https://api.import.io/store/data/ad762c1f-8129-4880-946f-c9560174cae6/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FlistMarketAnnouncements.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
-		
+		//$scope.annUrl = "https://api.import.io/store/data/ad762c1f-8129-4880-946f-c9560174cae6/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FlistMarketAnnouncements.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
+		$scope.annUrl = "https://api.import.io/store/data/ccf82279-1b7c-45a6-b09e-414e0a4150b7/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Fhome.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
 		
 		$http.get($scope.annUrl).success(function(res, status){
 			$scope.annResponse = res;
@@ -377,10 +384,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	loadPriceList();
 	
 	var refresh = $interval(function(){
-		$scope.$apply(function(){
+		//$scope.$apply(function(){
 			loadMarketDetails();
 			loadMarketSummary();
-		});
+		//});
 	},5000);
 	
 	var load = true;
@@ -425,6 +432,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			console.log("Auth.signin.error!");
 	    });
 	}
+	
+	$scope.$on('$destroy', function() {
+        // Make sure that the interval is destroyed too
+        $interval.cancel(refresh);
+      });
 	
 })
 .controller('NewsCtrl', function($scope, $ionicLoading, newsItemsFactory) {
