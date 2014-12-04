@@ -23,11 +23,11 @@
   		</table>
   		<table class="market-summary-2">
   			<tr>
-  				<td><span class="aspi">ASPI</span>&nbsp;&nbsp;<span>{{aspi}}</span></td>
+  				<td><span ng-class="{sp: aspi_change < 0.00 , aspi: aspi_change > 0.00}">ASPI</span>&nbsp;&nbsp;<span>{{aspi}}</span></td>
 			    <td style="text-align: center;"><span>{{aspi_change}}</span></td>	
 			</tr>
 			<tr>
-  				<td><span class="sp">S&P SL20</span>&nbsp;&nbsp;<span>{{spsl}}</span></td>
+  				<td><span ng-class="{sp: aspi_change < 0.00 , aspi: aspi_change > 0.00}">S&P SL20</span>&nbsp;&nbsp;<span>{{spsl}}</span></td>
 			    <td style="text-align: center;"><span>{{spsl_change}}</span></td>
 			</tr>
   		</table>    		

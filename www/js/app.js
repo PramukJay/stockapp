@@ -245,7 +245,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		$http.get(url).success(function(res, status){
 			$scope.response = res;
 			var status = $scope.response.data.status;
-			if(!(status == 'Regular Trading') & !(status == 'Market Close') & !(status == 'Trade Cancellation')){
+			if(!(status == 'Regular Trading') & !(status == 'Market Close') & !(status == 'Trade Cancellation') & !(status == 'Closing Price Publication') & !(status == 'Post-Close')){
 				$ionicPopup.alert({title: 'Stock App', template: 'Regular trading session will start at 9.30AM.'});
 				//hide();
 				$interval.cancel(refresh);
@@ -265,6 +265,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			$scope.aspiResponse = res;
 			$scope.aspi = res.results[1].column_1;
 			$scope.aspi_change = res.results[2].column_2_number;
+			
 			//$scope.aspi_Val = $scope.aspiResponse.results;
 			//$scope.testRes = $scope.aspiResponse.results.column_1;
 		});
@@ -277,6 +278,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			$scope.spslResponse = res;
 			$scope.spsl = res.results[1].column_1;
 			$scope.spsl_change = res.results[2].column_2_number;
+			hide();
 			//$scope.aspi_Val = $scope.aspiResponse.results;
 			//$scope.testRes = $scope.aspiResponse.results.column_1;
 		});
@@ -289,7 +291,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			//$scope.testData = res;
 			$scope.marketResponse = res;
 			$scope.marketArr = $scope.marketResponse.results;
-			hide();
+			//hide();
 		});
 	}
 	
