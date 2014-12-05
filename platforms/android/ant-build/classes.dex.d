@@ -11,6 +11,7 @@
 /Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/com/ionicframework/stockapp498693/R.class \
 /Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/com/ionicframework/stockapp498693/stockapp.class \
 /Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/org/apache/cordova/device/Device.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/org/apache/cordova/splashscreen/SplashScreen.class \
 /Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/org/pgsqlite/SQLitePlugin$1.class \
 /Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/org/pgsqlite/SQLitePlugin$Action.class \
 /Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/org/pgsqlite/SQLitePlugin$DBQuery.class \

@@ -143,12 +143,15 @@
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins/com.brodysoft.sqlitePlugin \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins/com.ionic.keyboard \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.device \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins/com.brodysoft.sqlitePlugin/www \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins/com.brodysoft.sqlitePlugin/www/SQLitePlugin.js \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins/com.ionic.keyboard/www \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins/com.ionic.keyboard/www/keyboard.js \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.device/www \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.device/www/device.js \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen/www \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen/www/splashscreen.js \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/account.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/announcement.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/listed-securities.html \

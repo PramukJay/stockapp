@@ -43,6 +43,7 @@
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		F22811E381D84BBBB2295FBF /* UIWebViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DC8DC53D7484D8CBE33FB /* UIWebViewExtension.m */; };
+		81E1C10310AB45F0B2339EBA /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D73B238503457096D16A4E /* CDVSplashScreen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,8 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F0276979CCCE402B9C1C37ED /* SQLitePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLitePlugin.h; path = com.brodysoft.sqlitePlugin/SQLitePlugin.h; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = stockapp/config.xml; sourceTree = "<group>"; };
+		64D73B238503457096D16A4E /* CDVSplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVSplashScreen.m"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		8383E0B2E2804468B7C18E3F /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +250,8 @@
 				CD3A0C18C33F42709EBBC072 /* CDVDevice.h */,
 				A74B41426714492781473C41 /* SQLitePlugin.m */,
 				F0276979CCCE402B9C1C37ED /* SQLitePlugin.h */,
+				64D73B238503457096D16A4E /* CDVSplashScreen.m */,
+				8383E0B2E2804468B7C18E3F /* CDVSplashScreen.h */,
 			);
 			name = Plugins;
 			path = stockapp/Plugins;
@@ -451,6 +456,7 @@
 				0000318B9393466EA8D5FCAF /* CDVLogger.m in Sources */,
 				6EAC31B69DEB417699AC52DC /* CDVDevice.m in Sources */,
 				227FB54E21ED4515AEA97CF6 /* SQLitePlugin.m in Sources */,
+				81E1C10310AB45F0B2339EBA /* CDVSplashScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
