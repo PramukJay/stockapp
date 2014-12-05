@@ -93,6 +93,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 
 })
 .controller('DashCtrl', function($scope, $cordovaSQLite, $ionicPopup, $ionicLoading, $timeout, stockFactory) {
+	window.location.href="menu.html#/menu";
 	$scope.users = [];
 	$scope.loginData = {};
 	$scope.loading = false;
@@ -163,13 +164,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	//Open the account modal
 	$scope.showAccount = function(){
 		$scope.username = userName.toUpperCase();
-		//$ionicPopup.alert({title: 'Stock App', template: 'test pop up'});
 		$scope.modalAccount.show();
 	};
 	
 	//Close the account modal
 	$scope.hideAccount = function(){
-		//$ionicPopup.alert({title: 'Stock App', template: 'test pop up'});
 		$scope.modalAccount.hide();
 	};
 	
@@ -182,7 +181,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 
 .controller('PriceListDetailCtrl', function($scope, $stateParams, stockFactory) {
 	$scope.compDetail = [];
-	//$scope.menu = Menus.get($stateParams.compSymbol);
 	$scope.menu = $stateParams.compSymbol;
 	stockFactory.getRssFeed().success(function(data){
 			$scope.testData = $scope.menu;
@@ -231,7 +229,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	var it = 0;
 	var refresh = $interval(function(){
 		//$scope.$apply(function(){
-			//$scope.testRes = ++it;
 			loadMarketDetails();
 			loadAspiSummary();
 			loadSpslSummary();
@@ -247,7 +244,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			$scope.response = res;
 			var status = $scope.response.data.status;
 			if(!(status == 'Regular Trading') & !(status == 'Market Close') & !(status == 'Trade Cancellation') & !(status == 'Closing Price Publication') & !(status == 'Post-Close')){
-				$ionicPopup.alert({title: 'Stock App', template: 'Regular trading session will start at 9.30AM.'});
+				$ionicPopup.alert({title: 'Stock App', template: 'Regular trading session will start at 9.30AM. Loading previous summary instead.'});
 				//hide();
 				$interval.cancel(refresh);
 			}else{
@@ -279,9 +276,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			$scope.spslResponse = res;
 			$scope.spsl = res.results[1].column_1;
 			$scope.spsl_change = res.results[2].column_2_number;
-			//hide();
-			//$scope.aspi_Val = $scope.aspiResponse.results;
-			//$scope.testRes = $scope.aspiResponse.results.column_1;
 		});
 	}
 	
@@ -289,7 +283,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		var marketSummaryUrl = "https://api.import.io/store/data/e7302ec9-f2d2-426c-a3db-82ec25a955df/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FindexDetails.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
 		
 		$http.get(marketSummaryUrl).success(function(res, status){
-			//$scope.testData = res;
 			$scope.marketResponse = res;
 			$scope.marketArr = $scope.marketResponse.results;
 			hide();
@@ -383,7 +376,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 
 	function loadListedAnn(){
 		show();
-		//$scope.annUrl = "https://api.import.io/store/data/ad762c1f-8129-4880-946f-c9560174cae6/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FlistMarketAnnouncements.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
 		$scope.annUrl = "https://api.import.io/store/data/ccf82279-1b7c-45a6-b09e-414e0a4150b7/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Fhome.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
 		
 		$http.get($scope.annUrl).success(function(res, status){
@@ -391,9 +383,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			$scope.annArr = $scope.annResponse.results;
 			hide();
 		});
-		
-		//hide();
-		//$scope.loading = false;
 	}
 	
 })
@@ -428,8 +417,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			$scope.response = res;
 			var status = $scope.response.data.status;
 			if(!(status == 'Regular Trading') & !(status == 'Market Close') & !(status == 'Trade Cancellation')){
-				$ionicPopup.alert({title: 'Stock App', template: 'Regular trading session will start at 9.30AM.'});
-				//hide();
+				$ionicPopup.alert({title: 'Stock App', template: 'Regular trading session will start at 9.30AM. Loading previous data instead.'});
 				$interval.cancel(refresh);
 			}else{
 				if(load){
@@ -457,7 +445,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			companies = x2js.xml_str2json(data);
             $scope.stocks = companies.stock.company;
 		}).error(function(data, status, headers, config) {
-			//$scope.testData = "Auth.signin.error!";
 			console.log("Auth.signin.error!");
 	    });
 	}
@@ -478,10 +465,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     	$ionicLoading.hide();
     }
 	$scope.newsItems = [];
-	//$scope.loading = false;
 	loadNewsItems();
-	
-	//$scope.loading = true;
 	
 	function loadNewsItems(){
 		show();
@@ -492,10 +476,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			hide();
 		});
 		
-	}
-	
-	//$scope.loading = false;
-	
+	}	
 })
 .controller('ListedSecuritiesCtrl', function($scope,$http, $ionicLoading) {
 	function show() {
