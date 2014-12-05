@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<stock>
+	<user>
+		<uid>1</uid>
+		<uname>admin</uname>
+		<password>admin</password>
+		<portfolio>
+			<compsymbol>
+				AFF.N00000
+			</compsymbol>
+			<compsymbol>
+				AGO00000
+			</compsymbol>
+		</portfolio>
+	</user>
+	<user>
+		<uid>2</uid>
+		<uname>admin2</uname>
+		<password>admin2p</password>
+		<portfolio>
+			<compsymbol>
+				AFF.N00000
+			</compsymbol>
+			<compsymbol>
+				AGO00000
+			</compsymbol>
+		</portfolio>
+	</user>
+	<company number="1">
+		<name>Asia Asset Finance PLC</name>
+		<symbol>AFF.N00000</symbol>
+		<isin>LK0406N00005</isin>
+		<sharevolume>1245</sharevolume>
+		<prevclose>1.70</prevclose>
+		<high>1.80</high>
+		<low>1.60</low>
+		<lasttraded>1.70</lasttraded>
+		<change>0.10</change>
+		<changeperc>5.26</changeperc>
+	</company>
+	<company number="2">
+		<name>Abans Electricals</name>
+		<symbol>ABAN00000</symbol>
+		<isin>LK0001N00004</isin>
+		<sharevolume>1245</sharevolume>
+		<prevclose>1.70</prevclose>
+		<high>1.80</high>
+		<low>1.60</low>
+		<lasttraded>1.70</lasttraded>
+		<change>-1.70</change>
+		<changeperc>-1.32</changeperc>
+	</company>
+	<company number="3">
+		<name>Agoda</name>
+		<symbol>AGO00000</symbol>
+		<isin>LK0001N02345</isin>
+		<sharevolume>1223</sharevolume>
+		<prevclose>1.56</prevclose>
+		<high>2.80</high>
+		<low>0.60</low>
+		<lasttraded>1.70</lasttraded>
+		<change>-1.70</change>
+		<changeperc>-1.45</changeperc>
+	</company>
+
+	<company number="4">
+		<name>Samsung Lanka</name>
+		<symbol>SAML00000</symbol>
+		<isin>LK0001N00005</isin>
+		<sharevolume>1245</sharevolume>
+		<prevclose>1.70</prevclose>
+		<high>1.80</high>
+		<low>1.60</low>
+		<lasttraded>1.70</lasttraded>
+		<change>1.70</change>
+		<changeperc>1.32</changeperc>
+	</company>
+    
+    <company number="5">
+		<name>Samsung Lankaxx</name>
+		<symbol>SAML00000xx</symbol>
+		<isin>LK0001N00005xx</isin>
+		<sharevolume>1245</sharevolume>
+		<prevclose>1.70</prevclose>
+		<high>1.80</high>
+		<low>1.60</low>
+		<lasttraded>1.70</lasttraded>
+		<change>0.00</change>
+		<changeperc>0.00</changeperc>
+	</company>
+    
+    <company number="6">
+		<name>Access Engineering PLCxx</name>
+		<symbol>AEL.N00000</symbol>
+		<isin>LK0409N000009</isin>
+		<sharevolume>1245</sharevolume>
+		<prevclose>1.70</prevclose>
+		<high>1.80</high>
+		<low>1.60</low>
+		<lasttraded>1.70</lasttraded>
+		<change>1.70</change>
+		<changeperc>1.32</changeperc>
+	</company>
+
+</stock>

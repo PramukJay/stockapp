@@ -1,0 +1,20 @@
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes.dex : \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$1.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$2.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$3.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/com/ionicframework/stockapp498693/BuildConfig.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/com/ionicframework/stockapp498693/R$attr.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/com/ionicframework/stockapp498693/R$drawable.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/com/ionicframework/stockapp498693/R$string.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/com/ionicframework/stockapp498693/R$xml.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/com/ionicframework/stockapp498693/R.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/com/ionicframework/stockapp498693/stockapp.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/org/apache/cordova/device/Device.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/org/pgsqlite/SQLitePlugin$1.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/org/pgsqlite/SQLitePlugin$Action.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/org/pgsqlite/SQLitePlugin$DBQuery.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/org/pgsqlite/SQLitePlugin$DBRunner.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/org/pgsqlite/SQLitePlugin$QueryType.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/classes/org/pgsqlite/SQLitePlugin.class \
+/Users/iosdeveloper/documents/stockapp/platforms/android/ant-build/dexedLibs/classes-21e4e782b18c79a56c4693e760988835.jar \

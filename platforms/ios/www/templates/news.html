@@ -1,0 +1,29 @@
+<ion-view title="News">
+  <ion-content >
+  <center>
+  	<!--input type="text" ng-model="testData" /><br /-->
+  	<div ng-repeat="newsItem in newsItems" style="margin-bottom: 5px;">
+  		<table class="default">
+  			<tr>
+  				<td style="font-size: 14px; text-align: left;">{{newsItem.title}}</td>
+  			</tr>
+  			<tr>
+  				<td style="font-size: 10px; text-align: left;">{{newsItem.description}}</td>
+  			</tr>
+  		</table>
+  	</div>
+    </center>
+  </ion-content>
+</ion-view>
+<style type="text/css">
+	.pane, .view {
+    margin: 0 auto;
+    width: 100% !important;
+}
+.has-header {
+    top: 100px;
+}
+.bar.bar-stable {
+	border-bottom: 0 !important;
+}
+</style>

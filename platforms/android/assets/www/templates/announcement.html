@@ -1,0 +1,31 @@
+<ion-view title="Announcements">
+  <ion-content >
+  <center>
+  	<div style="color: white;">
+  	<!--input type="text" ng-model="testData" /><br /-->
+  	    <table class="default">
+		<tr>
+			<th style="text-align: left;">Date</th>
+			<th style="text-align: left;">Title</th>
+		</tr>
+		<tr ng-repeat="comp in annArr">
+			<td style="text-align: left;">{{comp['link_1/_text']}}</td>
+			<td style="text-align: left;">{{comp['link_2/_text']}}</td>
+		</tr>
+	</table>
+	</div>
+   </center>
+  </ion-content>
+</ion-view>
+<style type="text/css">
+	.pane, .view {
+    margin: 0 auto;
+    width: 100% !important;
+}
+.has-header {
+    top: 100px;
+}
+.bar.bar-stable {
+	border-bottom: 0 !important;
+}
+</style>

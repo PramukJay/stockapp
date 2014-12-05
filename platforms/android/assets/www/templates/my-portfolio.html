@@ -1,0 +1,34 @@
+<ion-view title="My Portfolio">
+  <ion-content >
+  <center>
+  	<!--input type="text" ng-model="testData" /><br /-->
+  	<div style="width: 100%;">
+		<img style="width: 250px; margin: 0 auto;" src="./img/vstox.png" />
+	</div>
+  	<form ng-submit="" novalidate>
+		<div class="list" style="width: 70%;">
+			<label  class="item item-input" style="width: 100%;">
+				<input type="text" ng-model="loginData.username" placeholder="Username">
+			</label>
+			<label class="item item-input" style="width: 100%;">
+				<input type="password" ng-model="loginData.pwd" placeholder="Password">
+			</label>
+			<label class="item" style="width: 100%;">
+				<button class="button button-block button-positive" type="submit">LOGIN</button>
+			</label>
+		</div>
+	</form>
+  </ion-content>
+</ion-view>
+<style type="text/css">
+	.pane, .view {
+    margin: 0 auto;
+    width: 100% !important;
+}
+.has-header {
+    top: 100px;
+}
+.bar.bar-stable {
+	border-bottom: 0 !important;
+}
+</style>

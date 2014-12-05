@@ -1,0 +1,82 @@
+<!--
+This template loads for the 'tab.friend-detail' state (app.js)
+'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+The FriendsCtrl pulls data from the Friends service (service.js)
+The Friends service returns an array of friend data
+-->
+<ion-view title="<img src='img/logo.png' class='logo-bind'/>">
+	<ion-content has-header="true">
+		<center>
+			<div class="item-header">
+				<span class="market-sum"><img src='img/ico-price-list.png'/></span>
+				{{compDetail.name}}
+				<span class="reload"><img src='img/ico-reload.png'/></span>
+			</div>
+			<div style="color: white; background-color: #040F2D">
+				<div class="item item-divider" style="background-color: #0D2777; color: white;">
+					<table width="100%" cellpadding="0" cellspacing="0">
+						<tr>
+							<td>Symbol</td>
+							<td>&nbsp;</td>
+							<td>{{compDetail.symbol}}</td>
+						</tr>
+						<tr>
+							<td>ISIN</td>
+							<td>&nbsp;</td>
+							<td>{{compDetail.isin}}</td>
+						</tr>
+					</table>
+				</div>
+				<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+						<td>Last traded price(Rs.)</td>
+						<td>&nbsp;</td>
+						<td>{{compDetail.lasttraded}}</td>
+					</tr>
+					<tr>
+						<td>Change(Rs.) and (%)</td>
+						<td>&nbsp;</td>
+						<td>{{compDetail.change}} ({{compDetail.changeperc}}%)</td>
+					</tr>
+					<tr>
+						<td>Turnover(Rs.)</td>
+						<td>&nbsp;</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Share Volume</td>
+						<td>&nbsp;</td>
+						<td>{{compDetail.sharevolume}}</td>
+					</tr>
+					<tr>
+						<td>Trade Volume</td>
+						<td>&nbsp;</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Market Capitalization(Rs.)</td>
+						<td>&nbsp;</td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+	</ion-content>
+</ion-view>
+<style type="text/css">
+	.pane, .view {
+		margin: 0 auto;
+		width: 100% !important;
+	}
+	.has-header {
+		top: 100px;
+	}
+	.bar.bar-stable {
+		border-bottom: 0 !important;
+	}
+	.item {
+		display: block;
+	}
+	.item-input, .item {
+		padding: 0;
+	}
+</style>
