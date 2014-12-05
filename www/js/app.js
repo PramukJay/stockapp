@@ -96,7 +96,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	$scope.users = [];
 	$scope.loginData = {};
 	$scope.loading = false;
-	
+	window.location.href="menu.html#/menu";
 	////DB Test////
 	$scope.insert = function(firstname, lastname) {
         var query = "INSERT INTO people (firstname, lastname) VALUES (?,?)";
@@ -151,6 +151,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 .controller('MenusCtrl', function($scope, $ionicModal, $ionicPopup, $state, Menus) {
 	//$scope.menus = Menus.all();
 	//$state.reload();
+	window.location.href="menu.html#/menu";
 	
 	$ionicModal.fromTemplateUrl('templates/account.html', {
 	   scope: $scope
@@ -278,20 +279,20 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			$scope.spslResponse = res;
 			$scope.spsl = res.results[1].column_1;
 			$scope.spsl_change = res.results[2].column_2_number;
-			hide();
+			//hide();
 			//$scope.aspi_Val = $scope.aspiResponse.results;
 			//$scope.testRes = $scope.aspiResponse.results.column_1;
 		});
 	}
 	
 	function loadMarketSummary(){
-		var marketSummaryUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
+		var marketSummaryUrl = "https://api.import.io/store/data/e7302ec9-f2d2-426c-a3db-82ec25a955df/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FindexDetails.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
 		
 		$http.get(marketSummaryUrl).success(function(res, status){
 			//$scope.testData = res;
 			$scope.marketResponse = res;
 			$scope.marketArr = $scope.marketResponse.results;
-			//hide();
+			hide();
 		});
 	}
 	
@@ -440,7 +441,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	}
 	
 	function loadPriceList(){
-		var marketSummaryUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
+		var marketSummaryUrl = "https://api.import.io/store/data/960917f1-b230-4ad3-9dcb-d2635d37f736/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FlistAllStocksPrices.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
 		
 		$http.get(marketSummaryUrl).success(function(res, status){
 			$scope.marketResponse = res;
@@ -513,7 +514,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	show();
 	function loadListedsSequrities(){
 
-		$scope.sequrityUrl = "https://api.import.io/store/data/f189613b-73ae-4cc6-ae76-13eff433ddb8/_query?input/webpage/url=http%3A%2F%2Fwww.cse.lk%2Ftrade_summary.do&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
+		$scope.sequrityUrl = "https://api.import.io/store/data/e7302ec9-f2d2-426c-a3db-82ec25a955df/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FindexDetails.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
 		
 		
 		$http.get($scope.sequrityUrl).success(function(res, status){

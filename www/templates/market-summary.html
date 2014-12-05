@@ -43,23 +43,23 @@
 			<th>Last<br /> Traded</th>
 			<th></th>
 		</tr>
-		<tr ng-repeat="comp in marketArr">
+		<tr style="display:table-row;" ng-repeat="comp in marketArr">
 			<td style="text-align: right; width: 15px;">
 				<span class="ion-ios7-plus" style="color: #21DB27;"></span>
 				<!--span class="ion-ios7-minus" style="color: red;"></span-->
 			</td>
-			<td style="text-align: left;">{{comp.symbol_text}}</td>
-			<td>{{comp.number_1 | number:0}}</td>
-			<td>{{comp.number_3 | number:2}}</td>
-			<td>{{comp.number_5 | number:2}}</td>
-			<td>{{comp.number_6 | number:2}}</td>
+			<td style="text-align: left; max-width: 100px;">{{comp['symbol_link/_text']}}</td>
+			<td>{{comp['volume_number'] | number:0}}</td>
+			<td>{{comp['close_price_number'] | number:2}}</td>
+			<td>{{comp['high_number'] | number:2}}</td>
+			<td>{{comp['low_number'] | number:2}}</td>
 			<td>
-				{{comp.number_7 | number:2}}
+				{{comp['change__number'] | number:2}}
 			</td>
 			<td>
-				<div ng-class="{showup: comp.number_8 > 0 , showuphide: comp.number_8 < 0 , shownothing: comp.number_8 == 0.00}" class="icon ion-chevron-up"></div>
-				<div ng-class="{showdown: comp.number_8 < 0 , showdownhide: comp.number_8 > 0 , shownothing: comp.number_8 == 0.00}" class="icon ion-chevron-down"></div>
-				<div ng-class="{showdash: comp.number_8 == 0.00 , shownothing: comp.number_8 != 0.00}" class="icon ion-ios7-minus-empty"></div>
+				<div ng-class="{showup: comp.change__number > 0 , showuphide: comp.change__number < 0 , shownothing: comp.change__number == 0.00}" class="icon ion-chevron-up"></div>
+				<div ng-class="{showdown: comp.change__number < 0 , showdownhide: comp.change__number > 0 , shownothing: comp.change__number == 0.00}" class="icon ion-chevron-down"></div>
+				<div ng-class="{showdash: comp.change__number == 0.00 , shownothing: comp.change__number != 0.00}" class="icon ion-ios7-minus-empty"></div>
 				
 			</td>
 		</tr>
