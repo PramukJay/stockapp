@@ -86,6 +86,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		url : '/prof',
 		templateUrl : 'templates/account.html',
 		controller : 'HelpCtrl'
+	})
+	.state('gainlose', {
+		url :'/gainers-losers',
+		templateUrl : 'templates/gain-loose.html',
+		controller : 'GainersLosersCtrl'
+	})
+	.state('newsannouncement', {
+		url :'/news-announcement',
+		templateUrl : 'templates/news-announcements.html',
+		controller : 'NewsAnnouncementsCtrl'
 	});
 
 	// if none of the above states are matched, use this as the fallback
@@ -502,7 +512,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			$scope.sequrityResponse = res;
 			$scope.secutiryArr = $scope.sequrityResponse.results;
 			hide();
-		});
+			
+		}).error(function(data, status) {
+			//console.log("Auth.signin.error!");
+			//$scope.testData = "Error";
+	    });
 		
 		$scope.loading = false;
 	}
@@ -510,5 +524,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 })
 .controller('MyPortfolioCtrl', function($scope) {
 	$scope.username = userName;
+})
+.controller('GainersLosersCtrl', function($scope){
+	
+})
+.controller('NewsAnnouncementsCtrl', function($scope){
+	
 });
 
