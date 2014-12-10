@@ -96,6 +96,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		url :'/news-announcement',
 		templateUrl : 'templates/news-announcements.html',
 		controller : 'NewsAnnouncementsCtrl'
+	})
+	.state('research', {
+		url :'/research',
+		templateUrl : 'templates/research.html',
+		controller : 'ResearchCtrl'
+	})
+	.state('forum', {
+		url :'/forum',
+		templateUrl : 'templates/forum.html',
+		controller : 'ForumCtrl'
 	});
 
 	// if none of the above states are matched, use this as the fallback
@@ -545,5 +555,32 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 })
 .controller('NewsAnnouncementsCtrl', function($scope){
 	
+})
+.controller('ResearchCtrl', function($scope, $http, $ionicLoading){
+	$scope.researchURL = "https://api.import.io/store/data/3da2150f-63a0-4bfb-8e35-5201e211e728/_query?input/webpage/url=http%3A%2F%2Fresearch.srilankaequity.com%2Fforum&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
+})
+.controller('ForumCtrl', function($scope, $http, $ionicLoading, ForumFactory){
+	function show() {
+	    $ionicLoading.show({
+	      template: '<span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
+	    });
+    }
+    function hide(){
+    	$ionicLoading.hide();
+    }
+    
+	$scope.forumFeed = [];
+	show();
+	ForumFactory.getRssFeed().success(function(data){
+			$scope.testData = $scope.menu;
+			feed = x2js.xml_str2json(data);
+            $scope.forumFeed = feed.rss.channel.item;
+            hide();
+            //$scope.testData = $scope.forumFeed[0].title;
+            
+		}).error(function(data, status, headers, config) {
+			//$scope.testData = "Auth.signin.error!";
+			console.log("Auth.signin.error!");
+	    });
 });
 

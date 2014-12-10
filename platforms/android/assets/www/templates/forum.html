@@ -1,0 +1,29 @@
+<ion-view title="Forum">
+  <ion-content >
+  <center>
+  	<!--input type="text" ng-model="testData" /><br /-->
+  	<div style="color: white; margin-bottom: 10px;" ng-repeat="forum in forumFeed">
+  		<table class="default">
+  			<tr>
+  				<td style="font-size: 14px; text-align: left;">{{forum.title}}</td>
+  			</tr>
+  			<tr>
+  				<td style="font-size: 10px; text-align: left;">{{forum.description}}</td>
+  			</tr>
+  		</table>
+	</div>
+   </center>
+  </ion-content>
+</ion-view>
+<style type="text/css">
+	.pane, .view {
+    margin: 0 auto;
+    width: 100% !important;
+}
+.has-header {
+    top: 100px;
+}
+.bar.bar-stable {
+	border-bottom: 0 !important;
+}
+</style>

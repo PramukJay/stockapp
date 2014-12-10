@@ -59,4 +59,11 @@ angular.module('starter.services', [])
 		return $http.get("http://lk.duinvest.com/portal/LKCSE/rssStoryList.html");
 	};
 	return company;
+})
+.factory('ForumFactory', function($http){
+	var forum = [];
+	forum.getRssFeed = function(){
+		return $http.get("http://forum.srilankaequity.com/rss");
+	};
+	return forum;
 });

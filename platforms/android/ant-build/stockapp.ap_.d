@@ -44,8 +44,11 @@
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/bg.png \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/Blue.png \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/down-arrow.png \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/erbenlogo.png \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ico-announce-ov.png \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ico-announce.png \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ico-forum-ov.png \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ico-forum.png \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ico-gainloose-ov.png \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ico-gainloose.png \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ico-market-sum-ov.png \
@@ -70,6 +73,7 @@
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/js/services.js \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/js/stock.xml \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/js/test.json \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/js/test.xml \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/lib/ionic \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/lib/xml2json \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/lib/ionic/css \
@@ -154,6 +158,7 @@
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen/www/splashscreen.js \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/account.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/announcement.html \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/forum.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/gain-loose.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/listed-securities.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/market-summary.html \
@@ -162,6 +167,7 @@
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/news.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/price-list-detail.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/price-list.html \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/research.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/tab-dash.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/tab-help.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/tab-menu.html \
