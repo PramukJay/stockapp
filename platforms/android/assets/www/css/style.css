@@ -417,14 +417,14 @@ ion-nav-view {
 	padding-top: 5px;
 	border-bottom: 1px #153fc1 solid;
 }
-.marketSM, .announceMnt, .priceLst, .news, .listedSecu, .myPortfolio {
+.marketSM, .gainerLosers, .priceLst, .news, .listedSecu, .myPortfolio {
 	background-image: url('../img/ico-market-sum.png');
 	background-repeat: no-repeat;
 	background-position: center 50%;
 	background-size: 55px 55px;
 }
-.announceMnt {
-	background-image: url('../img/ico-announce.png');
+.gainerLosers {
+	background-image: url('../img/ico-gainloose.png');
 }
 .priceLst {
 	background-image: url('../img/ico-price-list.png');
@@ -438,7 +438,7 @@ ion-nav-view {
 .myPortfolio {
 	background-image: url('../img/ico-portfolio.png');
 }
-.marketSM:hover, .announceMnt:hover, .priceLst:hover, .news:hover, .listedSecu:hover, .myPortfolio:hover {
+.marketSM:hover, .gainerLosers:hover, .priceLst:hover, .news:hover, .listedSecu:hover, .myPortfolio:hover {
 	background-image: url('../img/ico-market-sum-ov.png');
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -446,8 +446,8 @@ ion-nav-view {
 	background-size: 55px 55px;
 	background-color:#0000003;
 }
-.announceMnt:hover {
-	background-image: url('../img/ico-announce-ov.png');
+.gainerLosers:hover {
+	background-image: url('../img/ico-gainloose-ov.png');
 }
 .priceLst:hover {
 	background-image: url('../img/ico-price-list-ov.png');

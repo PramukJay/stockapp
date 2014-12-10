@@ -154,9 +154,11 @@
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen/www/splashscreen.js \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/account.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/announcement.html \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/gain-loose.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/listed-securities.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/market-summary.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/my-portfolio.html \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/news-announcements.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/news.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/price-list-detail.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/price-list.html \

@@ -1,0 +1,56 @@
+<ion-view title="Gainer/Losers">
+  <ion-content>
+  <center>
+  	<div style="color: white;">
+  	<!--input type="text" ng-model="testData" /><br /-->
+  		<table width="100%" class="default">
+  			<tr>
+  				<th style="text-align: left; font-size: 20px; padding: 5px; color: #21DB27">Top Gainers <span class="icon ion-arrow-up-b" style="font-size: 35px; color: #21DB27"></span></th>
+  			</tr>
+  		</table>
+  		<table width="100%" class="default">
+  			<tr>
+  				<th style="text-align: left;">Name & Symbol</th>
+  				<th>Price</th>
+  				<th>Change %</th>
+  			</tr>
+  			<tr ng-repeat="gainer in gainersArr">
+  				<td style="text-align: left;">{{gainer['column_1_link/_title']}}</td>
+  				<td>{{gainer['column_2_number']}}</td>
+  				<td>{{gainer['column_3']}}</td>
+  			</tr>
+  		</table>
+  		<br />
+  		<table width="100%" class="default">
+  			<tr>
+  				<th style="text-align: left; font-size: 20px; padding: 5px; color: red">Top Losers <span class="icon ion-arrow-down-b" style="font-size: 35px; color: red"></span></th>
+  			</tr>
+  		</table>
+  		<table width="100%" class="default">
+  			<tr>
+  				<th style="text-align: left;">Name & Symbol</th>
+  				<th>Price</th>
+  				<th>Change %</th>
+  			</tr>
+  			<tr ng-repeat="gainer in gainersArr">
+  				<td style="text-align: left;">{{gainer['column_1_link/_title']}}</td>
+  				<td>{{gainer['column_2_number']}}</td>
+  				<td>{{gainer['column_3']}}</td>
+  			</tr>
+  		</table>
+	</div>
+   </center>
+  </ion-content>
+</ion-view>
+<style type="text/css">
+	.pane, .view {
+    margin: 0 auto;
+    width: 100% !important;
+}
+.has-header {
+    top: 100px;
+}
+.bar.bar-stable {
+	border-bottom: 0 !important;
+}
+</style>

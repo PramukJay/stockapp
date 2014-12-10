@@ -86,6 +86,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		url : '/prof',
 		templateUrl : 'templates/account.html',
 		controller : 'HelpCtrl'
+	})
+	.state('gainlose', {
+		url :'/gainers-losers',
+		templateUrl : 'templates/gain-loose.html',
+		controller : 'GainersLosersCtrl'
+	})
+	.state('newsannouncement', {
+		url :'/news-announcement',
+		templateUrl : 'templates/news-announcements.html',
+		controller : 'NewsAnnouncementsCtrl'
 	});
 
 	// if none of the above states are matched, use this as the fallback
@@ -502,7 +512,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			$scope.sequrityResponse = res;
 			$scope.secutiryArr = $scope.sequrityResponse.results;
 			hide();
-		});
+			
+		}).error(function(data, status) {
+			//console.log("Auth.signin.error!");
+			//$scope.testData = "Error";
+	    });
 		
 		$scope.loading = false;
 	}
@@ -510,5 +524,26 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 })
 .controller('MyPortfolioCtrl', function($scope) {
 	$scope.username = userName;
+})
+.controller('GainersLosersCtrl', function($scope, $http, $ionicLoading){
+	function show() {
+	    $ionicLoading.show({
+	      template: '<span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
+	    });
+    }
+    function hide(){
+    	$ionicLoading.hide();
+    }
+    show();
+	$scope.gainersArr = [];
+	$scope.gainersURL = "https://api.import.io/store/data/df56d5b8-f4af-48cf-b553-ea44f47749d6/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FhomePage.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
+	
+	$http.get($scope.gainersURL).success(function(res, status){
+		$scope.gainersArr = res.results;
+		hide();
+	});
+})
+.controller('NewsAnnouncementsCtrl', function($scope){
+	
 });
 
