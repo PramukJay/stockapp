@@ -60,6 +60,8 @@
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ico-price-list-ov.png \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ico-price-list.png \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ico-reload.png \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ico-research-ov.png \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ico-research.png \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ico-securities-ov.png \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ico-securities.png \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/ionic.png \

@@ -3,7 +3,7 @@
 		<center>
 			<div ng-repeat="comp in marketArr">
 				<div class="item item-divider" style="background-color: #0D2777; color: white;">
-					{{comp['name_link/_text']}}
+					{{comp['link_1/_text']}}
 				</div>
 				<div style="background-color:#040F2D ">
 					<!--a class="" href="#/detail/{{comp.symbol}}" style="width: 100%; text-decoration: none; background-color: #040F2D; text-align: left"-->
@@ -15,9 +15,9 @@
 							<!--td colspan="2"><div class="icon ion-chevron-right"></div></td-->
 						</tr>
 						<tr>
-							<td>{{comp.number_7 | number:2}}</td>
-							<td ng-class="{red: comp.number_8 < 0 , green: comp.number_8 > 0}">{{comp.number_8 | number:2}}</td>
-							<td ng-class="{red: comp.number_8 < 0 , green: comp.number_8 > 0}" >{{comp.number_9 | number:2}}</td>
+							<td>{{comp.number_3 | number:2}}</td>
+							<td ng-class="{red: comp.number_2 < 0 , green: comp.number_2 > 0}">{{comp.number_2 | number:2}}</td>
+							<td ng-class="{red: comp.number_2 < 0 , green: comp.number_2 > 0}" >{{comp.text_1}}</td>
 						</tr>
 					</table>
 					<!--/a-->

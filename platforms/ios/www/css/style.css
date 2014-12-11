@@ -128,6 +128,16 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 	padding: 10px;
 }
 
+.aspi_padding{
+	padding: 5px 41px;
+	font-size: 14px;
+}
+
+.sp_padding{
+	padding: 5px 25px;
+	font-size: 14px;
+}
+
 .aspi{
 	background: rgba(35,194,10,1);
 background: -moz-linear-gradient(top, rgba(35,194,10,1) 0%, rgba(30,133,12,1) 100%);
@@ -137,9 +147,7 @@ background: -o-linear-gradient(top, rgba(35,194,10,1) 0%, rgba(30,133,12,1) 100%
 background: -ms-linear-gradient(top, rgba(35,194,10,1) 0%, rgba(30,133,12,1) 100%);
 background: linear-gradient(to bottom, rgba(35,194,10,1) 0%, rgba(30,133,12,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23c20a', endColorstr='#1e850c', GradientType=0 );
-
-padding: 5px 41px;
-font-size: 14px;
+border-radius: 5px;
 }
 
 .sp{
@@ -151,8 +159,7 @@ background: -o-linear-gradient(top, rgba(179,1,1,1) 0%, rgba(254,0,0,1) 100%);
 background: -ms-linear-gradient(top, rgba(179,1,1,1) 0%, rgba(254,0,0,1) 100%);
 background: linear-gradient(to bottom, rgba(179,1,1,1) 0%, rgba(254,0,0,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b30101', endColorstr='#fe0000', GradientType=0 );
-padding: 5px 25px;
-font-size: 14px;
+border-radius: 5px;
 }
 
 
@@ -243,7 +250,7 @@ font-size: 14px;
 .item-content-new {
 	float: left;
 	padding: 5px 10px !important;
-	width: 100px;
+	width: 120px;
 }
 .item-content-new:hover {
 	background-color: #163eb9;
@@ -410,14 +417,23 @@ ion-nav-view {
 	padding-top: 5px;
 	border-bottom: 1px #153fc1 solid;
 }
-.marketSM, .announceMnt, .priceLst, .news, .listedSecu, .myPortfolio {
+.marketSM, .research, .forum, .announceMnt, .gainerLosers, .priceLst, .news, .listedSecu, .myPortfolio {
 	background-image: url('../img/ico-market-sum.png');
 	background-repeat: no-repeat;
 	background-position: center 50%;
 	background-size: 55px 55px;
 }
-.announceMnt {
+.research{
+	background-image: url('../img/ico-research.png');
+}
+.forum{
+	background-image: url('../img/ico-forum-ov.png');
+}
+.announceMnt{
 	background-image: url('../img/ico-announce.png');
+}
+.gainerLosers {
+	background-image: url('../img/ico-gainloose.png');
 }
 .priceLst {
 	background-image: url('../img/ico-price-list.png');
@@ -431,7 +447,7 @@ ion-nav-view {
 .myPortfolio {
 	background-image: url('../img/ico-portfolio.png');
 }
-.marketSM:hover, .announceMnt:hover, .priceLst:hover, .news:hover, .listedSecu:hover, .myPortfolio:hover {
+.marketSM:hover, .research:hover, .forum:hover, .announceMnt:hover, .gainerLosers:hover, .priceLst:hover, .news:hover, .listedSecu:hover, .myPortfolio:hover {
 	background-image: url('../img/ico-market-sum-ov.png');
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -439,8 +455,17 @@ ion-nav-view {
 	background-size: 55px 55px;
 	background-color:#0000003;
 }
-.announceMnt:hover {
+.research:hover{
+	background-image: url('../img/ico-research-ov.png');
+}
+.forum:hover{
+	background-image: url('../img/ico-forum.png');
+}
+.announceMnt:hover{
 	background-image: url('../img/ico-announce-ov.png');
+}
+.gainerLosers:hover {
+	background-image: url('../img/ico-gainloose-ov.png');
 }
 .priceLst:hover {
 	background-image: url('../img/ico-price-list-ov.png');

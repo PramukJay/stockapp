@@ -417,14 +417,17 @@ ion-nav-view {
 	padding-top: 5px;
 	border-bottom: 1px #153fc1 solid;
 }
-.marketSM, .forumSL, .announceMnt, .gainerLosers, .priceLst, .news, .listedSecu, .myPortfolio {
+.marketSM, .research, .forum, .announceMnt, .gainerLosers, .priceLst, .news, .listedSecu, .myPortfolio {
 	background-image: url('../img/ico-market-sum.png');
 	background-repeat: no-repeat;
 	background-position: center 50%;
 	background-size: 55px 55px;
 }
-.forumSL{
-	background-image: url('../img/ico-forum.png');
+.research{
+	background-image: url('../img/ico-research.png');
+}
+.forum{
+	background-image: url('../img/ico-forum-ov.png');
 }
 .announceMnt{
 	background-image: url('../img/ico-announce.png');
@@ -444,7 +447,7 @@ ion-nav-view {
 .myPortfolio {
 	background-image: url('../img/ico-portfolio.png');
 }
-.marketSM:hover, .forumSL:hover, .announceMnt:hover, .gainerLosers:hover, .priceLst:hover, .news:hover, .listedSecu:hover, .myPortfolio:hover {
+.marketSM:hover, .research:hover, .forum:hover, .announceMnt:hover, .gainerLosers:hover, .priceLst:hover, .news:hover, .listedSecu:hover, .myPortfolio:hover {
 	background-image: url('../img/ico-market-sum-ov.png');
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -452,8 +455,11 @@ ion-nav-view {
 	background-size: 55px 55px;
 	background-color:#0000003;
 }
-.forumSL:hover{
-	background-image: url('../img/ico-announce-ov.png');
+.research:hover{
+	background-image: url('../img/ico-research-ov.png');
+}
+.forum:hover{
+	background-image: url('../img/ico-forum.png');
 }
 .announceMnt:hover{
 	background-image: url('../img/ico-announce-ov.png');

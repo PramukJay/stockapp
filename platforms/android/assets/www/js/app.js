@@ -557,7 +557,21 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	
 })
 .controller('ResearchCtrl', function($scope, $http, $ionicLoading){
-	$scope.researchURL = "https://api.import.io/store/data/3da2150f-63a0-4bfb-8e35-5201e211e728/_query?input/webpage/url=http%3A%2F%2Fresearch.srilankaequity.com%2Fforum&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
+	function show() {
+	    $ionicLoading.show({
+	      template: '<span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
+	    });
+    }
+    function hide(){
+    	$ionicLoading.hide();
+    }
+    show();
+	$scope.researchArr = [];
+	$scope.researchURL = "https://api.import.io/store/data/571844c7-f476-450c-975f-b1ba64b96aaf/_query?input/webpage/url=http%3A%2F%2Fresearch.srilankaequity.com%2F&_user=7c58bdf4-665f-4761-a763-617773526cf0&_apikey=8KU8WLfdRtBGOu8abE9V1V4dOJm%2FN9DiR5CszFaNvCXLTgpaBCfXmpY%2BtJtl2O1GjNoMR0YNDaSnEMremWseFg%3D%3D";
+	$http.get($scope.researchURL).success(function(res, status){
+		$scope.researchArr = res.results;
+		hide();
+	});
 })
 .controller('ForumCtrl', function($scope, $http, $ionicLoading, ForumFactory){
 	function show() {
