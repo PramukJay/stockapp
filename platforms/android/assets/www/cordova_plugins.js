@@ -27,6 +27,13 @@ module.exports = [
         "clobbers": [
             "navigator.splashscreen"
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
+        "id": "org.apache.cordova.inappbrowser.inappbrowser",
+        "clobbers": [
+            "window.open"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -36,7 +43,8 @@ module.exports.metadata =
     "org.apache.cordova.console": "0.2.11",
     "org.apache.cordova.device": "0.2.12",
     "com.brodysoft.sqlitePlugin": "1.0.3",
-    "org.apache.cordova.splashscreen": "0.3.4"
+    "org.apache.cordova.splashscreen": "0.3.4",
+    "org.apache.cordova.inappbrowser": "0.5.5-dev"
 }
 // BOTTOM OF METADATA
 });

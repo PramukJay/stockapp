@@ -3,14 +3,17 @@
   <center>
   	<!--input type="text" ng-model="testData" /><br /-->
   	<div ng-repeat="newsItem in newsItems" style="margin-bottom: 5px;">
-  		<table class="default">
-  			<tr>
-  				<td style="font-size: 14px; text-align: left;">{{newsItem.title}}</td>
-  			</tr>
-  			<tr>
-  				<td style="font-size: 10px; text-align: left;">{{newsItem.description}}</td>
-  			</tr>
-  		</table>
+  		<a href="#" style="text-decoration: none;" onclick="window.open('http://lk.duinvest.com/mobile/LKCSE/mainStoryContainer.html', '_system', 'local=yes'); return false;">
+	  		<table class="default">
+	  			<tr>
+	  				<td style="font-size: 14px; text-align: left;">{{newsItem.title}}&nbsp;&nbsp;</td>
+	  				<td><i class="icon ion-chevron-right"></i></td>
+	  			</tr>
+	  			<tr>
+	  				<td colspan="2" style="font-size: 10px; text-align: left;">{{newsItem.description}}</td>
+	  			</tr>
+	  		</table>
+  		</a>
   	</div>
     </center>
   </ion-content>
