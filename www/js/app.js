@@ -27,8 +27,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     	//$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS marketshare (id integer primary key, name text, symbol text, isin text, sharevolume integer, prevclose real, high real, low real, lasttraded real, change real, changeperc real)");
 	});
 })
-.config(function($stateProvider, $urlRouterProvider) {
-
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+	
 	// Ionic uses AngularUI Router which uses the concept of states
 	// Learn more here: https://github.com/angular-ui/ui-router
 	// Set up the various states which the app can be in.
@@ -538,10 +538,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	$scope.loadUser = function(){
 		
 		var usr = UserProfile.getPortfolio();
-		
-		usr.get({username:'amila', pw:'e10adc3949ba59abbe56e057f20f883e'}, function(res , data){
-			$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
-			//$ionicPopup.alert({title: 'Stock App', template: data});
+
+		$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
+		usr.get({username:'amila', pw:'e10adc3949ba59abbe56e057f20f883e'}, function(data){			
+			$ionicPopup.alert({title: 'Stock App', template: 'success '});
+		}, function(error){
+			$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
 		});
 	};
 })

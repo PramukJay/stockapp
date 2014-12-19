@@ -74,7 +74,9 @@ angular.module('starter.services', ['ngResource'])
 				get: {
 					method: 'GET',
 					params: {username: '@username', pw: '@password'},
-					isArray: false,
+
+					isArray: false
+					//headers:{'Access-Control-Allow-Origin':'*'}
 				}
 			});
 		}
