@@ -82,6 +82,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		templateUrl : 'templates/my-portfolio.html',
 		controller : 'MyPortfolioCtrl'
 	})
+	.state('portfoliodetails', {
+		url : '/portfoliodetails/:userID',
+		templateUrl : 'templates/portfolio-details.html',
+		controller : 'PortfolioDetailsCtrl'
+	})
 	.state('prof', {
 		url : '/prof',
 		templateUrl : 'templates/account.html',
@@ -532,15 +537,18 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	}
 	
 })
-.controller('MyPortfolioCtrl', function($scope, $ionicPopup, UserProfile) {
+.controller('MyPortfolioCtrl', function($scope, $ionicPopup, $state, UserProfile) {
 	$scope.username = userName;
+	$scope.loginData = {};
 		
 	$scope.loadUser = function(){
 		
 		var usr = UserProfile.getPortfolio();
-		$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
-		usr.get({username:'amila', pw:'e10adc3949ba59abbe56e057f20f883e'}, function(data){			
-			$ionicPopup.alert({title: 'Stock App', template: 'success '});
+		//$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
+		usr.get({username:$scope.loginData.username, mobile:$scope.loginData.mno}, function(data){			
+			//$ionicPopup.alert({title: 'Stock App', template: 'success '});
+			//$state.go('portfoliodetails', {clear: true});
+			window.location.href="menu.html#/menu/"+data.user[0].id;
 		}, function(error){
 			$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
 		});
@@ -607,5 +615,18 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			//$scope.testData = "Auth.signin.error!";
 			console.log("Auth.signin.error!");
 	    });
+})
+.controller('PortfolioDetailsCtrl', function($scope, $http, $stateParams, UserProfile){
+	$scope.user_id = $stateParams.userID;
+	$scope.loadDetails = function(){
+		
+		var usr = UserProfile.getPortfolioDetails();
+		//$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
+		usr.get({id:$scope.user_id}, function(data){			
+			$ionicPopup.alert({title: 'Stock App', template: 'success '});
+		}, function(error){
+			$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
+		});
+	};
 });
 

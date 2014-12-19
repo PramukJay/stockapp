@@ -27,7 +27,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     	//$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS marketshare (id integer primary key, name text, symbol text, isin text, sharevolume integer, prevclose real, high real, low real, lasttraded real, change real, changeperc real)");
 	});
 })
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
 	// Ionic uses AngularUI Router which uses the concept of states
 	// Learn more here: https://github.com/angular-ui/ui-router
@@ -532,8 +532,20 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	}
 	
 })
-.controller('MyPortfolioCtrl', function($scope) {
+.controller('MyPortfolioCtrl', function($scope, $ionicPopup, UserProfile) {
 	$scope.username = userName;
+            $scope.loginData = [];
+            
+            $scope.loadUser = function(){
+            
+            var usr = UserProfile.getPortfolio();
+            $ionicPopup.alert({title: 'Stock App', template: 'inside method'});
+            usr.get({username:$scope.loginData.username, pw:$scope.loginData.pwd}, function(data){
+                    $ionicPopup.alert({title: 'Stock App', template: data.user[0].id});
+                    }, function(error){
+                    $ionicPopup.alert({title: 'Stock App', template: 'error '+error});
+                    });
+            };
 })
 .controller('GainersLosersCtrl', function($scope, $http, $ionicLoading){
 	function show() {
