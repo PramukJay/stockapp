@@ -548,7 +548,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		usr.get({username:$scope.loginData.username, mobile:$scope.loginData.mno}, function(data){			
 			//$ionicPopup.alert({title: 'Stock App', template: 'success '});
 			//$state.go('portfoliodetails', {clear: true});
-			window.location.href="menu.html#/menu/"+data.user[0].id;
+			window.location.href="menu.html#/portfoliodetails/"+data.user[0].id;
 		}, function(error){
 			$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
 		});
@@ -616,17 +616,20 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			console.log("Auth.signin.error!");
 	    });
 })
-.controller('PortfolioDetailsCtrl', function($scope, $http, $stateParams, UserProfile){
+.controller('PortfolioDetailsCtrl', function($scope, $http, $ionicPopup, $stateParams, UserProfile){
 	$scope.user_id = $stateParams.userID;
-	$scope.loadDetails = function(){
+	
+	loadDetails();
+	
+	function loadDetails(){
 		
 		var usr = UserProfile.getPortfolioDetails();
-		//$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
+		$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
 		usr.get({id:$scope.user_id}, function(data){			
 			$ionicPopup.alert({title: 'Stock App', template: 'success '});
 		}, function(error){
 			$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
 		});
-	};
+	}
 });
 
