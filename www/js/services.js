@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+angular.module('starter.services', ['ngResource'])
 
 /**
  * A simple example service that returns some data.
@@ -66,4 +66,17 @@ angular.module('starter.services', [])
 		return $http.get("http://forum.srilankaequity.com/rss");
 	};
 	return forum;
+})
+.factory('UserProfile', function($resource){
+	return{
+		getPortfolio: function(){
+			return $resource('http://localhost:8000/user/:username/:pw', {username: '@username', pw: '@password'}, {
+				get: {
+					method: 'GET',
+					params: {username: '@username', pw: '@password'},
+					isArray: false
+				}
+			});
+		}
+	};
 });

@@ -532,8 +532,18 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	}
 	
 })
-.controller('MyPortfolioCtrl', function($scope) {
+.controller('MyPortfolioCtrl', function($scope, $ionicPopup, UserProfile) {
 	$scope.username = userName;
+		
+	$scope.loadUser = function(){
+		
+		var usr = UserProfile.getPortfolio();
+		
+		usr.get({username:'amila', pw:'e10adc3949ba59abbe56e057f20f883e'}, function(data){
+			$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
+			//$ionicPopup.alert({title: 'Stock App', template: data});
+		});
+	};
 })
 .controller('GainersLosersCtrl', function($scope, $http, $ionicLoading){
 	function show() {
