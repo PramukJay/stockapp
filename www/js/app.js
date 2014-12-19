@@ -539,7 +539,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		
 		var usr = UserProfile.getPortfolio();
 		
-		usr.get({username:'amila', pw:'e10adc3949ba59abbe56e057f20f883e'}, function(data){
+		usr.get({username:'amila', pw:'e10adc3949ba59abbe56e057f20f883e'}, function(res , data){
 			$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
 			//$ionicPopup.alert({title: 'Stock App', template: data});
 		});
