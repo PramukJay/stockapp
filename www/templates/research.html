@@ -3,11 +3,14 @@
   <center>
   	<div style="color: white;" ng-repeat="research in researchArr">
   	<!--input type="text" ng-model="testData" /><br /-->
-  	    <table class="default">
-  	    	<tr>
-  	    		<td style="text-align: left;">{{research.h3_text}}</td>
-  	    	</tr>
-  	    </table>
+  		<a href="#" style="text-decoration: none;" onclick="window.open('http://research.srilankaequity.com/', '_system', 'location=yes'); return false;">
+	  	    <table class="default">
+	  	    	<tr>
+	  	    		<td style="text-align: left;">{{research.h3_text}}</td>
+	  	    		<td><i class="icon ion-chevron-right"></i></td>
+	  	    	</tr>
+	  	    </table>
+  	    </a>
 	</div>
    </center>
   </ion-content>
