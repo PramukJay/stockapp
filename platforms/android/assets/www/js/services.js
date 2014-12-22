@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+angular.module('starter.services', ['ngResource'])
 
 /**
  * A simple example service that returns some data.
@@ -66,4 +66,29 @@ angular.module('starter.services', [])
 		return $http.get("http://forum.srilankaequity.com/rss");
 	};
 	return forum;
+})
+.factory('UserProfile', function($resource){
+	return{
+		getPortfolio: function(){
+			return $resource('http://104.131.20.63:3346//user/:username/:mobile', {username: '@username', mobile: '@mobile'}, {
+				get: {
+					method: 'GET',
+					params: {username: '@username', mobile: '@mobile'},
+					isArray: false
+					//headers:{'Access-Control-Allow-Origin':'*'}
+				}
+			});
+		},
+		
+		getPortfolioDetails: function(){
+			return $resource('http://104.131.20.63:3346//userdetails/:id', {id: '@id'}, {
+				get: {
+					method: 'GET',
+					params: {id: '@id'},
+					isArray: false
+					//headers:{'Access-Control-Allow-Origin':'*'}
+				}
+			});
+		}
+	};
 });

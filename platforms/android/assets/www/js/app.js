@@ -6,8 +6,9 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 var db = null;
-var userId = window.localStorage["userId"];
-var userName = window.localStorage["userName"];
+var userId = window.localStorage["userID"];
+var userName = window.localStorage["realName"];
+var status = window.localStorage["status"];
 var json = window.localStorage["jsonObj"];
 //exports.db = db;
 angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
@@ -27,8 +28,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     	//$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS marketshare (id integer primary key, name text, symbol text, isin text, sharevolume integer, prevclose real, high real, low real, lasttraded real, change real, changeperc real)");
 	});
 })
-.config(function($stateProvider, $urlRouterProvider) {
-
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+	
 	// Ionic uses AngularUI Router which uses the concept of states
 	// Learn more here: https://github.com/angular-ui/ui-router
 	// Set up the various states which the app can be in.
@@ -81,6 +82,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		url : '/myportfolio',
 		templateUrl : 'templates/my-portfolio.html',
 		controller : 'MyPortfolioCtrl'
+	})
+	.state('portfoliodetails', {
+		url : '/portfoliodetails/:userID/:realName/:status',
+		templateUrl : 'templates/portfolio-details.html',
+		controller : 'PortfolioDetailsCtrl'
 	})
 	.state('prof', {
 		url : '/prof',
@@ -532,8 +538,55 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	}
 	
 })
-.controller('MyPortfolioCtrl', function($scope) {
+.controller('MyPortfolioCtrl', function($scope, $ionicPopup, $state, $ionicLoading, UserProfile) {
+	
+	function show() {
+	    $ionicLoading.show({
+	      template: '<span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
+	    });
+    }
+    function hide(){
+    	$ionicLoading.hide();
+    }
+    
 	$scope.username = userName;
+	$scope.loginData = {};
+	
+	checkUserLoggedIn();
+	
+	function checkUserLoggedIn(){
+		if(window.localStorage["userID"] != null){
+			//window.location.href="vstoxPortfolio.html";
+			//window.location.href="menu.html#/portfoliodetails/" + userId + "/" + userName + "/" + status;
+			window.location.href="vstoxPortfolio.html#/portfoliodetails/" + userId + "/" + userName + "/" + status;
+		}
+	}
+	
+	$scope.loadUser = function(){
+		show();
+		var usr = UserProfile.getPortfolio();
+		//$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
+		usr.get({username:$scope.loginData.username, mobile:$scope.loginData.mno}, function(data){	
+			hide();		
+			//$ionicPopup.alert({title: 'Stock App', template: 'success '});
+			//window.location.href="menu.html#/portfoliodetails/" + data.user[0].id + "/" + data.user[0].real_name + "/" + data.user[0].player_status;
+			window.location.href="vstoxPortfolio.html#/portfoliodetails/" + data.user[0].id + "/" + data.user[0].real_name + "/" + data.user[0].player_status;
+			
+			
+			window.localStorage["userID"] = data.user[0].id;
+			userId = window.localStorage["userID"];
+			window.localStorage["realName"] = data.user[0].real_name;
+			userName = window.localStorage["realName"];
+			window.localStorage["status"] = data.user[0].player_status;
+			status = window.localStorage["status"];
+			//window.location.href="vstoxPortfolio.html";
+		}, function(error){
+			hide();
+			$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
+		});
+	};
+	
+	
 })
 .controller('GainersLosersCtrl', function($scope, $http, $ionicLoading){
 	function show() {
@@ -596,5 +649,49 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			//$scope.testData = "Auth.signin.error!";
 			console.log("Auth.signin.error!");
 	    });
+})
+.controller('PortfolioDetailsCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, UserProfile){
+	function show() {
+	    $ionicLoading.show({
+	      template: 'Loading your profile<br/><span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
+	    });
+    }
+    function hide(){
+    	$ionicLoading.hide();
+    }
+	$scope.user_id = $stateParams.userID;
+	$scope.real_name = $stateParams.realName;
+	$scope.player_status = $stateParams.status;
+	$scope.securitiesArr = [];
+	
+	loadDetails();
+	
+	function loadDetails(){
+		show();
+		var usr = UserProfile.getPortfolioDetails();
+		//$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
+		usr.get({id:$scope.user_id}, function(data){
+					
+			//$ionicPopup.alert({title: 'Stock App', template: 'success '});
+			$scope.securitiesArr = data.user_portfolio;
+			$scope.realName = $scope.real_name; 
+			$scope.status = $scope.player_status;
+			hide();	
+			//$ionicPopup.alert({title: 'Stock App', template: $scope.securitiesArr});
+		}, function(error){
+			$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
+		});
+	}
+	
+	$scope.logout = function(){
+		show();
+		window.localStorage.clear();
+		hide();	
+		window.location.href="menu.html#/menu";
+	};
+	
+	$scope.showHome = function(){
+		window.location.href="menu.html#/menu";
+	};
 });
 

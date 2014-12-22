@@ -1,21 +1,43 @@
 <ion-view title="My Portfolio">
-  <ion-content >
+<ion-nav-buttons side="right" >
+  	<a type="button" ng-click="logout()" class="icon ion-log-out pull-right menu-user"></a>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="left" >
+  	<a type="button" ng-click="showHome()" class="icon ion-home pull-left menu-home"></a>
+  </ion-nav-buttons>
+  <ion-content>
   <center>
-  	<!--input type="text" ng-model="testData" /><br /-->
-  	<div style="width: 100%;">
-		<img style="width: 250px; margin: 0 auto;" src="./img/vstox.png" />
-	</div>
-  	<div >
-  		<h3 style="color: white;">{{realName}}</h3>
-  	</div>
-	<!--div >
-		<img style="width: 100px; margin-top: 25%" src="./img/erbenlogo.png" />
-	</div-->
+   <!--input type="text" ng-model="testData" /><br /-->
+   <div style="color: white;">
+    <table class="market-summary-2">
+	    <tr>
+		    <td>Player Name :</td>
+		    <td style="text-align: left;">{{realName}}</td> 
+	    </tr>
+	    <tr>
+		    <td>Player Status : </td>
+		    <td style="text-align: left;">{{status}}</td>
+	    </tr>
+    </table>  
+   </div>
+   <!--center ><span ng-show="loading" class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span></center-->
+   <table class="default">
+	  <tr>
+	   <th style="text-align: left;">Sequrity</th>
+	   <th style="text-align: left;">Avarage Cost</th>
+	   <th style="text-align: left;">Total Cost</th>
+	  </tr>
+	  <tr style="display:table-row;" ng-repeat="comp in securitiesArr">
+	   <td style="text-align: left;">{{comp.security_id}}</td>
+	   <td style="text-align: left;">{{comp.avg_cost_price | number:2}}</td>
+	   <td style="text-align: left;">{{comp.total_cost | number:2}}</td>
+	  </tr>
+ 	</table>
   </ion-content>
 </ion-view>
 
 <style type="text/css">
-	.pane, .view {
+ .pane, .view {
     margin: 0 auto;
     width: 100% !important;
 }
@@ -23,6 +45,6 @@
     top: 100px;
 }
 .bar.bar-stable {
-	border-bottom: 0 !important;
+ border-bottom: 0 !important;
 }
 </style>

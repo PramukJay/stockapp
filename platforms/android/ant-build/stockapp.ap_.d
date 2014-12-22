@@ -63,6 +63,7 @@
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/menu.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/plugins \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/vstoxPortfolio.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/css/style.css \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/arrow-down.png \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/img/bg.png \
@@ -194,6 +195,7 @@
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/my-portfolio.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/news-announcements.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/news.html \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/portfolio-details.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/price-list-detail.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/price-list.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/research.html \

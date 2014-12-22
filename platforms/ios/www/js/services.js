@@ -70,7 +70,7 @@ angular.module('starter.services', ['ngResource'])
 .factory('UserProfile', function($resource){
 	return{
 		getPortfolio: function(){
-			return $resource('http://localhost:8000/user/:username/:mobile', {username: '@username', mobile: '@mobile'}, {
+			return $resource('http://104.131.20.63:3346//user/:username/:mobile', {username: '@username', mobile: '@mobile'}, {
 				get: {
 					method: 'GET',
 					params: {username: '@username', mobile: '@mobile'},
@@ -81,7 +81,7 @@ angular.module('starter.services', ['ngResource'])
 		},
 		
 		getPortfolioDetails: function(){
-			return $resource('http://localhost:8000/userdetails/:id', {id: '@id'}, {
+			return $resource('http://104.131.20.63:3346//userdetails/:id', {id: '@id'}, {
 				get: {
 					method: 'GET',
 					params: {id: '@id'},

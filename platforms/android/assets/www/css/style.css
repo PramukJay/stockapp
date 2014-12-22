@@ -170,6 +170,12 @@ border-radius: 5px;
 	border-radius: 30px;
 }
 
+.menu-home{
+	font-size: xx-large;
+	line-height: 80px;
+	margin-left: 10px;
+}
+
 .menu-user{
 	font-size: xx-large;
 	line-height: 80px;
