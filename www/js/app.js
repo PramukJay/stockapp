@@ -566,20 +566,27 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		show();
 		var usr = UserProfile.getPortfolio();
 		//$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
-		usr.get({username:$scope.loginData.username, mobile:$scope.loginData.mno}, function(data){	
+		usr.get({username:$scope.loginData.username, pass:$scope.loginData.pass}, function(data){	
+			if(data.user.length > 0){
 			hide();		
-			//$ionicPopup.alert({title: 'Stock App', template: 'success '});
-			//window.location.href="menu.html#/portfoliodetails/" + data.user[0].id + "/" + data.user[0].real_name + "/" + data.user[0].player_status;
-			window.location.href="vstoxPortfolio.html#/portfoliodetails/" + data.user[0].id + "/" + data.user[0].real_name + "/" + data.user[0].player_status;
-			
-			
-			window.localStorage["userID"] = data.user[0].id;
-			userId = window.localStorage["userID"];
-			window.localStorage["realName"] = data.user[0].real_name;
-			userName = window.localStorage["realName"];
-			window.localStorage["status"] = data.user[0].player_status;
-			status = window.localStorage["status"];
-			//window.location.href="vstoxPortfolio.html";
+				//$ionicPopup.alert({title: 'Stock App', template: 'success '});
+				//window.location.href="menu.html#/portfoliodetails/" + data.user[0].id + "/" + data.user[0].real_name + "/" + data.user[0].player_status;
+				window.location.href="vstoxPortfolio.html#/portfoliodetails/" + data.user[0].id + "/" + data.user[0].real_name + "/" + data.user[0].player_status;
+				
+				
+				window.localStorage["userID"] = data.user[0].id;
+				userId = window.localStorage["userID"];
+				window.localStorage["realName"] = data.user[0].real_name;
+				userName = window.localStorage["realName"];
+				window.localStorage["status"] = data.user[0].player_status;
+				status = window.localStorage["status"];
+				//window.location.href="vstoxPortfolio.html";
+			}else{
+				hide();
+				$ionicPopup.alert({title: 'Stock App', template: 'Invalid login details.'});
+				$scope.loginData.username = "";
+				$scope.loginData.pass = "";
+			}
 		}, function(error){
 			hide();
 			$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
@@ -671,11 +678,15 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		var usr = UserProfile.getPortfolioDetails();
 		//$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
 		usr.get({id:$scope.user_id}, function(data){
+			
 					
 			//$ionicPopup.alert({title: 'Stock App', template: 'success '});
 			$scope.securitiesArr = data.user_portfolio;
 			$scope.realName = $scope.real_name; 
 			$scope.status = $scope.player_status;
+			$scope.buying_power = data.user_balance[0].buying_power;
+			$scope.bank_balance = data.user_balance[0].bank_balance;
+			$scope.ranking = data.user_ranking[0].rank;
 			hide();	
 			//$ionicPopup.alert({title: 'Stock App', template: $scope.securitiesArr});
 		}, function(error){

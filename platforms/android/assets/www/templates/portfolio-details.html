@@ -18,6 +18,18 @@
 		    <td>Player Status : </td>
 		    <td style="text-align: left;">{{status}}</td>
 	    </tr>
+	    <tr>
+		    <td>Rank : </td>
+		    <td style="text-align: left;">{{ranking}}</td>
+	    </tr>
+	    <tr>
+		    <td>Buying Power : </td>
+		    <td style="text-align: left;">{{buying_power | number:2}}</td>
+	    </tr>
+	    <tr>
+		    <td>Bank Balance : </td>
+		    <td style="text-align: left;">{{bank_balance | number:2}}</td>
+	    </tr>
     </table>  
    </div>
    <!--center ><span ng-show="loading" class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span></center-->
@@ -26,11 +38,13 @@
 	   <th style="text-align: left;">Sequrity</th>
 	   <th style="text-align: left;">Avarage Cost</th>
 	   <th style="text-align: left;">Total Cost</th>
+	   <th style="text-align: left">Previous Close</th>
 	  </tr>
 	  <tr style="display:table-row;" ng-repeat="comp in securitiesArr">
 	   <td style="text-align: left;">{{comp.security_id}}</td>
 	   <td style="text-align: left;">{{comp.avg_cost_price | number:2}}</td>
 	   <td style="text-align: left;">{{comp.total_cost | number:2}}</td>
+	   <td style="text-align: left;">{{comp.previous_close | number:2}}</td>
 	  </tr>
  	</table>
   </ion-content>

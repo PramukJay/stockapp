@@ -70,10 +70,10 @@ angular.module('starter.services', ['ngResource'])
 .factory('UserProfile', function($resource){
 	return{
 		getPortfolio: function(){
-			return $resource('http://104.131.20.63:3346//user/:username/:mobile', {username: '@username', mobile: '@mobile'}, {
+			return $resource('http://104.131.20.63:3346//user/:username/:pass', {username: '@username', pass: '@pass'}, {
 				get: {
 					method: 'GET',
-					params: {username: '@username', mobile: '@mobile'},
+					params: {username: '@username', pass: '@pass'},
 					isArray: false
 					//headers:{'Access-Control-Allow-Origin':'*'}
 				}
