@@ -84,9 +84,14 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		controller : 'MyPortfolioCtrl'
 	})
 	.state('portfoliodetails', {
-		url : '/portfoliodetails/:userID/:realName/:status',
+		url : '/portfoliodetails/:gameid',
 		templateUrl : 'templates/portfolio-details.html',
 		controller : 'PortfolioDetailsCtrl'
+	})
+	.state('portfoliohome', {
+		url : '/portfoliohome/:userID',
+		templateUrl : 'templates/portfolio-home.html',
+		controller : 'PortfolioHomeCtrl'
 	})
 	.state('prof', {
 		url : '/prof',
@@ -558,7 +563,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		if(window.localStorage["userID"] != null){
 			//window.location.href="vstoxPortfolio.html";
 			//window.location.href="menu.html#/portfoliodetails/" + userId + "/" + userName + "/" + status;
-			window.location.href="vstoxPortfolio.html#/portfoliodetails/" + userId + "/" + userName + "/" + status;
+			//window.location.href="vstoxPortfolio.html#/portfoliodetails/" + userId + "/" + userName + "/" + status;
+			window.location.href="vstoxPortfolio.html#/portfoliohome/" + userId;
 		}
 	}
 	
@@ -571,7 +577,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			hide();		
 				//$ionicPopup.alert({title: 'Stock App', template: 'success '});
 				//window.location.href="menu.html#/portfoliodetails/" + data.user[0].id + "/" + data.user[0].real_name + "/" + data.user[0].player_status;
-				window.location.href="vstoxPortfolio.html#/portfoliodetails/" + data.user[0].id + "/" + data.user[0].real_name + "/" + data.user[0].player_status;
+				//window.location.href="vstoxPortfolio.html#/portfoliodetails/" + data.user[0].id + "/" + data.user[0].real_name + "/" + data.user[0].player_status;
+				window.location.href="vstoxPortfolio.html#/portfoliohome/" + data.user[0].id;
 				
 				
 				window.localStorage["userID"] = data.user[0].id;
@@ -666,28 +673,38 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     function hide(){
     	$ionicLoading.hide();
     }
-	$scope.user_id = $stateParams.userID;
-	$scope.real_name = $stateParams.realName;
-	$scope.player_status = $stateParams.status;
+    $scope.gameid = $stateParams.gameid;
+    //$ionicPopup.alert({title: 'Stock App', template: $scope.gameid});
+	$scope.user_id = window.localStorage["userID"];
+	$scope.real_name = window.localStorage["realName"];
+	$scope.player_status = window.localStorage["status"];
 	$scope.securitiesArr = [];
+	var tot_share_port_val = 0;
 	
 	loadDetails();
 	
 	function loadDetails(){
+		$scope.userid = window.localStorage["userID"];
 		show();
-		var usr = UserProfile.getPortfolioDetails();
-		//$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
-		usr.get({id:$scope.user_id}, function(data){
-			
-					
-			//$ionicPopup.alert({title: 'Stock App', template: 'success '});
-			$scope.securitiesArr = data.user_portfolio;
+		var usr = UserProfile.getUserGamesDetails();
+		usr.get({gameid:$scope.gameid, id:$scope.userid}, function(data){
+			console.log(data);
+			$scope.securitiesArr = data.game_data;
 			$scope.realName = $scope.real_name; 
 			$scope.status = $scope.player_status;
+			console.log(data);
 			$scope.buying_power = data.user_balance[0].buying_power;
 			$scope.bank_balance = data.user_balance[0].bank_balance;
 			$scope.ranking = data.user_ranking[0].rank;
-			hide();	
+			
+			for(var i = 0;i<data.game_data.length;i++){
+				tot_share_port_val = tot_share_port_val + (data.game_data[i].last_trade_price * data.game_data[i].position);
+			}
+			$scope.totalSharePortValue = tot_share_port_val;
+			var tot_port_val = parseFloat(tot_share_port_val);
+			var bank_bal = parseFloat(data.user_balance[0].bank_balance);
+			$scope.totalPortfolioValue = tot_port_val+ bank_bal;
+			hide();
 			//$ionicPopup.alert({title: 'Stock App', template: $scope.securitiesArr});
 		}, function(error){
 			$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
@@ -704,5 +721,46 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	$scope.showHome = function(){
 		window.location.href="menu.html#/menu";
 	};
+})
+.controller('PortfolioHomeCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, UserProfile){
+	$scope.user_id = $stateParams.userID;
+	$scope.gamesArr = [];
+	
+	function show() {
+	    $ionicLoading.show({
+	      template: 'Loading your profile<br/><span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
+	    });
+    }
+    function hide(){
+    	$ionicLoading.hide();
+    }
+    getGames();
+    show();
+    
+    function getGames(){
+    	var usr = UserProfile.getUserGames();
+    	
+    	usr.get({id:$scope.user_id}, function(data){
+			//$ionicPopup.alert({title: 'Stock App', template: 'success '});
+			$scope.gamesArr = data.user_reg_games;
+			
+			hide();	
+			//$ionicPopup.alert({title: 'Stock App', template: $scope.securitiesArr});
+		}, function(error){
+			$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
+		});
+    }
+    
+    $scope.logout = function(){
+		show();
+		window.localStorage.clear();
+		hide();	
+		window.location.href="menu.html#/menu";
+	};
+	
+	$scope.showHome = function(){
+		window.location.href="menu.html#/menu";
+	};
+    
 });
 

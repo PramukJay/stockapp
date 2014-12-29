@@ -5,11 +5,11 @@
   	<!--input type="text" ng-model="testData" /><br /-->
   	    <table class="default">
 		<tr>
-			<th style="text-align:">Date</th>
+			<th style="text-align:left; width: 100px;">Date</th>
 			<th colspan="2" style="text-align: left;">Title</th>
 		</tr>
 		<tr ng-repeat="comp in annArr">
-			<td style="text-align: left; ">{{comp['link_1/_text']}}</td>
+			<td style="text-align: left; width: 100px;">{{comp['link_1/_text']}}</td>
 			<td style="text-align: left;"><a href="#" style="text-decoration: none; color: white;" onclick="window.open('http://www.cse.lk/corporate_disclosures_more.do', '_system', 'location=yes');return false;">{{comp['link_2/_text']}}</a></td>
 			<td><i class="icon ion-chevron-right"></td>
 		</tr>

@@ -89,6 +89,28 @@ angular.module('starter.services', ['ngResource'])
 					//headers:{'Access-Control-Allow-Origin':'*'}
 				}
 			});
+		},
+		
+		getUserGames: function(){
+			return $resource('http://104.131.20.63:3346//portfoliohome/:id', {id: '@id'}, {
+				get: {
+					method: 'GET',
+					params: {id: '@id'},
+					isArray: false
+					//headers:{'Access-Control-Allow-Origin':'*'}
+				}
+			});
+		},
+		
+		getUserGamesDetails: function(){
+			return $resource('http://104.131.20.63:3346//game/:gameid/:id', {gameid: '@gameid', id: '@id'}, {
+				get: {
+					method: 'GET',
+					params: {gameid: '@gameid', id: '@id'},
+					isArray: false
+					//headers:{'Access-Control-Allow-Origin':'*'}
+				}
+			});
 		}
 	};
 });

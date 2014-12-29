@@ -196,6 +196,7 @@
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/news-announcements.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/news.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/portfolio-details.html \
+/Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/portfolio-home.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/price-list-detail.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/price-list.html \
 /Users/iosdeveloper/documents/stockapp/platforms/android/assets/www/templates/research.html \

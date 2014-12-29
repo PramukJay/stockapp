@@ -5,11 +5,11 @@
   	<!--input type="text" ng-model="testData" /><br /-->
   	    <table class="default">
 		<tr>
-			<th style="text-align: left;">Symbol</th>
+			<th style="text-align: left; width: 100px;">Security Code</th>
 			<th style="text-align: left;">Company Name</th>
 		</tr>
 		<tr ng-repeat="comp in secutiryArr">
-			<td style="text-align: left;">{{comp['symbol_link/_text']}}</td>
+			<td style="text-align: left; width: 100px;">{{comp['symbol_link/_text']}}</td>
 			<td style="text-align: left;">{{comp['company_name_link/_text']}}</td>
 		</tr>
 	</table>

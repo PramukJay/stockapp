@@ -11,31 +11,45 @@
   	<div style="color: white;">
   		<table class="market-summary">
   			<tr>
-  				<td>As of {{response.data.tradeDate | limitTo:10}}</td>
-  				<td>Share Volume </td>
-  				<td>{{response.data.shareVolume}}</td>
+  				<td style="text-align: left; width: 140px;">{{response.data.tradeDate | limitTo:10}}</td>
+  				<td style="text-align: left;">Share Volume </td>
+  				<td style="text-align: right;">{{response.data.shareVolume}}</td>
   			</tr>
   			<tr>
-  				<td>{{response.data.status}}</td>
-  				<td>Turnover</td>
-  				<td>{{response.data.turnover}}</td>
+  				<td style="text-align: left; width: 140px;">{{response.data.status}}</td>
+  				<td style="text-align: left;">Turnover</td>
+  				<td style="text-align: right;">{{response.data.turnover}}</td>
   			</tr>
   		</table>
   		<table class="market-summary-2">
   			<tr>
-  				<td><span ng-class="{sp: aspi_change < 0.00 , aspi: aspi_change > 0.00}" class="aspi_padding">ASPI</span>&nbsp;&nbsp;<span>{{aspi}}</span></td>
-			    <td style="text-align: center;"><span>{{aspi_change}}</span></td>	
+  				<td style="text-align: left; width: 140px;"><span ng-class="{sp: aspi_change < 0.00 , aspi: aspi_change > 0.00}" class="aspi_padding">ASPI</span></td>
+  				<td style="text-align: left; width: 140px;"><span>{{aspi}}</span></td>
+			    <td style="text-align: right;"><span>{{aspi_change}}</span></td>
+			    <td>
+				<div ng-class="{showup: comp.aspi_change > 0 , showuphide: aspi_change < 0 , shownothing: aspi_change == 0.00}" class="icon ion-chevron-up"></div>
+				<div ng-class="{showdown: aspi_change < 0 , showdownhide: aspi_change > 0 , shownothing: aspi_change == 0.00}" class="icon ion-chevron-down"></div>
+				<div ng-class="{showdash: aspi_change == 0.00 , shownothing: aspi_change != 0.00}" class="icon ion-ios7-minus-empty"></div>
+				
+				</td>	
 			</tr>
 			<tr>
-  				<td><span ng-class="{sp: spsl_change < 0.00 , aspi: spsl_change > 0.00}" class="sp_padding">S&P SL20</span>&nbsp;&nbsp;<span>{{spsl}}</span></td>
-			    <td style="text-align: center;"><span>{{spsl_change}}</span></td>
+  				<td style="text-align: left; width: 140px;"><span ng-class="{sp: spsl_change < 0.00 , aspi: spsl_change > 0.00}" class="sp_padding">S&P SL20</span></td>
+  				<td style="text-align: left; width: 140px;"><span>{{spsl}}</span></td>
+			    <td style="text-align: right;"><span>{{spsl_change}}</span></td>
+			    			    <td>
+				<div ng-class="{showup: comp.spsl_change > 0 , showuphide: spsl_change < 0 , shownothing: spsl_change == 0.00}" class="icon ion-chevron-up"></div>
+				<div ng-class="{showdown: spsl_change < 0 , showdownhide: spsl_change > 0 , shownothing: spsl_change == 0.00}" class="icon ion-chevron-down"></div>
+				<div ng-class="{showdash: spsl_change == 0.00 , shownothing: spsl_change != 0.00}" class="icon ion-ios7-minus-empty"></div>
+				
+				</td>
 			</tr>
   		</table>    		
   	</div>
   	<center ><span ng-show="loading" class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span></center>
     <table class="default">
 		<tr>
-			<th colspan="2" style="text-align: left;">Symbol</th>
+			<th colspan="2" style="text-align: left;">Security Code</th>
 			<th>Share<br /> Volume</th>
 			<th>Previous<br /> Close</th>
 			<th>High</th>
@@ -80,14 +94,14 @@
 }
 .showup{
 	display: block;
-	color: #21DB27;
+	color: #21DB27 !important;
 }
 .showuphide{
 	display:  none;
 }
 .showdown{
 	display: block;
-	color: red;
+	color: red !important;
 }
 .showdownhide{
 	display: none;
