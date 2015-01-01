@@ -330,9 +330,10 @@ ion-nav-view {
 	background: transparent;
 }
 .back-button {
-	height: 25px;
+	height: 30px;
+	width: 30px
 	position: absolute;
-	top: 30px;
+	top: 25px;
 	left: 10px;
 }
 .item-header {
@@ -491,6 +492,9 @@ ion-nav-view {
 .green {
     color: #21DB27;
 }
+.image-round{
+	border-radius: 50%;
+}
 
 @media only screen and (min-width: 590px) and (max-width: 1280px) {
 	.pane, .view {
@@ -505,4 +509,13 @@ ion-nav-view {
 		float: left;
 		width: 33.2%;
 	}
+}
+
+@media screen and (max-width: 481px) {
+	.default tr th {
+	 	font-size: 10px;
+	 }
+	.default td {
+	 	font-size: 8px;
+	 }
 }

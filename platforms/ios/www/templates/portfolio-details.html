@@ -1,34 +1,34 @@
-<ion-view title="Portfolio Manager">
+<ion-view title="{{page_name}}">
 <ion-nav-buttons side="right" >
   	<a type="button" ng-click="logout()" class="icon ion-log-out pull-right menu-user"></a>
   </ion-nav-buttons>
   <ion-content>
   <center>
-   <!--input type="text" ng-model="testData" /><br /-->
-   <div style="color: white;">
+   <div style="color: white;border-bottom: 1px #274fc9 solid;background: #08187a; width: 100%">
+	
     <table class="market-summary-2">
 	    <tr>
 		    <td>Player Name :</td>
-		    <td style="text-align: right;">{{realName}}</td> 
+		    <td style="text-align: left;">{{realName}}</td> 
 	    </tr>
 	    <tr>
 		    <td>Player Status : </td>
-		    <td style="text-align: right;">{{status}}</td>
+		    <td style="text-align: left;">{{status}}</td>
 	    </tr>
 	    <tr>
 		    <td>Rank : </td>
-		    <td style="text-align: right;">{{ranking}}</td>
+		    <td style="text-align: left;">{{ranking}}</td>
 	    </tr>
 	     <tr>
 		    <td colspan="2" style="text-align: left;">My Portfolio</td>
 	    </tr>
     </table>  
    </div>
-   <!--center ><span ng-show="loading" class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span></center-->
    <table class="default">
 	  <tr>
 	   <th style="text-align: left; padding-left: 5px;">Symbol</th>
-	   <th style="text-align: right">Share Volume</th>
+	   <!--th style="text-align: right">Share Volume</th-->
+	   <th style="text-align: right">Quantity</th>
 	   <th style="text-align: right;">Average Cost</th>
 	   <th style="text-align: right;">Total Cost</th>
 	   <th style="text-align: right;">Market Price</th>
@@ -38,8 +38,9 @@
 	  </tr>
 	  <tr style="display:table-row;" ng-repeat="comp in securitiesArr">
 	   <td style="text-align: left; padding-left: 5px;">{{comp.security_id}}</td>
+	   <!--td style="text-align: right;">{{comp.share_volume | number:2}}</td-->
+	   <td style="text-align: right;">{{comp.position | number}}</td>
 	   <td style="text-align: right;">{{comp.avg_cost_price | number:2}}</td>
-	   <td style="text-align: right;">{{comp.share_volume | number:2}}</td>
 	   <td style="text-align: right;">{{comp.total_cost | number:2}}</td>
 	   <td style="text-align: right;">{{comp.last_trade_price | number:2}}</td>
 	   <td style="text-align: right; padding-right: 5px;">{{comp.last_trade_price * comp.position | number:2}}</td>

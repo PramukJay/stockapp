@@ -49,9 +49,9 @@
   	<center ><span ng-show="loading" class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span></center>
     <table class="default">
 		<tr>
-			<th colspan="2" style="text-align: left;">Security Code</th>
+			<th colspan="2" style="text-align: left;">Symbol</th>
 			<th>Share<br /> Volume</th>
-			<th>Previous<br /> Close</th>
+			<th>Current<br /> Price</th>
 			<th>High</th>
 			<th>Low</th>
 			<th>Last<br /> Traded</th>
@@ -64,7 +64,7 @@
 			</td>
 			<td style="text-align: left; max-width: 100px;">{{comp['symbol_link/_text']}}</td>
 			<td>{{comp['volume_number'] | number:0}}</td>
-			<td>{{comp['close_price_number'] | number:2}}</td>
+			<td>{{comp['low_number'] | number}}</td>
 			<td>{{comp['high_number'] | number:2}}</td>
 			<td>{{comp['low_number'] | number:2}}</td>
 			<td>

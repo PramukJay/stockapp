@@ -10,14 +10,14 @@
   		</table>
   		<table width="100%" class="default">
   			<tr>
-  				<th style="text-align: left;">Comany Name & Security Code</th>
+  				<th style="text-align: left;">Comany Name & Symbol</th>
   				<th>Price</th>
   				<th>Change %</th>
   			</tr>
   			<tr ng-repeat="gainer in gainersArr">
   				<td style="text-align: left;">{{gainer['column_1_link/_title']}}</td>
-  				<td>{{gainer['column_2_number']}}</td>
-  				<td>{{gainer['column_3']}}</td>
+  				<td>{{gainer['column_2_number'] | number:2}}</td>
+  				<td>{{gainer['column_3'] | number:2}}</td>
   			</tr>
   		</table>
   		<br />
@@ -28,7 +28,7 @@
   		</table>
   		<table width="100%" class="default">
   			<tr>
-  				<th style="text-align: left;">Comany Name & Security Code</th>
+  				<th style="text-align: left;">Comany Name & Symbol</th>
   				<th>Price</th>
   				<th>Change %</th>
   			</tr>

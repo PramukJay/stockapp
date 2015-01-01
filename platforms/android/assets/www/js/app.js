@@ -1,22 +1,13 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
 var db = null;
 var userId = window.localStorage["userID"];
 var userName = window.localStorage["realName"];
 var status = window.localStorage["status"];
 var json = window.localStorage["jsonObj"];
-//exports.db = db;
 angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 
-.run(function($ionicPlatform, $cordovaSQLite) {
+.run(function($ionicPlatform, $cordovaSQLite, $ionicPopup) {
 	$ionicPlatform.ready(function() {
-		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-		// for form inputs)
+		
 		if (window.cordova && window.cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 		}
@@ -24,20 +15,24 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			// org.apache.cordova.statusbar required
 			StatusBar.styleDefault();
 		}
-		//db = $cordovaSQLite.openDB({ name: "my.db" });
-    	//$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS marketshare (id integer primary key, name text, symbol text, isin text, sharevolume integer, prevclose real, high real, low real, lasttraded real, change real, changeperc real)");
+		if(window.Connection){
+			if(navigator.connection.type == Connection.NONE){
+				$ionicPopup.confirm({
+					title: "Internet Disconnected",
+					content: "This application requires a working internet connection."
+				})
+				.then(function(result){
+					if(result || !result){
+						ionic.Platform.exitApp();
+					}
+				});
+			}
+		}
 	});
 })
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 	
-	// Ionic uses AngularUI Router which uses the concept of states
-	// Learn more here: https://github.com/angular-ui/ui-router
-	// Set up the various states which the app can be in.
-	// Each state's controller can be found in controllers.js
 	$stateProvider
-
-	// setup an abstract state for the tabs directive
-	// Each tab has its own nav history stack:
 	.state('menu', {
 		url : '/menu',
 		templateUrl : 'templates/tab-menu.html',
@@ -84,7 +79,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		controller : 'MyPortfolioCtrl'
 	})
 	.state('portfoliodetails', {
-		url : '/portfoliodetails/:gameid',
+		url : '/portfoliodetails/:gameid/:pagename',
 		templateUrl : 'templates/portfolio-details.html',
 		controller : 'PortfolioDetailsCtrl'
 	})
@@ -569,35 +564,40 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	}
 	
 	$scope.loadUser = function(){
-		show();
-		var usr = UserProfile.getPortfolio();
-		//$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
-		usr.get({username:$scope.loginData.username, pass:$scope.loginData.pass}, function(data){	
-			if(data.user.length > 0){
-			hide();		
-				//$ionicPopup.alert({title: 'Stock App', template: 'success '});
-				//window.location.href="menu.html#/portfoliodetails/" + data.user[0].id + "/" + data.user[0].real_name + "/" + data.user[0].player_status;
-				//window.location.href="vstoxPortfolio.html#/portfoliodetails/" + data.user[0].id + "/" + data.user[0].real_name + "/" + data.user[0].player_status;
-				window.location.href="vstoxPortfolio.html#/portfoliohome/" + data.user[0].id;
-				
-				
-				window.localStorage["userID"] = data.user[0].id;
-				userId = window.localStorage["userID"];
-				window.localStorage["realName"] = data.user[0].real_name;
-				userName = window.localStorage["realName"];
-				window.localStorage["status"] = data.user[0].player_status;
-				status = window.localStorage["status"];
-				//window.location.href="vstoxPortfolio.html";
-			}else{
+		
+		if($scope.loginData.username && $scope.loginData.pass){
+			show();
+			var usr = UserProfile.getPortfolio();
+			//$ionicPopup.alert({title: 'Stock App', template: 'inside method'});
+			usr.get({username:$scope.loginData.username, pass:$scope.loginData.pass}, function(data){	
+				if(data.user.length > 0){
+				hide();		
+					//$ionicPopup.alert({title: 'Stock App', template: 'success '});
+					//window.location.href="menu.html#/portfoliodetails/" + data.user[0].id + "/" + data.user[0].real_name + "/" + data.user[0].player_status;
+					//window.location.href="vstoxPortfolio.html#/portfoliodetails/" + data.user[0].id + "/" + data.user[0].real_name + "/" + data.user[0].player_status;
+					window.location.href="vstoxPortfolio.html#/portfoliohome/" + data.user[0].id;
+					
+					
+					window.localStorage["userID"] = data.user[0].id;
+					userId = window.localStorage["userID"];
+					window.localStorage["realName"] = data.user[0].real_name;
+					userName = window.localStorage["realName"];
+					window.localStorage["status"] = data.user[0].player_status;
+					status = window.localStorage["status"];
+					//window.location.href="vstoxPortfolio.html";
+				}else{
+					hide();
+					$ionicPopup.alert({title: 'Stock App', template: 'Invalid login details.'});
+					$scope.loginData.username = "";
+					$scope.loginData.pass = "";
+				}
+			}, function(error){
 				hide();
-				$ionicPopup.alert({title: 'Stock App', template: 'Invalid login details.'});
-				$scope.loginData.username = "";
-				$scope.loginData.pass = "";
-			}
-		}, function(error){
-			hide();
-			$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
-		});
+				$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
+			});
+		}else{
+			$ionicPopup.alert({title: 'Stock App', template: 'Please enter username & password.'});
+		}
 	};
 	
 	
@@ -673,6 +673,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     function hide(){
     	$ionicLoading.hide();
     }
+    $scope.page_name = $stateParams.pagename;
     $scope.gameid = $stateParams.gameid;
     //$ionicPopup.alert({title: 'Stock App', template: $scope.gameid});
 	$scope.user_id = window.localStorage["userID"];
@@ -724,6 +725,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 })
 .controller('PortfolioHomeCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, UserProfile){
 	$scope.user_id = $stateParams.userID;
+	
 	$scope.gamesArr = [];
 	
 	function show() {
