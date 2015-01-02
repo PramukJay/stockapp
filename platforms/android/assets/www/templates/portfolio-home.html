@@ -11,7 +11,8 @@
 		<img style="width: 250px; margin: 0 auto;" src="./img/vstox.png" />
 	</div>
 	<div ng-repeat="game in gamesArr | orderBy:'id'">
-		<a href="vstoxPortfolio.html#/portfoliodetails/{{game.id}}/{{game.name}}" style="text-decoration: none;">
+		<!--a href="vstoxPortfolio.html#/portfoliodetails/{{game.id}}/{{game.name}}" style="text-decoration: none;"-->
+		<a type="button" ng-click="redirectToTabs(game.id,game.name)" style="text-decoration: none;">
 			<div style="width: 100%; height: 40px; padding: 10px; background: rgba(16,47,146,1); color: white; text-align: left; border-bottom: 1px #274fc9 solid;">
 				<table style="width: 100%">
 					<tr>
@@ -19,7 +20,7 @@
 						<td style="text-align: right;"><div side="right" class="icon ion-chevron-right pull-right" style="text-align: right"></div></td>
 					</tr>
 				</table>
-			</div>			
+			</div>
 		</a>
 	</div>
 	

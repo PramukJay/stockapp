@@ -2,6 +2,8 @@ var db = null;
 var userId = window.localStorage["userID"];
 var userName = window.localStorage["realName"];
 var status = window.localStorage["status"];
+var gameID = window.localStorage["gameID"];
+var pageName = window.localStorage["pageName"];
 var json = window.localStorage["jsonObj"];
 angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 
@@ -78,11 +80,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		templateUrl : 'templates/my-portfolio.html',
 		controller : 'MyPortfolioCtrl'
 	})
-	.state('portfoliodetails', {
-		url : '/portfoliodetails/:gameid/:pagename',
-		templateUrl : 'templates/portfolio-details.html',
-		controller : 'PortfolioDetailsCtrl'
-	})
+	
 	.state('portfoliohome', {
 		url : '/portfoliohome/:userID',
 		templateUrl : 'templates/portfolio-home.html',
@@ -112,7 +110,40 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		url :'/forum',
 		templateUrl : 'templates/forum.html',
 		controller : 'ForumCtrl'
-	});
+	})
+	.state('tab', {
+	    url: "/tab",
+	    abstract: true,
+	    templateUrl: "templates/tabs.html",
+	    controller: "TabCtrl"
+	  })
+	  .state('tab.portfoliodetails', {
+	    url: '/portfoliodetails/:gameid/:pagename',
+	    views: {
+	      'tab-portfoliodetails': {
+	        templateUrl: 'templates/portfolio-details.html',
+	        controller: 'PortfolioDetailsCtrl'
+	      }
+	    }
+	  })
+	   .state('tab.buyandsell', {
+	    url: '/buyandsell',
+	    views: {
+	      'tab-buyandsell': {
+	        templateUrl: 'templates/tab-buyandsell.html',
+	        controller: 'BuyAndSellCtrl'
+	      }
+	    }
+	  })
+	  .state('tab.watchlist', {
+	    url: '/watchlist',
+	    views: {
+	      'tab-watchlist': {
+	        templateUrl: 'templates/tab-watchlist.html',
+	        controller: 'WatchlistCtrl'
+	      }
+	    }
+	  });
 
 	// if none of the above states are matched, use this as the fallback
 	$urlRouterProvider.otherwise('/menu');
@@ -665,6 +696,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	    });
 })
 .controller('PortfolioDetailsCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, UserProfile){
+	//$ionicPopup.alert({title: 'Stock App', template: 'Inside Method'});
 	function show() {
 	    $ionicLoading.show({
 	      template: 'Loading your profile<br/><span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
@@ -675,6 +707,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     }
     $scope.page_name = $stateParams.pagename;
     $scope.gameid = $stateParams.gameid;
+    //$ionicPopup.alert({title: 'Stock App', template: $scope.page_name + " " + $scope.gameid});
     //$ionicPopup.alert({title: 'Stock App', template: $scope.gameid});
 	$scope.user_id = window.localStorage["userID"];
 	$scope.real_name = window.localStorage["realName"];
@@ -753,6 +786,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		});
     }
     
+    $scope.redirectToTabs = function(game_id, pg_name){
+    	//$ionicPopup.alert({title: 'Stock App', template: game_id + " " + pg_name });
+    	window.localStorage["gameID"] = game_id;
+    	gameID = window.localStorage["gameID"];
+    	window.localStorage["pageName"] = pg_name;
+    	pageName = window.localStorage["pageName"];
+    	window.location.href = "#/tab/portfoliodetails/"+gameID+"/"+pageName;
+    	//$ionicPopup.alert({title: 'Stock App', template: gameID + " " + pageName });
+    };
+    
     $scope.logout = function(){
 		show();
 		window.localStorage.clear();
@@ -764,5 +807,17 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 		window.location.href="menu.html#/menu";
 	};
     
+})
+.controller('TabCtrl', function($scope, $ionicPopup){
+	
+	$scope.gameid = window.localStorage["gameID"];
+	$scope.page_name = window.localStorage["pageName"];
+	//$ionicPopup.alert({title: 'Stock App', template: 'Hello Tabs<br>' + $scope.gameid + " " + $scope.page_name});
+})
+.controller('BuyAndSellCtrl', function($scope){
+	
+})
+.controller('WatchlistCtrl', function($scope){
+	
 });
 

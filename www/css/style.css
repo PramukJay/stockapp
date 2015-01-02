@@ -30,7 +30,7 @@ body {
 }
 .tabs {
 	background-color: #000 !important;
-	color: #0039a9 !important;
+	/*color: #0039a9 !important;*/
 }
 .bar.bar-stable {
 	background: -moz-linear-gradient(top, rgba(2,19,75,1) 0%, rgba(22,56,166,1) 100%);

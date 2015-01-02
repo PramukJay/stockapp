@@ -44,6 +44,7 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/menu.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/portfolio.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/vstoxPortfolio.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/css/style.css \
@@ -186,8 +187,10 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/price-list-detail.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/price-list.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/research.html \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-buyandsell.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-dash.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-help.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-menu.html \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-watchlist.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tabs.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/AndroidManifest.xml \
