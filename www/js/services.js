@@ -1,3 +1,5 @@
+var base = "http://104.131.20.63:3346/api/v1/";
+
 angular.module('starter.services', ['ngResource'])
 
 /**
@@ -70,45 +72,49 @@ angular.module('starter.services', ['ngResource'])
 .factory('UserProfile', function($resource){
 	return{
 		getPortfolio: function(){
-			return $resource('http://104.131.20.63:3346//user/:username/:pass', {username: '@username', pass: '@pass'}, {
+			return $resource(base+'user/:username/:pass', {username: '@username', pass: '@pass'}, {
 				get: {
 					method: 'GET',
 					params: {username: '@username', pass: '@pass'},
-					isArray: false
+					isArray: false,
 					//headers:{'Access-Control-Allow-Origin':'*'}
+					headers:{'X-Auth-Token':window.localStorage['token'],'X-User-Id':window.localStorage['userID']}
 				}
 			});
 		},
 		
 		getPortfolioDetails: function(){
-			return $resource('http://104.131.20.63:3346//userdetails/:id', {id: '@id'}, {
+			return $resource(base+'userdetails/:id', {id: '@id'}, {
 				get: {
 					method: 'GET',
 					params: {id: '@id'},
-					isArray: false
+					isArray: false,
 					//headers:{'Access-Control-Allow-Origin':'*'}
+					headers:{'X-Auth-Token':window.localStorage['token'],'X-User-Id':window.localStorage['userID']}
 				}
 			});
 		},
 		
 		getUserGames: function(){
-			return $resource('http://104.131.20.63:3346//portfoliohome/:id', {id: '@id'}, {
+			return $resource(base+'portfoliohome/:id', {id: '@id'}, {
 				get: {
 					method: 'GET',
 					params: {id: '@id'},
-					isArray: false
+					isArray: false,
 					//headers:{'Access-Control-Allow-Origin':'*'}
+					headers:{'X-Auth-Token':window.localStorage['token'],'X-User-Id':window.localStorage['userID']}
 				}
 			});
 		},
 		
 		getUserGamesDetails: function(){
-			return $resource('http://104.131.20.63:3346//game/:gameid/:id', {gameid: '@gameid', id: '@id'}, {
+			return $resource(base+'game/:gameid/:id', {gameid: '@gameid', id: '@id'}, {
 				get: {
 					method: 'GET',
 					params: {gameid: '@gameid', id: '@id'},
-					isArray: false
+					isArray: false,
 					//headers:{'Access-Control-Allow-Origin':'*'}
+					headers:{'X-Auth-Token':window.localStorage['token'],'X-User-Id':window.localStorage['userID']}
 				}
 			});
 		}
