@@ -1,5 +1,9 @@
 #Last build type
+<<<<<<< HEAD
 #Sat, 03 Jan 2015 08:50:58 +0530
+=======
+#Mon, 05 Jan 2015 09:03:09 +0530
+>>>>>>> origin/master
 
 build.last.target=debug
 
