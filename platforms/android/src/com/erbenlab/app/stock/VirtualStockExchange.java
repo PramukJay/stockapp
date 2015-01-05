@@ -22,13 +22,12 @@ package com.erbenlab.app.stock;
 import android.os.Bundle;
 import org.apache.cordova.*;
 
-public class CordovaApp extends CordovaActivity
+public class VirtualStockExchange extends CordovaActivity
 {
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        super.init();
         // Set by <content src="index.html" /> in config.xml
         loadUrl(launchUrl);
     }

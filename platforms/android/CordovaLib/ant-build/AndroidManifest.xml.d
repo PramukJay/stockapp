@@ -1,2 +1,2 @@
-C:\Users\Kelum Anthony\Desktop\stockapp\platforms\android\CordovaLib\ant-build\AndroidManifest.xml : \
-C:\Users\Kelum Anthony\Desktop\stockapp\platforms\android\CordovaLib\AndroidManifest.xml \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/CordovaLib/ant-build/AndroidManifest.xml : \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/CordovaLib/AndroidManifest.xml \

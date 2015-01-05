@@ -5,11 +5,7 @@ var status = window.localStorage["status"];
 var gameID = window.localStorage["gameID"];
 var pageName = window.localStorage["pageName"];
 var json = window.localStorage["jsonObj"];
-<<<<<<< HEAD
-window.localStorage['token'] = 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ';
-=======
 window.localStorage["token"] = "u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ";
->>>>>>> origin/master
 angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 
 .run(function($ionicPlatform, $cordovaSQLite, $ionicPopup) {
@@ -196,7 +192,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
             	//$scope.loading = false;
             }else{
             	$scope.loading = false;
-            	$ionicPopup.alert({title: 'Stock App', template: 'Invalid User.'});
+            	$ionicPopup.alert({title: 'VCE', template: 'Invalid User.'});
             	$scope.loginData.username = "";
             	$scope.loginData.pwd = "";
             }
@@ -205,7 +201,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			console.log("Auth.signin.error!");
 	    });
 	    }else{
-	    	$ionicPopup.alert({title: 'Stock App', template: 'Please enter username and password.'});
+	    	$ionicPopup.alert({title: 'VSE', template: 'Please enter username and password.'});
 	    }
 	    
 	};
@@ -306,7 +302,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			$scope.response = res;
 			var status = $scope.response.data.status;
 			if(!(status == 'Regular Trading') & !(status == 'Market Close') & !(status == 'Trade Cancellation') & !(status == 'Closing Price Publication') & !(status == 'Post-Close')){
-				$ionicPopup.alert({title: 'Stock App', template: 'Regular trading session will start at 9.30AM. Loading previous summary instead.'});
+				$ionicPopup.alert({title: 'VSE', template: 'Regular trading session will start at 9.30AM. Loading previous summary instead.'});
 				//hide();
 				$interval.cancel(refresh);
 			}else{
@@ -479,7 +475,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			$scope.response = res;
 			var status = $scope.response.data.status;
 			if(!(status == 'Regular Trading') & !(status == 'Market Close') & !(status == 'Trade Cancellation')){
-				$ionicPopup.alert({title: 'Stock App', template: 'Regular trading session will start at 9.30AM. Loading previous data instead.'});
+				$ionicPopup.alert({title: 'VSE', template: 'Regular trading session will start at 9.30AM. Loading previous data instead.'});
 				$interval.cancel(refresh);
 			}else{
 				if(load){
@@ -623,16 +619,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 					//window.location.href="vstoxPortfolio.html";
 				}else{
 					hide();
-					$ionicPopup.alert({title: 'Stock App', template: 'Invalid login details.'});
+					$ionicPopup.alert({title: 'VSE', template: 'Invalid login details.'});
 					$scope.loginData.username = "";
 					$scope.loginData.pass = "";
 				}
 			}, function(error){
 				hide();
-				$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
+				$ionicPopup.alert({title: 'VSE', template: 'error '+error});
 			});
 		}else{
-			$ionicPopup.alert({title: 'Stock App', template: 'Please enter username & password.'});
+			$ionicPopup.alert({title: 'VSE', template: 'Please enter username & password.'});
 		}
 	};
 	
@@ -746,7 +742,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			hide();
 			//$ionicPopup.alert({title: 'Stock App', template: $scope.securitiesArr});
 		}, function(error){
-			$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
+			$ionicPopup.alert({title: 'VSE', template: 'error '+error});
 		});
 	}
 	
@@ -771,7 +767,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	
 	function show() {
 	    $ionicLoading.show({
-	      template: 'Loading your profile<br/><span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
+	      template: 'Loading<br/><span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
 	    });
     }
     function hide(){
@@ -790,7 +786,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			hide();	
 			//$ionicPopup.alert({title: 'Stock App', template: $scope.securitiesArr});
 		}, function(error){
-			$ionicPopup.alert({title: 'Stock App', template: 'error '+error});
+			$ionicPopup.alert({title: 'VSE', template: 'error '+error});
 		});
     }
     
@@ -822,13 +818,67 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	$scope.page_name = window.localStorage["pageName"];
 	//$ionicPopup.alert({title: 'Stock App', template: 'Hello Tabs<br>' + $scope.gameid + " " + $scope.page_name});
 })
-.controller('BuyAndSellCtrl', function($scope){
+.controller('BuyAndSellCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, UserProfile){
+	$scope.secArr = [];
+ 
+	  function show() {
+	      $ionicLoading.show({
+	        template: 'Loading securities<br/><span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
+	      });
+	     }
+	     function hide(){
+	      $ionicLoading.hide();
+	     }
+	     loadBuySellSecurities();
+	     show();
+	     
+	     function loadBuySellSecurities(){
+	      var sec = UserProfile.getBuySellSecurities();
+	      
+	      sec.get(function(data){
+	    //$ionicPopup.alert({title: 'Stock App', template: 'success '});
+	    $scope.secArr = data.securities;
+	    
+	    hide(); 
+	    
+	   }, function(error){
+	    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
+	   });
+     }
+	
 	$scope.showPortfolioHome = function(){
 		window.location.href="vstoxPortfolio.html#/portfoliohome/" + window.localStorage["userID"];
 	};
 	
 })
-.controller('WatchlistCtrl', function($scope){
+.controller('WatchlistCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, UserProfile){
+	$scope.game_id = window.localStorage["gameID"];
+	$scope.user_id = window.localStorage["userID"];
+	$scope.watchListArr = [];
+	
+	function show() {
+	    $ionicLoading.show({
+	      template: 'Loading Watchlist<br/><span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
+	    });
+    }
+    function hide(){
+    	$ionicLoading.hide();
+    }
+    loadWatchList();
+    show();
+	
+	function loadWatchList(){
+		var usr = UserProfile.getWatchList();
+    	
+    	usr.get({gameid:$scope.game_id,id:$scope.user_id}, function(data){
+			$scope.watchListArr = data.watch_list;
+			
+			hide();	
+		}, function(error){
+			$ionicPopup.alert({title: 'VSE', template: 'error '+error});
+		});
+	}
+	
 	$scope.showPortfolioHome = function(){
 		window.location.href="vstoxPortfolio.html#/portfoliohome/" + window.localStorage["userID"];
 	};

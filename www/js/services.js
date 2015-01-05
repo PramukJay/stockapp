@@ -72,7 +72,7 @@ angular.module('starter.services', ['ngResource'])
 .factory('UserProfile', function($resource){
 	return{
 		getPortfolio: function(){
-			return $resource('http://localhost:8000/api/v1/user/:username/:pass', {username: '@username', pass: '@pass'}, {
+			return $resource('http://104.131.20.63:3346/user/:username/:pass', {username: '@username', pass: '@pass'}, {
 				get: {
 					method: 'GET',
 					params: {username: '@username', pass: '@pass'},
@@ -124,6 +124,16 @@ angular.module('starter.services', ['ngResource'])
 					//headers:{'Access-Control-Allow-Origin':'*'}
 				}
 			});
-		}
+		},
+		
+		  getBuySellSecurities: function(){
+			  return $resource('http://104.131.20.63:3346//buyandsell/', {
+				  get: {
+					  method: 'GET',
+					  isArray: false
+					  //headers:{'Access-Control-Allow-Origin':'*'}
+				  }
+			  });
+		  }
 	};
 });
