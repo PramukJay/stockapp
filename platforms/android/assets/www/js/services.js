@@ -1,3 +1,5 @@
+var base = "http://localhost:8000/api/v1/";
+
 angular.module('starter.services', ['ngResource'])
 
 /**
@@ -70,12 +72,13 @@ angular.module('starter.services', ['ngResource'])
 .factory('UserProfile', function($resource){
 	return{
 		getPortfolio: function(){
-			return $resource('http://104.131.20.63:3346//user/:username/:pass', {username: '@username', pass: '@pass'}, {
+			return $resource('http://localhost:8000/api/v1/user/:username/:pass', {username: '@username', pass: '@pass'}, {
 				get: {
 					method: 'GET',
 					params: {username: '@username', pass: '@pass'},
-					isArray: false
+					isArray: false,
 					//headers:{'Access-Control-Allow-Origin':'*'}
+					headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token': 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				}
 			});
 		},

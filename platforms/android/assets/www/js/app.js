@@ -5,6 +5,7 @@ var status = window.localStorage["status"];
 var gameID = window.localStorage["gameID"];
 var pageName = window.localStorage["pageName"];
 var json = window.localStorage["jsonObj"];
+window.localStorage['token'] = 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ';
 angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 
 .run(function($ionicPlatform, $cordovaSQLite, $ionicPopup) {

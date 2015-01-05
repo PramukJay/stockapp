@@ -1,6 +1,3 @@
 # view AndroidManifest.xml #generated:6
--keep class com.erbenlab.app.stock.VirtualStockExchange { <init>(...); }
-
-# view AndroidManifest.xml #generated:12
--keep class org.pgsqlite.SQLitePlugin { <init>(...); }
+-keep class com.erbenlab.app.stock.CordovaApp { <init>(...); }
 
