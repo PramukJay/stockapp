@@ -5,6 +5,7 @@ var status = window.localStorage["status"];
 var gameID = window.localStorage["gameID"];
 var pageName = window.localStorage["pageName"];
 var json = window.localStorage["jsonObj"];
+window.localStorage["token"] = "u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ";
 angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 
 .run(function($ionicPlatform, $cordovaSQLite, $ionicPopup) {
@@ -755,6 +756,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	$scope.showHome = function(){
 		window.location.href="menu.html#/menu";
 	};
+	$scope.showPortfolioHome = function(){
+		window.location.href="vstoxPortfolio.html#/portfoliohome/" + window.localStorage["userID"];
+	};
 })
 .controller('PortfolioHomeCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, UserProfile){
 	$scope.user_id = $stateParams.userID;
@@ -815,9 +819,14 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	//$ionicPopup.alert({title: 'Stock App', template: 'Hello Tabs<br>' + $scope.gameid + " " + $scope.page_name});
 })
 .controller('BuyAndSellCtrl', function($scope){
+	$scope.showPortfolioHome = function(){
+		window.location.href="vstoxPortfolio.html#/portfoliohome/" + window.localStorage["userID"];
+	};
 	
 })
 .controller('WatchlistCtrl', function($scope){
-	
+	$scope.showPortfolioHome = function(){
+		window.location.href="vstoxPortfolio.html#/portfoliohome/" + window.localStorage["userID"];
+	};
 });
 
