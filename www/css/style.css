@@ -443,6 +443,7 @@ ion-nav-view {
 	background-repeat: no-repeat;
 	background-position: center 50%;
 	background-size: 55px 55px;
+	pointer-events: none !important;
 }
 .research{
 	background-image: url('../img/ico-research.png');
@@ -522,6 +523,23 @@ ion-nav-view {
 		text-align: center;
 		float: left;
 		width: 33.2%;
+		margin-top:100px;
+	}
+}
+
+@media screen (min-width: 1280px) {
+	.pane, .view {
+		width: 92%;
+		margin: 0 auto;
+	}
+	.has-header {
+		top: 115px;
+	}
+	.menu-container {
+		text-align: center;
+		float: left;
+		width: 25%;
+		margin-top: 100px;
 	}
 }
 

@@ -21,6 +21,9 @@
 	     <td>{{comp.low | number:2}}</td>
 	     <td>{{comp.share_volume | number:2}}</td>
 	    </tr>
+	    <tr>
+	     <td colspan="6" style="text-align: center;" ng-show="!watchListArr.length">No Records</td>
+	    </tr>
 	   </table>
      </div>
   </ion-content>

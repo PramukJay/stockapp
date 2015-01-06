@@ -60,6 +60,9 @@
 		    <td>Total Portfolio Value : </td>
 		    <td style="text-align: right;">{{totalPortfolioValue | number:2}}</td>
 	    </tr>
+	    <tr>
+	     	<td colspan="6" style="text-align: center;" ng-show="!securitiesArr.length">No Records</td>
+	    </tr>
     </table>
     </div> 
   </ion-content>

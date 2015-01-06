@@ -31,6 +31,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 				});
 			}
 		}
+		
 	});
 })
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
