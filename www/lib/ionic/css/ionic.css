@@ -2866,7 +2866,8 @@ a.subdued {
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 17px;
+    /*font-size: 17px;*/
+    font-size: 20px;
     line-height: 44px; }
     .bar .title.title-left {
       text-align: left; }
@@ -2891,8 +2892,10 @@ a.subdued {
       font-size: 17px; }
       .bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before {
         vertical-align: top;
-        font-size: 32px;
-        line-height: 32px; }
+        /*font-size: 32px;
+        line-height: 32px;*/
+        font-size: 45px;
+        line-height: 45px; }
     .bar .button.button-clear {
       padding-right: 2px;
       padding-left: 2px;

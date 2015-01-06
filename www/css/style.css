@@ -344,11 +344,13 @@ ion-nav-view {
 	background: transparent;
 }
 .back-button {
-	height: 30px;
-	width: 30px
+	/*height: 30px;
+	width: 30px*/
+	height: 45px;
+	width: 45px;
 	position: absolute;
-	top: 25px;
-	left: 10px;
+	top: 18px;
+	left: 15px;
 }
 .item-header {
 	height: 53px;
