@@ -159,7 +159,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     link: function (scope, ele, attrs) {
       scope.$watch(attrs.dynamic, function(html) {
         ele.html(html);
-        ele.css("width", "100%");
         $compile(ele.contents())(scope);
       });
     }
@@ -708,8 +707,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			feed = x2js.xml_str2json(data);
             $scope.forumFeed = feed.rss.channel.item;
             for(var i = 0;i<$scope.forumFeed.length;i++){
-            	inner_tags = inner_tags + '<tr><td style="font-size: 14px; text-align: left;">' + $scope.forumFeed[i].title + '</td></tr>';
-            	inner_tags = inner_tags + '<tr><td style="font-size: 10px; text-align: left;">' + $scope.forumFeed[i].description + '</td></tr>';
+            	inner_tags = inner_tags + '<tr><td style="font-size: 14px; text-align: left; max-width: 100px;">' + $scope.forumFeed[i].title + '</td></tr>';
+            	inner_tags = inner_tags + '<tr><td style="font-size: 10px; text-align: left; max-width: 100px;">' + $scope.forumFeed[i].description + '</td></tr>';
             }
             $scope.output = tag_begin + inner_tags + tag_end;
             hide();

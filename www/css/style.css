@@ -461,10 +461,11 @@ ion-nav-view {
 }
 .buyandsell-last tr th {
 	background: #8295e8;
+	font-size: 10px;
 }
 .buyandsell-last td {
 	padding: 4px;
-	color: white;
+	color: black;
 	font-size: 10px;
 }
 .buyandsell-last tr:nth-child(even) {
