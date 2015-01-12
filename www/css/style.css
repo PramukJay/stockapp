@@ -469,11 +469,11 @@ ion-nav-view {
 	font-size: 10px;
 }
 .buyandsell-last tr:nth-child(even) {
-	background: #051549;
-	border-bottom: 1px #eeeeee solid;
+	background: #eeeeee;
+	border-bottom: 1px #ffffff solid;
 }
 .buyandsell-last tr:nth-child(odd) {
-	background: #020d2e;
+	background: #ffffff;
 	border-bottom: 1px #ffffff solid;
 }
 
