@@ -1,12 +1,10 @@
 <ion-view title="{{page_name}}">
-<ion-nav-buttons side="right" >
-  	<a type="button" ng-click="logout()" class="icon ion-log-out pull-right menu-user"></a>
+  <ion-nav-buttons side="left" >
+  	<a type="button" ng-click="showPortfolioHome()" class="icon ion-arrow-left-c pull-left menu-home"></a>
   </ion-nav-buttons>
   <ion-content>
-  <center>
-   <div style="color: white;border-bottom: 1px #274fc9 solid;background: #08187a; width: 100%">
-	
-    <table class="market-summary-2">
+   <div style="color: white; solid;background: rgba(16,47,146,1); width: 100%">
+    <table class="portfolio-details">
 	    <tr>
 		    <td>Player Name :</td>
 		    <td style="text-align: left;">{{realName}}</td> 
@@ -20,7 +18,7 @@
 		    <td style="text-align: left;">{{ranking}}</td>
 	    </tr>
 	     <tr>
-		    <td colspan="2" style="text-align: left;">My Portfolio</td>
+		    <td colspan="2" style="text-align: left; border-bottom: 0px;">My Portfolio</td>
 	    </tr>
     </table>  
    </div>
@@ -44,7 +42,7 @@
 	   <td style="text-align: right;">{{comp.total_cost | number:2}}</td>
 	   <td style="text-align: right;">{{comp.last_trade_price | number:2}}</td>
 	   <td style="text-align: right; padding-right: 5px;">{{comp.last_trade_price * comp.position | number:2}}</td>
-	   <!--<td style="text-align: right;">{{comp.last_trade_price | number:2}}</td>!-->
+	   <!--<td style="text-align: right;">{{comp.last_trade_price | number:2}}</td>-->
 	   
 	  </tr>
  	</table>
@@ -61,6 +59,9 @@
 	    <tr>
 		    <td>Total Portfolio Value : </td>
 		    <td style="text-align: right;">{{totalPortfolioValue | number:2}}</td>
+	    </tr>
+	    <tr>
+	     	<td colspan="6" style="text-align: center;" ng-show="!securitiesArr.length">No Records</td>
 	    </tr>
     </table>
     </div> 

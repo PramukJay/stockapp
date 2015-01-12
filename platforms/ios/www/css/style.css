@@ -30,7 +30,7 @@ body {
 }
 .tabs {
 	background-color: #000 !important;
-	color: #0039a9 !important;
+	/*color: #0039a9 !important;*/
 }
 .bar.bar-stable {
 	background: -moz-linear-gradient(top, rgba(2,19,75,1) 0%, rgba(22,56,166,1) 100%);
@@ -41,7 +41,7 @@ body {
 	background: linear-gradient(to bottom, rgba(2,19,75,1) 0%, rgba(22,56,166,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02134b', endColorstr='#1638a6', GradientType=0 );
 	color: #fff;
-	height: 80px;
+	height: 88px;
 }
 .bar.bar-stable .title {
 	color: #fff;
@@ -124,6 +124,20 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 }
 
 .market-summary-2 td {
+	text-align: left;
+	padding: 10px;
+}
+
+.portfolio-details{
+	width: 100%;
+}
+
+.portfolio-details tr {
+	background: rgba(16,47,146,1);
+	border-bottom: 1px #274fc9 solid;
+}
+
+.portfolio-details td {
 	text-align: left;
 	padding: 10px;
 }
@@ -303,6 +317,9 @@ table td {
 .has-header {
 	top: 88px !important;
 }
+#tbl tr td{
+	width: 100% !important;
+}
 
 .bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before {
 	color: #fff;
@@ -330,8 +347,10 @@ ion-nav-view {
 	background: transparent;
 }
 .back-button {
-	height: 30px;
-	width: 30px
+	/*height: 30px;
+	width: 30px*/
+	height: 38px;
+	width: 38px;
 	position: absolute;
 	top: 25px;
 	left: 10px;
@@ -424,11 +443,12 @@ ion-nav-view {
 	padding-top: 5px;
 	border-bottom: 1px #153fc1 solid;
 }
-.marketSM, .research, .forum, .announceMnt, .gainerLosers, .priceLst, .news, .listedSecu, .myPortfolio {
+.marketSM, .gameSM, .research, .forum, .announceMnt, .gainerLosers, .priceLst, .news, .listedSecu, .myPortfolio {
 	background-image: url('../img/ico-market-sum.png');
 	background-repeat: no-repeat;
 	background-position: center 50%;
 	background-size: 55px 55px;
+	pointer-events: none !important;
 }
 .research{
 	background-image: url('../img/ico-research.png');
@@ -442,6 +462,10 @@ ion-nav-view {
 .gainerLosers {
 	background-image: url('../img/ico-gainloose.png');
 }
+.gameSM{
+	background-image: url('../img/game-sm.png');
+}
+
 .priceLst {
 	background-image: url('../img/ico-price-list.png');
 }
@@ -508,6 +532,23 @@ ion-nav-view {
 		text-align: center;
 		float: left;
 		width: 33.2%;
+		margin-top:100px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.pane, .view {
+		width: 92%;
+		margin: 0 auto;
+	}
+	.has-header {
+		top: 115px;
+	}
+	.menu-container {
+		text-align: center;
+		float: left;
+		width: 25%;
+		margin-top:100px;
 	}
 }
 

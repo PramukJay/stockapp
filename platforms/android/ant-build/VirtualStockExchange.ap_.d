@@ -53,6 +53,7 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/Blue.png \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/down-arrow.png \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/erbenlogo.png \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/game-sm.png \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/ico-announce-ov.png \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/ico-announce.png \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/ico-forum-ov.png \
@@ -187,6 +188,7 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/price-list-detail.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/price-list.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/research.html \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/security-buy-and-sell.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-buyandsell.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-dash.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-help.html \

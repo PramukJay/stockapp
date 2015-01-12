@@ -1,4 +1,4 @@
-var base = "http://localhost:8000/api/v1/";
+var base = "http://104.131.20.63:3346/";
 
 angular.module('starter.services', ['ngResource'])
 
@@ -72,66 +72,66 @@ angular.module('starter.services', ['ngResource'])
 .factory('UserProfile', function($resource){
 	return{
 		getPortfolio: function(){
-			return $resource('http://104.131.20.63:3346/user/:username/:pass', {username: '@username', pass: '@pass'}, {
+			return $resource(base+'user/:username/:pass', {username: '@username', pass: '@pass'}, {
 				get: {
 					method: 'GET',
 					params: {username: '@username', pass: '@pass'},
 					isArray: false
-					//headers:{'Access-Control-Allow-Origin':'*'}
+					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				}
 			});
 		},
 		
 		getPortfolioDetails: function(){
-			return $resource('http://104.131.20.63:3346//userdetails/:id', {id: '@id'}, {
+			return $resource(base+'userdetails/:id', {id: '@id'}, {
 				get: {
 					method: 'GET',
 					params: {id: '@id'},
 					isArray: false
-					//headers:{'Access-Control-Allow-Origin':'*'}
+					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				}
 			});
 		},
 		
 		getUserGames: function(){
-			return $resource('http://104.131.20.63:3346//portfoliohome/:id', {id: '@id'}, {
+			return $resource(base+'portfoliohome/:id', {id: '@id'}, {
 				get: {
 					method: 'GET',
 					params: {id: '@id'},
 					isArray: false
-					//headers:{'Access-Control-Allow-Origin':'*'}
+					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				}
 			});
 		},
 		
 		getUserGamesDetails: function(){
-			return $resource('http://104.131.20.63:3346//game/:gameid/:id', {gameid: '@gameid', id: '@id'}, {
+			return $resource(base+'game/:gameid/:id', {gameid: '@gameid', id: '@id'}, {
 				get: {
 					method: 'GET',
 					params: {gameid: '@gameid', id: '@id'},
 					isArray: false
-					//headers:{'Access-Control-Allow-Origin':'*'}
+					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				}
 			});
 		},
 		
 		getWatchList: function(){
-			return $resource('http://104.131.20.63:3346//watchlist/:gameid/:id', {gameid: '@gameid', id: '@id'}, {
+			return $resource(base+'watchlist/:gameid/:id', {gameid: '@gameid', id: '@id'}, {
 				get: {
 					method: 'GET',
 					params: {gameid: '@gameid', id: '@id'},
 					isArray: false
-					//headers:{'Access-Control-Allow-Origin':'*'}
+					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				}
 			});
 		},
 		
 		  getBuySellSecurities: function(){
-			  return $resource('http://104.131.20.63:3346//buyandsell/', {
+			  return $resource(base+'buyandsell/', {
 				  get: {
 					  method: 'GET',
 					  isArray: false
-					  //headers:{'Access-Control-Allow-Origin':'*'}
+					 // headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				  }
 			  });
 		  }

@@ -1,6 +1,6 @@
 <ion-view title="Buy and Sell">
 	<ion-nav-buttons side="left" >
-  	<a type="button" ng-click="showPortfolioHome()" class="icon ion-ios7-arrow-thin-left pull-left menu-home"></a>
+  	<a type="button" ng-click="showPortfolioHome()" class="icon ion-arrow-left-c pull-left menu-home"></a>
   </ion-nav-buttons>
   <ion-content class="">
     <div style="color: white;">
@@ -14,8 +14,8 @@
 	     <th>Share<br /> Volume</th>
 	    </tr>
 	    <tr style="display:table-row;" ng-repeat="comp in secArr">
-	     <td style="text-align: left; max-width: 100px;">{{comp.security_id}}</td>
-	     <td>{{comp.last_trade_price | number:0}}</td>
+	     <td style="text-align: left; max-width: 100px;" ng-click="showBuySell(comp)">{{comp.security_id}}</td>
+	     <td>{{comp.last_trade_price | number:2}}</td>
 	     <td>{{comp.change | number}}</td>
 	     <td>{{comp.high | number:2}}</td>
 	     <td>{{comp.low | number:2}}</td>

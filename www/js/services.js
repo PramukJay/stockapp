@@ -1,4 +1,4 @@
-var base = "http://104.131.20.63:3346/api/v1/";
+var base = "http://104.131.20.63:3346/";
 
 angular.module('starter.services', ['ngResource'])
 
@@ -76,8 +76,8 @@ angular.module('starter.services', ['ngResource'])
 				get: {
 					method: 'GET',
 					params: {username: '@username', pass: '@pass'},
-					isArray: false,
-					headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
+					isArray: false
+					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				}
 			});
 		},
@@ -87,8 +87,8 @@ angular.module('starter.services', ['ngResource'])
 				get: {
 					method: 'GET',
 					params: {id: '@id'},
-					isArray: false,
-					headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
+					isArray: false
+					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				}
 			});
 		},
@@ -98,8 +98,8 @@ angular.module('starter.services', ['ngResource'])
 				get: {
 					method: 'GET',
 					params: {id: '@id'},
-					isArray: false,
-					headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
+					isArray: false
+					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				}
 			});
 		},
@@ -109,8 +109,8 @@ angular.module('starter.services', ['ngResource'])
 				get: {
 					method: 'GET',
 					params: {gameid: '@gameid', id: '@id'},
-					isArray: false,
-					headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
+					isArray: false
+					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				}
 			});
 		},
@@ -120,8 +120,8 @@ angular.module('starter.services', ['ngResource'])
 				get: {
 					method: 'GET',
 					params: {gameid: '@gameid', id: '@id'},
-					isArray: false,
-					headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
+					isArray: false
+					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				}
 			});
 		},
@@ -130,8 +130,8 @@ angular.module('starter.services', ['ngResource'])
 			  return $resource(base+'buyandsell/', {
 				  get: {
 					  method: 'GET',
-					  isArray: false,
-					  headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
+					  isArray: false
+					 // headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				  }
 			  });
 		  }

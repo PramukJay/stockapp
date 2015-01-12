@@ -151,6 +151,21 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	$urlRouterProvider.otherwise('/menu');
 
 })
+
+.directive('dynamic', function ($compile) {
+  return {
+    restrict: 'A',
+    replace: true,
+    link: function (scope, ele, attrs) {
+      scope.$watch(attrs.dynamic, function(html) {
+        ele.html(html);
+        ele.css("width", "100%");
+        $compile(ele.contents())(scope);
+      });
+    }
+  };
+})
+
 .controller('DashCtrl', function($scope, $cordovaSQLite, $ionicPopup, $ionicLoading, $timeout, stockFactory) {
 	window.location.href="menu.html#/menu";
 	$scope.users = [];
@@ -674,6 +689,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	});
 })
 .controller('ForumCtrl', function($scope, $http, $ionicLoading, ForumFactory){
+	var tag_begin = '<table class="default" id="tbl">';
+	var tag_end = '</table>';
+	var inner_tags = '';
 	function show() {
 	    $ionicLoading.show({
 	      template: '<span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
@@ -689,6 +707,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			$scope.testData = $scope.menu;
 			feed = x2js.xml_str2json(data);
             $scope.forumFeed = feed.rss.channel.item;
+            for(var i = 0;i<$scope.forumFeed.length;i++){
+            	inner_tags = inner_tags + '<tr><td style="font-size: 14px; text-align: left;">' + $scope.forumFeed[i].title + '</td></tr>';
+            	inner_tags = inner_tags + '<tr><td style="font-size: 10px; text-align: left;">' + $scope.forumFeed[i].description + '</td></tr>';
+            }
+            $scope.output = tag_begin + inner_tags + tag_end;
             hide();
             //$scope.testData = $scope.forumFeed[0].title;
             
@@ -819,9 +842,30 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	$scope.page_name = window.localStorage["pageName"];
 	//$ionicPopup.alert({title: 'Stock App', template: 'Hello Tabs<br>' + $scope.gameid + " " + $scope.page_name});
 })
-.controller('BuyAndSellCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, UserProfile){
+.controller('BuyAndSellCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, $ionicModal, UserProfile){
 	$scope.secArr = [];
  
+ 	//Creating the buy and sell modal
+ 	$ionicModal.fromTemplateUrl('templates/security-buy-and-sell.html', {
+    	scope: $scope
+    }).then(function(modal) {
+    	$scope.modal = modal;
+    });
+    
+    //Closing the buy and sell modal
+    $scope.closeBuySell = function() {
+    	$scope.modal.hide();
+    };
+    
+    //Open the buy and sell modal
+    $scope.showBuySell = function(security) {
+    	$scope.modal.show();
+    	$scope.security_id = security.security_id;
+    	$scope.current_price = security.last_trade_price;
+    	
+    };
+    
+    
 	  function show() {
 	      $ionicLoading.show({
 	        template: 'Loading securities<br/><span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
