@@ -877,7 +877,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     }).then(function(modal) {
     	$scope.modal = modal;
     });
-    
+        
     //Closing the buy and sell modal
     $scope.closeBuySell = function() {
     	$scope.modal.hide();
@@ -903,6 +903,25 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     	}, function(error){
 	    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
 	   });
+    };
+    
+    //Creating the order preview modal
+    $ionicModal.fromTemplateUrl('templates/preview-order.html', {
+    	scope: $scope
+    }).then(function(modal) {
+    	$scope.previewModal = modal;
+    });
+    
+    //Open the preview modal
+    $scope.openPreview = function() {
+    	$scope.modal.hide();
+    	$scope.previewModal.show();
+    };
+    
+    //Close the preview modal
+    $scope.closePreview = function() {
+    	$scope.previewModal.hide();
+    	$scope.modal.show();
     };
 	
 	$scope.showPortfolioHome = function(){

@@ -14,8 +14,8 @@
 	     <th>Share<br /> Volume</th>
 	    </tr>
 	    <tr style="display:table-row;" ng-repeat="comp in secArr">
-	     <!--td style="text-align: left; max-width: 100px;" ng-click="showBuySell(comp.security_id)">{{comp.security_id}}</td-->
-	     <td style="text-align: left; max-width: 100px;">{{comp.security_id}}</td>
+	     <td style="text-align: left; max-width: 100px;" ng-click="showBuySell(comp.security_id)">{{comp.security_id}}</td>
+	     <!--td style="text-align: left; max-width: 100px;">{{comp.security_id}}</td-->
 	     <td>{{comp.last_trade_price | number:2}}</td>
 	     <td>{{comp.change | number}}</td>
 	     <td>{{comp.high | number:2}}</td>

@@ -877,7 +877,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     }).then(function(modal) {
     	$scope.modal = modal;
     });
-    
+        
     //Closing the buy and sell modal
     $scope.closeBuySell = function() {
     	$scope.modal.hide();
@@ -889,17 +889,39 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     	$scope.modal.show();
     	
     	$scope.securityDetailsArr = [];
+    	show();
     	
     	var sec = UserProfile.getBuySellSecurityDetails();
     	sec.get({gameid:window.localStorage["gameID"],userid:window.localStorage["userID"], sid:security}, function(data){
     		$scope.securityDetailsArr = data.share_history;
+    		$scope.symbol = security;
     		$scope.name = data.user_details[0].real_name;
     		$scope.address = data.user_details[0].address;
     		$scope.buying_power = data.buying_power[0].buying_power;
-    		$scope.symbol = security;
+    		
+    		hide();
     	}, function(error){
 	    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
 	   });
+    };
+    
+    //Creating the order preview modal
+    $ionicModal.fromTemplateUrl('templates/preview-order.html', {
+    	scope: $scope
+    }).then(function(modal) {
+    	$scope.previewModal = modal;
+    });
+    
+    //Open the preview modal
+    $scope.openPreview = function() {
+    	$scope.modal.hide();
+    	$scope.previewModal.show();
+    };
+    
+    //Close the preview modal
+    $scope.closePreview = function() {
+    	$scope.previewModal.hide();
+    	$scope.modal.show();
     };
 	
 	$scope.showPortfolioHome = function(){
