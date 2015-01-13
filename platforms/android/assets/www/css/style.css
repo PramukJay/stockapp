@@ -128,6 +128,34 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 	padding: 10px;
 }
 
+.buyandsell-1{
+	width: 95%;
+	margin: 0 auto;
+}
+
+.buyandsell-1 tr {
+	background: lightblue;
+}
+
+.buyandsell-1 td {
+	text-align: left;
+	padding: 5px;
+}
+
+.buyandsell-2{
+	width: 95%;
+	margin: 0 auto;
+}
+
+.buyandsell-2 tr {
+	background: #9aadff;
+}
+
+.buyandsell-2 td {
+	text-align: left;
+	padding: 5px;
+}
+
 .portfolio-details{
 	width: 100%;
 }
@@ -427,6 +455,28 @@ ion-nav-view {
 	border-bottom: 1px #274fc9 solid;
 }
 
+.buyandsell-last{
+	width: 95%;
+	margin: 0 auto;
+}
+.buyandsell-last tr th {
+	background: #8295e8;
+	font-size: 10px;
+}
+.buyandsell-last td {
+	padding: 4px;
+	color: black;
+	font-size: 10px;
+}
+.buyandsell-last tr:nth-child(even) {
+	background: #eeeeee;
+	border-bottom: 1px #ffffff solid;
+}
+.buyandsell-last tr:nth-child(odd) {
+	background: #ffffff;
+	border-bottom: 1px #ffffff solid;
+}
+
 .item-divider {
 	background: rgba(13,42,133,1);
 	background: -moz-linear-gradient(top, rgba(13,42,133,1) 0%, rgba(6,30,106,1) 100%);
@@ -520,11 +570,19 @@ ion-nav-view {
 	border-radius: 50%;
 }
 .test{
-	background-image: url(../img/bg.png);
+	/*background-image: url(../img/bg.png);
 	background-position: center top;
-	background-repeat: no-repeat;
-	background-color: #000;
+	background-repeat: no-repeat;*/
+	background-color: #fff;
 	font-family: arial;
+}
+.custom-button{
+	height: 50px;
+	padding: 7px;
+	margin-right: 15px;
+	margin-bottom: 10px;
+	background: #eeeeee;
+	border-radius: 10px;
 }
 .bar-header{
 	background-color: black;

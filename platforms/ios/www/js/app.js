@@ -154,12 +154,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 
 .directive('dynamic', function ($compile) {
   return {
-    restrict: 'AC',
+    restrict: 'A',
     replace: true,
     link: function (scope, ele, attrs) {
       scope.$watch(attrs.dynamic, function(html) {
         ele.html(html);
-        ele.css("width", "100%");
         $compile(ele.contents())(scope);
       });
     }
@@ -708,8 +707,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			feed = x2js.xml_str2json(data);
             $scope.forumFeed = feed.rss.channel.item;
             for(var i = 0;i<$scope.forumFeed.length;i++){
-            	inner_tags = inner_tags + '<tr><td style="font-size: 14px; text-align: left;">' + $scope.forumFeed[i].title + '</td></tr>';
-            	inner_tags = inner_tags + '<tr><td style="font-size: 10px; text-align: left;">' + $scope.forumFeed[i].description + '</td></tr>';
+            	inner_tags = inner_tags + '<tr><td style="font-size: 14px; text-align: left; max-width: 100px;">' + $scope.forumFeed[i].title + '</td></tr>';
+            	inner_tags = inner_tags + '<tr><td style="font-size: 10px; text-align: left; max-width: 100px;">' + $scope.forumFeed[i].description + '</td></tr>';
             }
             $scope.output = tag_begin + inner_tags + tag_end;
             hide();
@@ -842,9 +841,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	$scope.page_name = window.localStorage["pageName"];
 	//$ionicPopup.alert({title: 'Stock App', template: 'Hello Tabs<br>' + $scope.gameid + " " + $scope.page_name});
 })
-.controller('BuyAndSellCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, UserProfile){
+.controller('BuyAndSellCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, $ionicModal, UserProfile){
 	$scope.secArr = [];
  
+ 	   
+    
 	  function show() {
 	      $ionicLoading.show({
 	        template: 'Loading securities<br/><span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
@@ -869,6 +870,37 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
 	   });
      }
+     
+     //Creating the buy and sell modal
+ 	$ionicModal.fromTemplateUrl('templates/security-buy-and-sell.html', {
+    	scope: $scope
+    }).then(function(modal) {
+    	$scope.modal = modal;
+    });
+    
+    //Closing the buy and sell modal
+    $scope.closeBuySell = function() {
+    	$scope.modal.hide();
+    	
+    };
+    
+    //Open the buy and sell modal
+    $scope.showBuySell = function(security) {
+    	$scope.modal.show();
+    	
+    	$scope.securityDetailsArr = [];
+    	
+    	var sec = UserProfile.getBuySellSecurityDetails();
+    	sec.get({gameid:window.localStorage["gameID"],userid:window.localStorage["userID"], sid:security}, function(data){
+    		$scope.securityDetailsArr = data.share_history;
+    		$scope.name = data.user_details[0].real_name;
+    		$scope.address = data.user_details[0].address;
+    		$scope.buying_power = data.buying_power[0].buying_power;
+    		$scope.symbol = security;
+    	}, function(error){
+	    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
+	   });
+    };
 	
 	$scope.showPortfolioHome = function(){
 		window.location.href="vstoxPortfolio.html#/portfoliohome/" + window.localStorage["userID"];

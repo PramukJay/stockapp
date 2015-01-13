@@ -844,26 +844,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 .controller('BuyAndSellCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, $ionicModal, UserProfile){
 	$scope.secArr = [];
  
- 	//Creating the buy and sell modal
- 	$ionicModal.fromTemplateUrl('templates/security-buy-and-sell.html', {
-    	scope: $scope
-    }).then(function(modal) {
-    	$scope.modal = modal;
-    });
-    
-    //Closing the buy and sell modal
-    $scope.closeBuySell = function() {
-    	$scope.modal.hide();
-    };
-    
-    //Open the buy and sell modal
-    $scope.showBuySell = function(security) {
-    	$scope.modal.show();
-    	$scope.security_id = security.security_id;
-    	$scope.current_price = security.last_trade_price;
-    	
-    };
-    
+ 	   
     
 	  function show() {
 	      $ionicLoading.show({
@@ -889,6 +870,40 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
 	   });
      }
+     
+     //Creating the buy and sell modal
+ 	$ionicModal.fromTemplateUrl('templates/security-buy-and-sell.html', {
+    	scope: $scope
+    }).then(function(modal) {
+    	$scope.modal = modal;
+    });
+    
+    //Closing the buy and sell modal
+    $scope.closeBuySell = function() {
+    	$scope.modal.hide();
+    	
+    };
+    
+    //Open the buy and sell modal
+    $scope.showBuySell = function(security) {
+    	$scope.modal.show();
+    	
+    	$scope.securityDetailsArr = [];
+    	show();
+    	
+    	var sec = UserProfile.getBuySellSecurityDetails();
+    	sec.get({gameid:window.localStorage["gameID"],userid:window.localStorage["userID"], sid:security}, function(data){
+    		$scope.securityDetailsArr = data.share_history;
+    		$scope.symbol = security;
+    		$scope.name = data.user_details[0].real_name;
+    		$scope.address = data.user_details[0].address;
+    		$scope.buying_power = data.buying_power[0].buying_power;
+    		
+    		hide();
+    	}, function(error){
+	    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
+	   });
+    };
 	
 	$scope.showPortfolioHome = function(){
 		window.location.href="vstoxPortfolio.html#/portfoliohome/" + window.localStorage["userID"];

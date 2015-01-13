@@ -576,6 +576,14 @@ ion-nav-view {
 	background-color: #fff;
 	font-family: arial;
 }
+.custom-button{
+	height: 50px;
+	padding: 7px;
+	margin-right: 15px;
+	margin-bottom: 10px;
+	background: #eeeeee;
+	border-radius: 10px;
+}
 .bar-header{
 	background-color: black;
 	border: 0px;

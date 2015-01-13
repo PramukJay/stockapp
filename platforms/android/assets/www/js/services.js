@@ -134,6 +134,17 @@ angular.module('starter.services', ['ngResource'])
 					 // headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				  }
 			  });
+		  },
+		  
+		  getBuySellSecurityDetails: function(){
+			  return $resource(base+'buy/:gameid/:userid/:sid', {gameid: '@gameid', userid: '@userid', sid: '@sid'}, {
+				  get: {
+					  method: 'GET',
+					  params: {gameid: '@gameid', userid: '@userid', sid: '@sid'},
+					  isArray: false
+					 // headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
+				  }
+			  });
 		  }
 	};
 });

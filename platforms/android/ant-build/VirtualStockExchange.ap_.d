@@ -90,6 +90,7 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/ionic/css \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/ionic/fonts \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/ionic/js \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/ionic/js.zip \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/ionic/scss \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/ionic/version.json \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/ionic/css/ionic.css \
