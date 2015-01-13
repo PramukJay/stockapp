@@ -55,32 +55,32 @@
     <br />
     <table class="buyandsell-1" style="margin-bottom: 10px;">
     	<tr>
-    		<td style="text-align: right; vertical-align: middle;">
+    		<td style="text-align: right;"><strong>Choose to buy or sell :</strong></td>
+    		<td style="text-align: left; vertical-align: middle;">
     			<select>
-    				<option selected="selected">Select buy or sell</option>
+    				<option selected="selected">Select</option>
     				<option>Buy</option>
     				<option>Sell</option>
     			</select>
     		</td>
-    		<td style="text-align: right; vertical-align: middle;"><strong>Quantity :</strong></td>
-    		<td><input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="border-radius: 5px; height: 20px; width: 100px; background-color: #ffffff; color: black;" /></td>
-    		
     	</tr>
     	<tr>
-    		<td style="text-align: right; vertical-align: middle;"><strong>Price:</strong></td>
-    		<td colspan="2" style="text-align: center; vertical-align: middle;">xxxx.xx</td>
+    		<td style="text-align: right; vertical-align: middle;"><strong>Quantity :</strong></td>
+    		<td style="text-align: left; vertical-align: middle;"><input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="border-radius: 5px; height: 20px; width: 100px; background-color: #ffffff; color: black;" /></td>
     	</tr>
-    </table>
-  	<table align="right">
-  		<tr>
-  			<td>
+    	 <tr>
+    		<td style="text-align: right; vertical-align: middle;"><strong>Price :</strong></td>
+    		<td style="text-align: left; vertical-align: middle;"><strong></strong> xxxx.xx</td>
+    	</tr>
+    	<tr>
+    		<td style="text-align: right; padding: 10px;">
   				<a type="button" class="custom-button" ng-click="">Preview my order</a>
   			</td>
-  			<td>
+  			<td style="text-align: left; padding: 10px;">
   				<a type="button" class="custom-button" ng-click="closeBuySell()">Cancel</a>
   			</td>
-  		</tr>
-  	</table>
+    	</tr>
+    </table>
     
   </ion-content>
  </div>
