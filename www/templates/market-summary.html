@@ -27,7 +27,7 @@
   				<td style="text-align: left; width: 140px;"><span>{{aspi}}</span></td>
 			    <td style="text-align: right;"><span>{{aspi_change}}</span></td>
 			    <td>
-				<div ng-class="{showup: comp.aspi_change > 0 , showuphide: aspi_change < 0 , shownothing: aspi_change == 0.00}" class="icon ion-chevron-up"></div>
+				<div ng-class="{showup: aspi_change > 0 , showuphide: aspi_change < 0 , shownothing: aspi_change == 0.00}" class="icon ion-chevron-up"></div>
 				<div ng-class="{showdown: aspi_change < 0 , showdownhide: aspi_change > 0 , shownothing: aspi_change == 0.00}" class="icon ion-chevron-down"></div>
 				<div ng-class="{showdash: aspi_change == 0.00 , shownothing: aspi_change != 0.00}" class="icon ion-ios7-minus-empty"></div>
 				
@@ -38,7 +38,7 @@
   				<td style="text-align: left; width: 140px;"><span>{{spsl}}</span></td>
 			    <td style="text-align: right;"><span>{{spsl_change}}</span></td>
 			    			    <td>
-				<div ng-class="{showup: comp.spsl_change > 0 , showuphide: spsl_change < 0 , shownothing: spsl_change == 0.00}" class="icon ion-chevron-up"></div>
+				<div ng-class="{showup: spsl_change > 0 , showuphide: spsl_change < 0 , shownothing: spsl_change == 0.00}" class="icon ion-chevron-up"></div>
 				<div ng-class="{showdown: spsl_change < 0 , showdownhide: spsl_change > 0 , shownothing: spsl_change == 0.00}" class="icon ion-chevron-down"></div>
 				<div ng-class="{showdash: spsl_change == 0.00 , shownothing: spsl_change != 0.00}" class="icon ion-ios7-minus-empty"></div>
 				
