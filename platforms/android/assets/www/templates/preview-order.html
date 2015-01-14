@@ -6,12 +6,40 @@
     </div>
   </ion-header-bar>
   <ion-content>
-  	<table class="buyandsell-1">
+  	<table class="buyandsell-1" style="margin-bottom: 10px;">
     	<tr>
     		<td style="text-align: left; border-radius: 10px 10px 0 0;"><strong>Name :</strong> {{name}}</td>
     	</tr>
     	<tr>
     		<td style="text-align: left;"><strong>Address :</strong> {{address}}</td>
+    	</tr>
+    	<tr>
+    		<td style="text-align: left;"><strong>Symbol :</strong> {{symbol}}</td>
+    	</tr>
+    	<tr>
+    		<td style="text-align: left;"><strong>Action :</strong> {{action}}</td>
+    	</tr>
+    	<tr>
+    		<td style="text-align: left;"><strong>Quantity :</strong> {{qty}}</td>
+    	</tr>
+    	<tr>
+    		<td style="text-align: left;"><strong>Price :</strong> </td>
+    	</tr>
+    	<tr>
+    		<td style="text-align: left; border-radius: 0 0 10px 10px;"><strong>Total Value :</strong> </td>
+    	</tr>
+    </table>
+    <table style="width: 100%;;">
+    	<tr>
+    		<td style="text-align: center;">
+    			<a type="button" class="custom-button" ng-click="showBuySell(symbol)">Back</a>
+    		</td>
+    		<td style="text-align: center;">
+    			<a type="button" class="custom-button" ng-click="">Confirm Order</a>
+    		</td>
+    		<td style="text-align: center;">
+    			<a type="button" class="custom-button" ng-click="closePreview()">Cancel</a>
+    		</td>
     	</tr>
     </table>
   </ion-content>

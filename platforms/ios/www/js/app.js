@@ -843,7 +843,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 })
 .controller('BuyAndSellCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, $ionicModal, UserProfile){
 	$scope.secArr = [];
- 
+ 	$scope.parseData = [];
  	   
     
 	  function show() {
@@ -873,19 +873,28 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
      
      //Creating the buy and sell modal
  	$ionicModal.fromTemplateUrl('templates/security-buy-and-sell.html', {
-    	scope: $scope
+    	scope: $scope,
+    	animation: 'slide-in-right'
     }).then(function(modal) {
     	$scope.modal = modal;
     });
-        
+    
+    //Creating the order preview modal
+ 	$ionicModal.fromTemplateUrl('templates/preview-order.html', {
+    	scope: $scope,
+    	animation: 'slide-in-right'
+    }).then(function(modal) {
+    	$scope.previewModal = modal;
+    });
+    
     //Closing the buy and sell modal
     $scope.closeBuySell = function() {
     	$scope.modal.hide();
-    	
     };
     
     //Open the buy and sell modal
     $scope.showBuySell = function(security) {
+    	$scope.previewModal.hide();
     	$scope.modal.show();
     	
     	$scope.securityDetailsArr = [];
@@ -898,30 +907,31 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     		$scope.name = data.user_details[0].real_name;
     		$scope.address = data.user_details[0].address;
     		$scope.buying_power = data.buying_power[0].buying_power;
-    		
+    		$scope.action = "Select";;
+ 			$scope.quantity = 0.00;
     		hide();
     	}, function(error){
 	    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
 	   });
     };
     
-    //Creating the order preview modal
-    $ionicModal.fromTemplateUrl('templates/preview-order.html', {
-    	scope: $scope
-    }).then(function(modal) {
-    	$scope.previewModal = modal;
-    });
     
-    //Open the preview modal
-    $scope.openPreview = function() {
-    	$scope.modal.hide();
-    	$scope.previewModal.show();
-    };
     
-    //Close the preview modal
+    //Closing the order preview modal
     $scope.closePreview = function() {
     	$scope.previewModal.hide();
-    	$scope.modal.show();
+    };
+    
+    //Opening the buy and sell modal
+    $scope.openPreview = function() {
+    	if(!$scope.parseData.action || !$scope.parseData.quantity){
+    		$ionicPopup.alert({title: 'VSE', template: "Please fill in the neccessary fields."});
+    	}else{
+    		$scope.modal.hide();
+	    	$scope.previewModal.show();
+	    	$scope.action = $scope.parseData.action;
+	    	$scope.qty = $scope.parseData.quantity;
+    	}    	
     };
 	
 	$scope.showPortfolioHome = function(){

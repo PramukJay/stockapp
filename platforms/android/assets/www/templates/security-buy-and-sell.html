@@ -54,7 +54,7 @@
     	<tr>
     		<td style="text-align: right;"><strong>Choose to buy or sell :</strong></td>
     		<td style="text-align: left; vertical-align: middle;">
-    			<select>
+    			<select ng-model="parseData.action">
     				<option selected="selected">Select</option>
     				<option>Buy</option>
     				<option>Sell</option>
@@ -63,7 +63,7 @@
     	</tr>
     	<tr>
     		<td style="text-align: right; vertical-align: middle;"><strong>Quantity :</strong></td>
-    		<td style="text-align: left; vertical-align: middle;"><input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="border-radius: 5px; height: 20px; width: 100px; background-color: #ffffff; color: black;" /></td>
+    		<td style="text-align: left; vertical-align: middle;"><input ng-model="parseData.quantity" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="border-radius: 5px; height: 20px; width: 100px; background-color: #ffffff; color: black;" /></td>
     	</tr>
     	 <tr>
     		<td style="text-align: right; vertical-align: middle;"><strong>Price :</strong></td>
