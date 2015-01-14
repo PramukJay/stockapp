@@ -47,6 +47,7 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/portfolio.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/vstoxPortfolio.html \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/css/animate.css \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/css/style.css \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/arrow-down.png \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/bg.png \
