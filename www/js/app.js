@@ -873,7 +873,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
      
      //Creating the buy and sell modal
  	$ionicModal.fromTemplateUrl('templates/security-buy-and-sell.html', {
-    	scope: $scope
+    	scope: $scope,
+    	animation: 'fade-in'
     }).then(function(modal) {
     	$scope.modal = modal;
     });
