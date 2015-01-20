@@ -127,9 +127,10 @@ angular.module('starter.services', ['ngResource'])
 		},
 		
 		  getBuySellSecurities: function(){
-			  return $resource(base+'buyandsell/', {
+			  return $resource(base+'buyandsell/:gameid/:userid', {gameid: '@gameid', userid: '@userid'}, {
 				  get: {
 					  method: 'GET',
+					  params: {gameid: '@gameid', userid: '@userid'},
 					  isArray: false
 					 // headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				  }
@@ -145,6 +146,36 @@ angular.module('starter.services', ['ngResource'])
 					 // headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				  }
 			  });
+		  },
+		  
+		  setWatchlist: function(){
+		  	return $resource(base+'/addtowatchlist/:gameid/:userid/:sid', {gameid: '@gameid', userid: '@userid', sid: '@sid'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid', userid: '@userid', sid: '@sid'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  deleteWatchlist: function(){
+		  	return $resource(base+'/removefromwatchlist/:gameid/:userid/:sid', {gameid: '@gameid', userid: '@userid', sid: '@sid'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid', userid: '@userid', sid: '@sid'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  buySecurity: function(){
+		  	return $resource(base+'/buysellstock/:gameid/:userid/:sid/:ttype/:qty/:total/:mprice', {gameid: '@gameid', userid: '@userid', sid: '@sid', ttype: '@ttype', qty: '@qty', total: '@total', mprice: '@mprice'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid', userid: '@userid', sid: '@sid', ttype: '@ttype', qty: '@qty', total: '@total', mprice: '@mprice'},
+		  			isArray:false
+		  		}
+		  	});
 		  }
 	};
 });

@@ -23,19 +23,19 @@
     		<td style="text-align: left;"><strong>Quantity :</strong> {{qty}}</td>
     	</tr>
     	<tr>
-    		<td style="text-align: left;"><strong>Price :</strong> </td>
+    		<td style="text-align: left;"><strong>Price :</strong> {{lastTradePrice | number:2}}</td>
     	</tr>
     	<tr>
-    		<td style="text-align: left; border-radius: 0 0 10px 10px;"><strong>Total Value :</strong> </td>
+    		<td style="text-align: left; border-radius: 0 0 10px 10px;"><strong>Total Value :</strong> {{total_price | number:2}}</td>
     	</tr>
     </table>
-    <table style="width: 100%;;">
+    <table style="width: 100%;">
     	<tr>
     		<td style="text-align: center;">
-    			<a type="button" class="custom-button" ng-click="showBuySell(symbol)">Back</a>
+    			<a type="button" class="custom-button" ng-click="showBuySell(symbol,2)">Back</a>
     		</td>
     		<td style="text-align: center;">
-    			<a type="button" class="custom-button" ng-click="">Confirm Order</a>
+    			<a type="button" class="custom-button" ng-click="buy(symbol)">Confirm Order</a>
     		</td>
     		<td style="text-align: center;">
     			<a type="button" class="custom-button" ng-click="closePreview()">Cancel</a>

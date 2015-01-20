@@ -145,6 +145,26 @@ angular.module('starter.services', ['ngResource'])
 					 // headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				  }
 			  });
+		  },
+		  
+		  setWatchlist: function(){
+		  	return $resource(base+'/addtowatchlist/:gameid/:userid/:sid', {gameid: '@gameid', userid: '@userid', sid: '@sid'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid', userid: '@userid', sid: '@sid'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  deleteWatchlist: function(){
+		  	return $resource(base+'/removefromwatchlist/:gameid/:userid/:sid', {gameid: '@gameid', userid: '@userid', sid: '@sid'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid', userid: '@userid', sid: '@sid'},
+		  			isArray:false
+		  		}
+		  	});
 		  }
 	};
 });

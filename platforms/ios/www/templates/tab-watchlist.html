@@ -13,7 +13,7 @@
 	     <th>Low</th>
 	     <th>Share<br /> Volume</th>
 	    </tr>
-	    <tr style="display:table-row;" ng-repeat="comp in watchListArr">
+	    <tr style="display:table-row;" ng-repeat="comp in watchListArr" gesture-on-hold="showActionsheet(comp.security_id)">
 	     <td style="text-align: left; max-width: 100px;">{{comp.security_id}}</td>
 	     <td>{{comp.last_trade_price | number:0}}</td>
 	     <td>{{comp.change | number}}</td>

@@ -5,7 +5,9 @@ var status = window.localStorage["status"];
 var gameID = window.localStorage["gameID"];
 var pageName = window.localStorage["pageName"];
 var json = window.localStorage["jsonObj"];
+var transactions_left = window.localStorage["NumberOfTransactions"];
 window.localStorage["token"] = "u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ";
+var broker_rate = 1.12;
 angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 
 .run(function($ionicPlatform, $cordovaSQLite, $ionicPopup) {
@@ -844,8 +846,13 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 .controller('BuyAndSellCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, $ionicModal, UserProfile){
 	$scope.secArr = [];
  	$scope.parseData = [];
- 	   
-    
+ 	var total = 0;
+ 	var tx_type = "";
+ 	var qty = 0;
+ 	var market_price = 0;
+ 	$scope.available_quantity;
+ 		 	   
+ 	    
 	  function show() {
 	      $ionicLoading.show({
 	        template: 'Loading securities<br/><span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
@@ -860,10 +867,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	     function loadBuySellSecurities(){
 	      var sec = UserProfile.getBuySellSecurities();
 	      
-	      sec.get(function(data){
+	      sec.get({gameid:window.localStorage["gameID"], userid:window.localStorage["userID"]}, function(data){
 	    //$ionicPopup.alert({title: 'Stock App', template: 'success '});
 	    $scope.secArr = data.securities;
-	    
+	    window.localStorage["NumberOfTransactions"] = data.transactions_left[0].num_trans;
 	    hide(); 
 	    
 	   }, function(error){
@@ -893,26 +900,48 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     };
     
     //Open the buy and sell modal
-    $scope.showBuySell = function(security) {
-    	$scope.previewModal.hide();
-    	$scope.modal.show();
+    $scope.showBuySell = function(security, page) {
+    	if(window.localStorage["NumberOfTransactions"] > 0){
+    		if(page == 1){
+	    		$scope.parseData.action = "Select";
+		 		$scope.parseData.quantity = 0; 
+		    	$scope.previewModal.hide();
+		    	$scope.modal.show();
+	    	}else{
+	    		//$scope.parseData.action = "Select";
+		 		//$scope.parseData.quantity = 0; 
+		    	$scope.previewModal.hide();
+		    	$scope.modal.show();
+	    	}
+	    	/*$scope.parseData.action = "Select";
+	 		$scope.parseData.quantity = 0; 
+	    	$scope.previewModal.hide();
+	    	$scope.modal.show();*/
+	    	
+	    	$scope.securityDetailsArr = [];
+	    	show();
+	    	
+	    	var sec = UserProfile.getBuySellSecurityDetails();
+	    	sec.get({gameid:window.localStorage["gameID"],userid:window.localStorage["userID"], sid:security}, function(data){
+	    		$scope.securityDetailsArr = data.share_history;
+	    		$scope.symbol = security;
+	    		$scope.name = data.user_details[0].real_name;
+	    		$scope.address = data.user_details[0].address;
+	    		$scope.buying_power = data.buying_power[0].buying_power;
+	    		$scope.action = "Select";
+	 			$scope.quantity = 0.00;
+	 			$scope.lastTradePrice = data.current_market[0].last_trade_price;
+	 			$scope.final_price = $scope.lastTradePrice;
+	 			market_price = $scope.lastTradePrice;
+	 			$scope.available_quantity = data.quantity;
+	    		hide();
+	    	}, function(error){
+		    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
+		   });
+    	}else{
+    		$ionicPopup.alert({title: 'VSE', template: 'You have exceeded your transaction for a day.'});
+    	}
     	
-    	$scope.securityDetailsArr = [];
-    	show();
-    	
-    	var sec = UserProfile.getBuySellSecurityDetails();
-    	sec.get({gameid:window.localStorage["gameID"],userid:window.localStorage["userID"], sid:security}, function(data){
-    		$scope.securityDetailsArr = data.share_history;
-    		$scope.symbol = security;
-    		$scope.name = data.user_details[0].real_name;
-    		$scope.address = data.user_details[0].address;
-    		$scope.buying_power = data.buying_power[0].buying_power;
-    		$scope.action = "Select";;
- 			$scope.quantity = 0.00;
-    		hide();
-    	}, function(error){
-	    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
-	   });
     };
     
     
@@ -924,18 +953,71 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     
     //Opening the buy and sell modal
     $scope.openPreview = function() {
-    	$scope.modal.hide();
-    	$scope.previewModal.show();
-    	$scope.action = $scope.parseData.action;
-    	$scope.qty = $scope.parseData.quantity;
+    	if($scope.parseData.action == "Select" || !$scope.parseData.quantity){
+    		$ionicPopup.alert({title: 'VSE', template: "Please fill in the neccessary fields."});
+    	}else{
+    		if($scope.parseData.action == "SELL" && $scope.parseData.quantity > $scope.available_quantity){
+    			$ionicPopup.alert({title: 'VSE', template: "Selling quantity is more than your current quantity."});
+    		}else{
+    			$scope.modal.hide();
+		    	$scope.previewModal.show();
+		    	$scope.action = $scope.parseData.action;
+		    	$scope.qty = $scope.parseData.quantity;
+		    	tx_type = $scope.parseData.action;
+		    	qty = $scope.qty;
+		    	
+		    	$scope.total_price = (parseFloat($scope.lastTradePrice) + ((parseFloat($scope.lastTradePrice) * broker_rate) / 100)) * parseInt($scope.qty);
+		    	total = parseFloat($scope.lastTradePrice) * parseInt($scope.qty);
+		    	//alert($scope.total_price);
+    		}
+    		
+    	}    	
     };
 	
 	$scope.showPortfolioHome = function(){
 		window.location.href="vstoxPortfolio.html#/portfoliohome/" + window.localStorage["userID"];
 	};
 	
+	$scope.addToWatchlist = function(security){
+		//$ionicPopup.alert({title: 'VSE', template: security});
+		
+		var watchlist = UserProfile.setWatchlist();
+		watchlist.get({gameid:window.localStorage["gameID"], userid:window.localStorage["userID"], sid:security}, function(data){
+			var res = data.result;
+			if(res){
+				$ionicPopup.alert({title: 'VSE', template: 'Added to your watchlist.'});
+			}else{
+				$ionicPopup.alert({title: 'VSE', template: data.error});
+			}
+		}, function(error){
+			$ionicPopup.alert({title: 'VSE', template: 'error '+error});
+		});
+		
+	};
+	
+	$scope.buy = function(security){
+		var buySecurity = UserProfile.buySecurity();
+		buySecurity.get({gameid:window.localStorage["gameID"], userid:window.localStorage["userID"], sid:security, ttype:tx_type, qty:qty, total:total, mprice:market_price}, function(data){
+			if(data.result){
+				$ionicPopup.alert({title: 'VSE', template: data.error});
+			}else{
+				$ionicPopup.alert({title: 'VSE', template: data.error});
+			}
+		});
+	};
+	
+	/*$scope.calculatePrice = function(){
+		//alert($scope.lastTradePrice + "  " + $scope.parseData.quantity);
+		var price = $scope.lastTradePrice * $scope.parseData.quantity;
+		if(price > 0){
+			$scope.final_price = price;
+		}else{
+			$scope.final_price = $scope.lastTradePrice;
+		}
+	};*/
+	
 })
-.controller('WatchlistCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, UserProfile){
+.controller('WatchlistCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, $ionicActionSheet, UserProfile){
 	$scope.game_id = window.localStorage["gameID"];
 	$scope.user_id = window.localStorage["userID"];
 	$scope.watchListArr = [];
@@ -966,5 +1048,49 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	$scope.showPortfolioHome = function(){
 		window.location.href="vstoxPortfolio.html#/portfoliohome/" + window.localStorage["userID"];
 	};
+	
+	$scope.showActionsheet = function(security) {
+    
+    $ionicActionSheet.show({
+      destructiveText: 'Remove',
+      cancelText: 'Cancel',
+      cancel: function() {
+        console.log('CANCELLED');
+      },
+      destructiveButtonClicked: function() {
+        console.log('DESTRUCT');
+        $ionicPopup.confirm({
+			title: "Delete Security",
+			content: "Remove " + security + " from your watchlist?"
+		})
+		.then(function(result){
+			if(result){
+				show();
+				var watchlist = UserProfile.deleteWatchlist();
+		        watchlist.get({gameid:window.localStorage["gameID"], userid:window.localStorage["userID"], sid:security}, function(data){
+		        	var res = data.result;
+		        	if(res){
+		        		loadWatchList();
+		        	}else{
+		        		$ionicPopup.alert({title: 'VSE', template: data.error});
+		        	}
+		        }, function(error){
+		        	$ionicPopup.alert({title: 'VSE', template: 'error '+error});
+		        });
+			}
+		});
+        return true;
+      }
+    });
+  };
+}).directive('gestureOnHold',function($ionicGesture ) {
+    return function(scope,element,attrs) {
+        $ionicGesture.on('tap',function() {
+            scope.$apply(function() {
+                console.log("held");
+                scope.$eval(attrs.gestureOnHold);
+            });
+        },element);
+    };
 });
 
