@@ -147,6 +147,24 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 	        controller: 'WatchlistCtrl'
 	      }
 	    }
+	  })
+	  .state('tab.leaderboard', {
+	    url: '/leaderboard',
+	    views: {
+	      'tab-leaderboard': {
+	        templateUrl: 'templates/tab-leaderboard.html',
+	        controller: 'LeaderboardCtrl'
+	      }
+	    }
+	  })
+	  .state('tab.transactions', {
+	    url: '/transactions',
+	    views: {
+	      'tab-transactions': {
+	        templateUrl: 'templates/tab-transactions.html',
+	        controller: 'TransactionsCtrl'
+	      }
+	    }
 	  });
 
 	// if none of the above states are matched, use this as the fallback
@@ -1083,7 +1101,54 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
       }
     });
   };
-}).directive('gestureOnHold',function($ionicGesture ) {
+})
+.controller('LeaderboardCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, $ionicActionSheet, UserProfile){
+	$scope.leaderboardArr = [];
+	
+	function show() {
+	    $ionicLoading.show({
+	      template: 'Loading Leaderboard<br/><span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
+	    });
+    }
+    function hide(){
+    	$ionicLoading.hide();
+    }
+    
+	loadLeaderboard();
+	show();
+	
+	function loadLeaderboard(){
+		var leaderboard = UserProfile.getLeaderboard();
+		leaderboard.get({gameid:window.localStorage["gameID"]}, function(data){
+			$scope.leaderboardArr = data.leader_board;
+			hide();
+		});
+	}
+})
+.controller('TransactionsCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, $ionicActionSheet, UserProfile){
+	$scope.shareTransactionArr = [];
+	
+	function show() {
+	    $ionicLoading.show({
+	      template: 'Loading Share Transactions<br/><span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
+	    });
+    }
+    function hide(){
+    	$ionicLoading.hide();
+    }
+    
+    loadShareTransactions();
+    show();
+    
+    function loadShareTransactions(){
+    	var share_transactions = UserProfile.getShareTransactions();
+    	share_transactions.get({userid:window.localStorage["userID"], gameid:window.localStorage["gameID"]}, function(data){
+    		$scope.shareTransactionArr = data.transactions;
+    		hide();
+    	});
+    }
+})
+.directive('gestureOnHold',function($ionicGesture ) {
     return function(scope,element,attrs) {
         $ionicGesture.on('tap',function() {
             scope.$apply(function() {

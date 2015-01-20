@@ -1,0 +1,31 @@
+<ion-view title="Leaderboard">
+	<ion-nav-buttons side="left" >
+  	<a type="button" ng-click="showPortfolioHome()" class="icon ion-arrow-left-c pull-left menu-home"></a>
+  </ion-nav-buttons>
+  <ion-content class="">
+    <div>
+      <table class="default">
+      	<tr>
+      		<th>Rank</th>
+      		<th style="text-align: left;">Name</th>
+      	</tr>
+      	<tr ng-repeat="leader in leaderboardArr">
+      		<td>{{leader.previuos_rank}}</td>
+      		<td style="text-align: left;">{{leader.real_name}}</td>
+      	</tr>
+      </table>
+     </div>
+  </ion-content>
+</ion-view>
+
+<style type="text/css">
+ .pane, .view {
+    margin: 0 auto;
+    width: 100% !important;
+}
+.has-header {
+    top: 100px;
+}
+.bar.bar-stable {
+ border-bottom: 0 !important;
+}

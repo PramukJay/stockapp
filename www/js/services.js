@@ -176,6 +176,26 @@ angular.module('starter.services', ['ngResource'])
 		  			isArray:false
 		  		}
 		  	});
+		  },
+		  
+		  getLeaderboard: function(){
+		  	return $resource(base+'/leaderboard/:gameid', {gameid: '@gameid'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getShareTransactions: function(){
+		  	return $resource(base+'/sharetransactions/:userid/:gameid', {userid: '@userid', gameid: '@gameid'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params : {userid: '@userid', gameid: '@gameid'},
+		  			isArray:false
+		  		}
+		  	});
 		  }
 	};
 });
