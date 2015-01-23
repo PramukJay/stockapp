@@ -10,6 +10,16 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$2.class \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$3.class \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard.class \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/com/plugin/datepicker/DatePickerPlugin$1$1.class \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/com/plugin/datepicker/DatePickerPlugin$1$2.class \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/com/plugin/datepicker/DatePickerPlugin$1.class \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/com/plugin/datepicker/DatePickerPlugin$2$1.class \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/com/plugin/datepicker/DatePickerPlugin$2$2.class \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/com/plugin/datepicker/DatePickerPlugin$2$3.class \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/com/plugin/datepicker/DatePickerPlugin$2.class \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/com/plugin/datepicker/DatePickerPlugin$DateSetListener.class \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/com/plugin/datepicker/DatePickerPlugin$TimeSetListener.class \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/com/plugin/datepicker/DatePickerPlugin.class \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/org/apache/cordova/device/Device.class \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$1.class \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$2.class \

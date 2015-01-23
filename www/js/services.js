@@ -196,6 +196,16 @@ angular.module('starter.services', ['ngResource'])
 		  			isArray:false
 		  		}
 		  	});
+		  },
+		  
+		  getGainLoose: function(){
+		  	return $resource(base+'/gainlossreport/:userid/:gameid/:from/:to', {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'},
+		  			isArray:false
+		  		}
+		  	});
 		  }
 	};
 });

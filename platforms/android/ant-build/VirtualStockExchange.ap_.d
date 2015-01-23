@@ -159,6 +159,7 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/xml2json/xml2json.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/com.brodysoft.sqlitePlugin \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/com.ionic.keyboard \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/com.plugin.datepicker \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.device \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.inappbrowser \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.network-information \
@@ -167,6 +168,9 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/com.brodysoft.sqlitePlugin/www/SQLitePlugin.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/com.ionic.keyboard/www \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/com.ionic.keyboard/www/keyboard.js \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/com.plugin.datepicker/www \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/com.plugin.datepicker/www/android \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/com.plugin.datepicker/www/android/DatePicker.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.device/www \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.device/www/device.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.inappbrowser/www \
@@ -181,10 +185,12 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/forum.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/gain-loose.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/listed-securities.html \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/market-reports.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/market-summary.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/my-portfolio.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/news-announcements.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/news.html \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/player-reports.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/portfolio-details.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/portfolio-home.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/preview-order.html \
@@ -195,7 +201,10 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-buyandsell.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-dash.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-help.html \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-leaderboard.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-menu.html \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-reports.html \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-transactions.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-watchlist.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tabs.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/AndroidManifest.xml \

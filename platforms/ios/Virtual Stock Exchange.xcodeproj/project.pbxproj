@@ -48,6 +48,8 @@
 		3F0D5D455D7B45919BAF434D /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB22B319760D4B5F83750142 /* CDVReachability.m */; };
 		E970F2C3C2F440E0AC1DA2DC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C67515B7B74BD0BFF3D246 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3C82329645E448ED9FAD6D05 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D807F2315AB4F1E9520A071 /* CDVSplashScreen.m */; };
+		A851BDDD78034136BD9AA746 /* DatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1A63FADA524F2595FEC0CD /* DatePicker.m */; };
+		5754DC00ED1E4A2B9C9A50D4 /* DatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A43D1EF4D66446AE92E8462A /* DatePicker.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +133,9 @@
 		29C67515B7B74BD0BFF3D246 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 		0D807F2315AB4F1E9520A071 /* CDVSplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVSplashScreen.m"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		E4F7228DA7C24676B1643440 /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		FF1A63FADA524F2595FEC0CD /* DatePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DatePicker.m"; path = "com.plugin.datepicker/DatePicker.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		CCD6004B5CB347E5B15091FF /* DatePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DatePicker.h"; path = "com.plugin.datepicker/DatePicker.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		A43D1EF4D66446AE92E8462A /* DatePicker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "DatePicker.xib"; path = "DatePicker.xib"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +230,7 @@
 				308D052D1370CCF300D202BF /* icons */,
 				308D05311370CCF300D202BF /* splash */,
 				8D1107310486CEB800E47090 /* Virtual Stock Exchange-Info.plist */,
+				A43D1EF4D66446AE92E8462A /* DatePicker.xib */,
 			);
 			name = Resources;
 			path = "Virtual Stock Exchange/Resources";
@@ -271,6 +277,8 @@
 				C09EADEC386C450992BB76DB /* CDVReachability.h */,
 				0D807F2315AB4F1E9520A071 /* CDVSplashScreen.m */,
 				E4F7228DA7C24676B1643440 /* CDVSplashScreen.h */,
+				FF1A63FADA524F2595FEC0CD /* DatePicker.m */,
+				CCD6004B5CB347E5B15091FF /* DatePicker.h */,
 			);
 			name = Plugins;
 			path = "Virtual Stock Exchange/Plugins";
@@ -434,6 +442,7 @@
 				7E7966E11810823500FA85AD /* icon-50@2x.png in Resources */,
 				7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */,
 				30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */,
+				5754DC00ED1E4A2B9C9A50D4 /* DatePicker.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +483,7 @@
 				88598C3382A64651ADF9B456 /* CDVConnection.m in Sources */,
 				3F0D5D455D7B45919BAF434D /* CDVReachability.m in Sources */,
 				3C82329645E448ED9FAD6D05 /* CDVSplashScreen.m in Sources */,
+				A851BDDD78034136BD9AA746 /* DatePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
