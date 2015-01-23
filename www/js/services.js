@@ -206,6 +206,46 @@ angular.module('starter.services', ['ngResource'])
 		  			isArray:false
 		  		}
 		  	});
+		  },
+		  
+		  getTransactionHistory: function(){
+		  	return $resource(base+'/transactionhistory/:userid/:gameid/:from/:to', {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getCashMovement: function(){
+		  	return $resource(base+'/cashmovement/:userid/:gameid/:from/:to', {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getValuation: function(){
+		  	return $resource(base+'/portfoliovaluation/:userid/:gameid/:date', {userid: '@userid', gameid: '@gameid', date: '@date'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {userid: '@userid', gameid: '@gameid', date: '@date'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getActiveInvestors: function(){
+		  	return $resource(base+'/activeinvestors/:gameid', {gameid: '@gameid'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid'},
+		  			isArray:false
+		  		}
+		  	});
 		  }
 	};
 });

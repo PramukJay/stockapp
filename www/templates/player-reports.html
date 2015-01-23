@@ -8,14 +8,19 @@
     		<tr>
     			<td style="font-size: 12px;">Report Type</td>
     			<td style="text-align: left;">
-    				<select style="border-radius: 5px;height: 30px;width: 180px;background-color: #ffffff;color: black;" ng-model="reportData.report_type">
-    					<option selected="selected">select</option>
-    					<option value="gl">Gains & Loss Report</option>
+					<select style="border-radius: 5px;height: 30px;width: 180px;background-color: #ffffff;color: black;" ng-model="reportData.report_type" on-change="showHideDate()">
+    					<option selected="selected"></option>
+    					<option value="gl">Gains & Loss</option>
+    					<option value="th">Transaction History</option>
+    					<option value="cs">Cash Movement</option>
+    					<option value="vr">Valuation</option>
     				</select>
     			</td>
     		</tr>
+    	</table>
+    	<table class="default">
     		<tr>
-    			<td colspan="2" style="text-align: center; font-size: 12px;" colspan="2">Select Date Rage</td>
+    			<th colspan="2" style="text-align: center; font-size: 12px;" colspan="2">Select Date Rage</th>
     		</tr>
     		<tr>
     			<td style="font-size: 12px;">From:</td>
