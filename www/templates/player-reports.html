@@ -6,37 +6,27 @@
     <div>
     	<table class="default">
     		<tr>
-    			<td>Report Type</td>
+    			<td style="font-size: 12px;">Report Type</td>
     			<td style="text-align: left;">
-    				<select ng-model="reportData.report_type">
-    					<option selected="selected"></option>
-    					<option value="gl">Portfolio Gains & Loss Report</option>
+    				<select style="border-radius: 5px;height: 30px;width: 180px;background-color: #ffffff;color: black;" ng-model="reportData.report_type">
+    					<option selected="selected">select</option>
+    					<option value="gl">Gains & Loss Report</option>
     				</select>
     			</td>
     		</tr>
     		<tr>
-    			<td style="text-align: center;" colspan="2">Select Date Rage</td>
+    			<td colspan="2" style="text-align: center; font-size: 12px;" colspan="2">Select Date Rage</td>
     		</tr>
     		<tr>
-    			<td>
-    				From:
-    			</td>
-    			<td>
-    				<input type="date" ng-model="reportData.fromDate" />
-    			</td>
+    			<td style="font-size: 12px;">From:</td>
+    			<td><input style="border-radius: 5px;height: 35px;width: 180px;background-color: #ffffff;color: black;" type="date" ng-model="reportData.fromDate" /></td>
     		</tr>
     		<tr>
-    			<td>
-    				To:
-    			</td>
-    			<td>
-    				<input type="date" ng-model="reportData.toDate" />
-    			</td>
+    			<td style="font-size: 12px;">To:</td>
+    			<td><input style="border-radius: 5px;height: 35px;width: 180px;background-color: #ffffff;color: black;" type="date" ng-model="reportData.toDate" /></td>
     		</tr>
     		<tr>
-    			<td colspan="2" style="text-align: center;">
-    				<button class="button" ng-click="openReport()">Generate</button>
-    			</td>
+    			<td colspan="2" style="text-align: center;"><button style="line-height: 10px; min-height: 25px;" class="button" ng-click="openReport()">Generate</button></td>
     		</tr>
     	</table>
     </div>

@@ -1237,7 +1237,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     	$scope.reportModal.show();
     	//alert($scope.reportData.fromDate + " " + $scope.reportData.toDate);
 		if($scope.reportData.report_type == "gl"){
-			tbl_row = "<tr><th>Symbol</th><th>Share Quantity</th><th>Total Sales</th><th>Cost of Perchases (Rs)</th><th>Realized Gain/Loss (Rs)</th></tr>";
+			tbl_row = "<tr><th style='text-align:left;'>Symbol</th><th>Share Quantity</th><th>Total Sales</th><th>Cost of Perchases (Rs)</th><th>Realized Gain/Loss (Rs)</th></tr>";
 			//alert(tbl_row);
 			var gain_loose = UserProfile.getGainLoose();
 			gain_loose.get({userid:window.localStorage["userID"], gameid:window.localStorage["gameID"], from:$scope.reportData.fromDate, to:$scope.reportData.toDate}, function(data){
@@ -1251,7 +1251,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 					for(var i=0;i<$scope.report.length;i++){
 						tbl_row = tbl_row +
 						"<tr>" +
-						"<td>" + $scope.report[i].security_id + "</td>" +
+						"<td style='text-align:left;'>" + $scope.report[i].security_id + "</td>" +
 						"<td>" + $filter('number')($scope.report[i].total_qty, 2) + "</td>" +
 						"<td>" + $filter('number')($scope.report[i].total_sales, 2) + "</td>" +
 						"<td>" + $filter('number')($scope.report[i].cost_of_purchase, 2) + "</td>";
@@ -1268,7 +1268,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 					
 					tbl_row = tbl_row + 
 					"<tr>" +
-					"<td><b>Total</b></td>" +
+					"<td style='text-align:left;'><b>Total</b></td>" +
 					"<td></td>" + 
 					"<td><b>" + $filter('number')(tot_sales, 2) + "</b></td>" +
 					 "<td><b>" +$filter('number')(cost_of_purchases, 2)  + "</b></td>" +
@@ -1277,7 +1277,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 					
 					//alert(tbl_row);
 					
-					document.getElementById("tbl").innerHTML = b_tag + tbl_row + e_tag;
+					document.getElementById("report-table").innerHTML = b_tag + tbl_row + e_tag;
 					
 				
 				}
