@@ -4,36 +4,40 @@
   </ion-nav-buttons-->
   <ion-content class="">
     <div>
-    	<table class="default">
-    		<tr>
-    			<td style="font-size: 12px;">Report Type</td>
-    			<td style="text-align: left;">
-					<select style="border-radius: 5px;height: 30px;width: 180px;background-color: #ffffff;color: black;" ng-model="reportData.report_type" on-change="showHideDate()">
-    					<option selected="selected"></option>
-    					<option value="gl">Gains & Loss</option>
-    					<option value="th">Transaction History</option>
-    					<option value="cs">Cash Movement</option>
-    					<option value="vr">Valuation</option>
-    				</select>
-    			</td>
-    		</tr>
-    	</table>
-    	<table class="default">
-    		<tr>
-    			<th colspan="2" style="text-align: center; font-size: 12px;" colspan="2">Select Date Rage</th>
-    		</tr>
-    		<tr>
-    			<td style="font-size: 12px;">From:</td>
-    			<td><input style="border-radius: 5px;height: 35px;width: 180px;background-color: #ffffff;color: black;" type="date" ng-model="reportData.fromDate" /></td>
-    		</tr>
-    		<tr>
-    			<td style="font-size: 12px;">To:</td>
-    			<td><input style="border-radius: 5px;height: 35px;width: 180px;background-color: #ffffff;color: black;" type="date" ng-model="reportData.toDate" /></td>
-    		</tr>
-    		<tr>
-    			<td colspan="2" style="text-align: center;"><button style="line-height: 10px; min-height: 25px;" class="button" ng-click="openReport()">Generate</button></td>
-    		</tr>
-    	</table>
+    	 <table class="default">
+      <tr>
+       <td style="font-size: 12px; width: 50%;">Report Type : </td>
+       <td style="font-size: 12px; width: 50%; text-align: left;">
+     <select style="border-radius: 5px;height: 30px;width: 180px;background-color: #ffffff;color: black;" ng-model="reportData.report_type" on-change="showHideDate()">
+         <option selected="selected"></option>
+         <option value="gl">Gains & Loss</option>
+         <option value="th">Transaction History</option>
+         <option value="cs">Cash Movement</option>
+         <option value="vr">Valuation</option>
+        </select>
+       </td>
+      </tr>
+     </table>
+     <table class="default">
+      <tr>
+       <th colspan="2" style="text-align: center; font-size: 12px;" colspan="2">Select Date Rage</th>
+      </tr>
+      <tr ng-show="reportData.report_type=='gl' || reportData.report_type=='th' || reportData.report_type=='cs'">
+       <td style="font-size: 12px; width: 50%;">From:</td>
+       <td style="font-size: 12px; width: 50%;"><input style="border-radius: 5px;height: 35px;width: 180px;background-color: #ffffff;color: black;" type="date" ng-model="reportData.fromDate" /></td>
+      </tr>
+      <tr ng-show="reportData.report_type=='gl' || reportData.report_type=='th' || reportData.report_type=='cs'">
+       <td style="font-size: 12px; width: 50%;">To:</td>
+       <td style="font-size: 12px; width: 50%;"><input style="border-radius: 5px;height: 35px;width: 180px;background-color: #ffffff;color: black;" type="date" ng-model="reportData.toDate" /></td>
+      </tr>
+      <tr ng-show="reportData.report_type=='vr'">
+       <td style="font-size: 12px; width: 50%;">Date:</td>
+       <td style="font-size: 12px; width: 50%;"><input style="border-radius: 5px;height: 35px;width: 180px;background-color: #ffffff;color: black;" type="date" ng-model="reportData.date" /></td>
+      </tr>
+      <tr>
+       <td colspan="2" style="font-size: 12px; width: 100%; text-align: center;"><button style="line-height: 10px; min-height: 25px;" class="button" ng-click="openReport()">Generate</button></td>
+      </tr>
+     </table>
     </div>
   </ion-content>
 </ion-view>

@@ -1367,7 +1367,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 			document.getElementById("report-table").innerHTML = "";
 			tbl_row = "<tr><th>Symbol</th><th>Number of Shares</th><th>Average Cost (Rs)</th><th>Total Cost(Rs)</th><th>Market Price (Rs)</th><th>Market Value (Rs)</th><th>Gain/Loss (Rs)</th></tr>";
 			var valuation = UserProfile.getValuation();
-			valuation.get({userid:window.localStorage["userID"], gameid:window.localStorage["gameID"],date:$scope.reportData.fromDate}, function(data){
+			valuation.get({userid:window.localStorage["userID"], gameid:window.localStorage["gameID"],date:$scope.reportData.date}, function(data){
 				if(data.result){
 					$scope.report = data.portfolio_valuation;
 					
@@ -1454,10 +1454,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     	$scope.reportModal.show();
     	if($scope.reportData.report_type == "ai"){
     		show();
-    		document.getElementById("report-table").innerHTML = "";
+    		document.getElementById("report-table-1").innerHTML = "";
 			tbl_row = "<tr><th>Player</th><th>Number of Transaction</th></tr>";
     		var active_investors = UserProfile.getActiveInvestors();
     		active_investors.get({gameid:window.localStorage["gameID"]}, function(data){
+    			//alert("hi");
     			if(data.result){
 					$scope.report = data.active_investors;
 					
@@ -1468,7 +1469,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 						"<td>" + $filter('number')($scope.report[i].total_transactions, 0) + "</td>" +
 						"</tr>";
 					}
-					document.getElementById("report-table").innerHTML = b_tag + tbl_row + e_tag;
+					document.getElementById("report-table-1").innerHTML = b_tag + tbl_row + e_tag;
 					hide();
 				}else{
 					$ionicPopup.alert({title: 'VSE', template: data.status});

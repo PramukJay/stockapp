@@ -198,6 +198,8 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/price-list.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/research.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/security-buy-and-sell.html \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/show-game-report-data.html \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/show-portfolio-report-data.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-buyandsell.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-dash.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/tab-help.html \
