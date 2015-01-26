@@ -68,9 +68,9 @@ body {
 }
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
 	border: 0 none;
-	border-radius: 30px;
-	padding: 10px 22px;
-	height: 45px;
+	border-radius: 5px !important;
+	padding: 5px 10px;
+	height: 30px !important;
 	background-color: #0039a9;
 	color: #fff;
 }
@@ -129,21 +129,36 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 }
 
 .buyandsell-1{
-	width: 95%;
+	width: 100%;
 	margin: 0 auto;
 }
 
 .buyandsell-1 tr {
-	background: lightblue;
+	background: #020d2e;
+	border-bottom: 1px #274fc9 solid;
+	color:#fff;
+}
+
+.head-trading {
+	background: rgba(16,47,146,1);
+	background: -moz-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(16,47,146,1)), color-stop(100%, rgba(6,31,108,1)));
+	background: -webkit-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	background: -o-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	background: -ms-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	background: linear-gradient(to bottom, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#102f92', endColorstr='#061f6c', GradientType=0 );
+	border-bottom: 2px #274fc9 solid;
+	color:#fff;
 }
 
 .buyandsell-1 td {
 	text-align: left;
-	padding: 5px;
+	padding: 5px 15px;
 }
 
 .buyandsell-2{
-	width: 95%;
+	width: 100%;
 	margin: 0 auto;
 }
 
@@ -153,7 +168,8 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 
 .buyandsell-2 td {
 	text-align: left;
-	padding: 5px;
+	padding: 5px 15px;
+	color:#21DB27;
 }
 
 .portfolio-details{
@@ -356,6 +372,9 @@ table td {
 	background-color: #000;
 	color: #fff;
 }
+.button {
+	font-size:14px !important;
+}
 .popup-body {
 	overflow: hidden;
 	padding: 10px;
@@ -457,27 +476,41 @@ ion-nav-view {
 }
 
 .buyandsell-last{
-	width: 95%;
+	width: 100%;
 	margin: 0 auto;
 }
 .buyandsell-last tr th {
-	background: #8295e8;
-	font-size: 10px;
+	background: rgba(16,47,146,1);
+	background: -moz-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(16,47,146,1)), color-stop(100%, rgba(6,31,108,1)));
+	background: -webkit-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	background: -o-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	background: -ms-linear-gradient(top, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	background: linear-gradient(to bottom, rgba(16,47,146,1) 0%, rgba(6,31,108,1) 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#102f92', endColorstr='#061f6c', GradientType=0 );
+	color:#fff;
+	font-size:11px;
+	padding: 3px 10px;
 }
 .buyandsell-last td {
-	padding: 4px;
-	color: black;
+	padding: 3px 10px;
+	color: #fff;
 	font-size: 10px;
 }
 .buyandsell-last tr:nth-child(even) {
-	background: #eeeeee;
+	background: #051549;
 	border-bottom: 1px #ffffff solid;
 }
 .buyandsell-last tr:nth-child(odd) {
-	background: #ffffff;
+	background: #020d2e;
 	border-bottom: 1px #ffffff solid;
+	color:#fff;
 }
-
+.modal-backdrop h4, .h4, h5, .h5, h6, .h6 {
+	margin:0;
+	padding:0px 5px !important;
+	color:#fff;
+}
 .item-divider {
 	background: rgba(13,42,133,1);
 	background: -moz-linear-gradient(top, rgba(13,42,133,1) 0%, rgba(6,30,106,1) 100%);
@@ -577,13 +610,32 @@ ion-nav-view {
 	background-color: #fff;
 	font-family: arial;
 }
-.custom-button{
-	height: 50px;
-	padding: 7px;
-	margin-right: 15px;
-	margin-bottom: 10px;
+.custom-button {
+	height:30px !important;
+	padding: 5px 10px;
+	margin-right: 5px;
 	background: #eeeeee;
-	border-radius: 10px;
+	border-radius: 5px;
+	background-color: black;
+	border: 0px;
+	background:#173ba0;
+	color: #fff;
+}
+.modal .has-header {
+	top: 44px !important;
+	background:#020d2e;
+}
+.reports-field {
+	border-radius: 5px;
+	height:30px;
+	width: 180px; 
+	padding-left:10px; 
+	background-color: #ffffff;
+	color: #000;
+}
+.reports-button {
+	line-height: 10px; 
+	min-height: 25px; 
 }
 .bar-header{
 	background-color: black;

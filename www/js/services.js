@@ -246,6 +246,46 @@ angular.module('starter.services', ['ngResource'])
 		  			isArray:false
 		  		}
 		  	});
+		  },
+		  
+		  getTopPortfolioManagers: function(){
+		  	return $resource(base+'/topmanagers/:gameid', {gameid: '@gameid'}, {
+		  		get:{
+		  			method: 'GET',
+		  			params: {gameid: '@gameid'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getTopPortfolioPerformers: function(){
+		  	return $resource(base+'/topportfolioperformers/:gameid', {gameid: '@gameid'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getMostInvestedShare: function(){
+		  	return $resource(base+'/mostinvestedshare/:gameid/:date', {gameid: '@gameid', date: '@date'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid', date: '@date'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getMostTradedStock: function(){
+		  	return $resource(base+'/mosttradedstock/:gameid/:from/:to', {gameid: '@gameid', from: '@from', to: '@to'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid', from: '@from', to: '@to'},
+		  			isArray:false
+		  		}
+		  	});
 		  }
 	};
 });

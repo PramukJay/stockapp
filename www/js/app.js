@@ -9,7 +9,7 @@ var transactions_left = window.localStorage["NumberOfTransactions"];
 window.localStorage["token"] = "u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ";
 var broker_rate = 1.12;
 var time = false;
-angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
+angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services'])
 
 .run(function($ionicPlatform, $cordovaSQLite, $ionicPopup) {
 	$ionicPlatform.ready(function() {
@@ -948,7 +948,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     
     //Open the buy and sell modal
     $scope.showBuySell = function(security, page) {
-    	if(time){
+    	if(!time){
     		if(window.localStorage["NumberOfTransactions"] > 0){
 	    		if(page == 1){
 		    		$scope.parseData.action = "Select";
@@ -1304,7 +1304,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 					
 					document.getElementById("report-table").innerHTML = b_tag + tbl_row + e_tag;
 					hide();
-					
+					$ionicPopup.alert({title: 'VSE', template: document.getElementById("report-table").innerHTML});
 				
 				}else{
 					$ionicPopup.alert({title: 'VSE', template: data.status});
@@ -1332,6 +1332,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 					}
 					document.getElementById("report-table").innerHTML = b_tag + tbl_row + e_tag;
 					hide();
+					$ionicPopup.alert({title: 'VSE', template: document.getElementById("report-table").innerHTML});
 				}else{
 					$ionicPopup.alert({title: 'VSE', template: data.status});
 					hide();
@@ -1357,6 +1358,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 					}
 					document.getElementById("report-table").innerHTML = b_tag + tbl_row + e_tag;
 					hide();
+					$ionicPopup.alert({title: 'VSE', template: document.getElementById("report-table").innerHTML});
 				}else{
 					$ionicPopup.alert({title: 'VSE', template: data.status});
 					hide();
@@ -1403,12 +1405,84 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 						"</tr>";
 					document.getElementById("report-table").innerHTML = b_tag + tbl_row + e_tag;
 					hide();
+					$ionicPopup.alert({title: 'VSE', template: document.getElementById("report-table").innerHTML});
 				}else{
 					$ionicPopup.alert({title: 'VSE', template: data.status});
 					hide();
 				}
 			});
 		}
+		
+		 // Chart.js Data
+    $scope.data = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [
+        
+        {
+          
+          fillColor: 'rgba(151,187,205,0.2)',
+          strokeColor: 'rgba(151,187,205,1)',
+          pointColor: 'rgba(151,187,205,1)',
+          pointStrokeColor: '#fff',
+          pointHighlightFill: '#fff',
+          pointHighlightStroke: 'rgba(151,187,205,1)',
+          data: [28, 48, 40, 19, 86, 27, 90]
+        }
+      ]
+    };
+
+    // Chart.js Options
+    $scope.options =  {
+
+      // Sets the chart to be responsive
+      responsive: true,
+
+      ///Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines : true,
+
+      //String - Colour of the grid lines
+      scaleGridLineColor : "rgba(0,0,0,.05)",
+
+      //Number - Width of the grid lines
+      scaleGridLineWidth : 1,
+
+      //Boolean - Whether the line is curved between points
+      bezierCurve : true,
+
+      //Number - Tension of the bezier curve between points
+      bezierCurveTension : 0.4,
+
+      //Boolean - Whether to show a dot for each point
+      pointDot : true,
+
+      //Number - Radius of each point dot in pixels
+      pointDotRadius : 4,
+
+      //Number - Pixel width of point dot stroke
+      pointDotStrokeWidth : 1,
+
+      //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+      pointHitDetectionRadius : 20,
+
+      //Boolean - Whether to show a stroke for datasets
+      datasetStroke : true,
+
+      //Number - Pixel width of dataset stroke
+      datasetStrokeWidth : 2,
+
+      //Boolean - Whether to fill the dataset with a colour
+      datasetFill : true,
+
+      // Function - on animation progress
+      onAnimationProgress: function(){},
+
+      // Function - on animation complete
+      onAnimationComplete: function(){},
+
+      //String - A legend template
+      legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].strokeColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+    };
+    $scope.$apply();
     };
     
     //Close the report modal
@@ -1426,7 +1500,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 })
 .controller('MarketReportsCtrl', function($scope, $http, $ionicLoading, $ionicPopup, $stateParams, $ionicModal, $filter, UserProfile){
 	$scope.report = [];
-	$scope.reportData = [];
+	$scope.gameReportData = [];
 	
 	var b_tag = '<table class="default">';
 	var e_tag = "</table>";
@@ -1446,19 +1520,19 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
     	scope: $scope,
     	animation: 'slide-in-right'
     }).then(function(modal) {
-    	$scope.reportModal = modal;
+    	$scope.gameReportModal = modal;
     });
     
     //Open the report modal
     $scope.openReport = function() {
-    	$scope.reportModal.show();
-    	if($scope.reportData.report_type == "ai"){
+    	$scope.gameReportModal.show();
+    	
+    	if($scope.gameReportData.report_type == "ai"){
     		show();
-    		document.getElementById("report-table-1").innerHTML = "";
+    		document.getElementById("game-report-table").innerHTML = "";
 			tbl_row = "<tr><th>Player</th><th>Number of Transaction</th></tr>";
     		var active_investors = UserProfile.getActiveInvestors();
     		active_investors.get({gameid:window.localStorage["gameID"]}, function(data){
-    			//alert("hi");
     			if(data.result){
 					$scope.report = data.active_investors;
 					
@@ -1469,21 +1543,98 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.services'])
 						"<td>" + $filter('number')($scope.report[i].total_transactions, 0) + "</td>" +
 						"</tr>";
 					}
-					document.getElementById("report-table-1").innerHTML = b_tag + tbl_row + e_tag;
+					document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;				
 					hide();
+					$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
 				}else{
 					$ionicPopup.alert({title: 'VSE', template: data.status});
 					hide();
 				}
     		});
+    	}else if($scope.gameReportData.report_type == "pm"){
+    		show();
+    		document.getElementById("game-report-table").innerHTML = "";
+    		tbl_row = "<tr><th style='text-align: center;'>Player</th><th style='text-align: right;'>Total Portfolio (Rs)</th></tr>";
+    		var portfolioManagers = UserProfile.getTopPortfolioManagers();
+    		portfolioManagers.get({gameid:window.localStorage["gameID"]}, function(data){
+    			if(data.result){
+    				$scope.report = data.top_managers;
+    				for(var i = 0;i<$scope.report.length;i++){
+    					tbl_row = tbl_row +
+    					"<tr>" +
+    					"<td style='text-align: center;'>" + $scope.report[i].real_name + "</td>" +
+    					"<td style='text-align: right;'>" + $filter('number')($scope.report[i].total, 2) + "</td>" +
+    					"</tr>";
+    				}
+    				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
+					hide();
+					$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
+					
+    			}else{
+					$ionicPopup.alert({title: 'VSE', template: data.status});
+					hide();
+				}
+    			
+    		});
     	}
+    	else if($scope.gameReportData.report_type == "pp"){
+    		show();
+    		document.getElementById("game-report-table").innerHTML = "";
+    		tbl_row = "<tr><th style='text-align: center;'>Player</th><th>Total Gains</th><th>Portfolio Return (%)<br/>Per Player</th></tr>";
+    		var portfolioPerformers = UserProfile.getTopPortfolioPerformers();
+    		portfolioPerformers.get({gameid:window.localStorage["gameID"]}, function(data){
+    			if(data.result){
+    				$scope.report = data.top_portfolio_performers;
+    				for(var i=0;i<$scope.report.length;i++){
+    					tbl_row = tbl_row +
+    					"<tr>" +
+    					"<td style='text-align: left;'>" + $scope.report[i].real_name + "</td>" +
+    					"<td>" + $filter('number')($scope.report[i].total_gains, 2) + "</td>" +
+    					"<td>" + $filter('number')($scope.report[i].portfolio_return, 2) + "</td>" +
+    					"</tr>";
+    				}
+    				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
+					hide();
+					$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
+    			}else{
+					$ionicPopup.alert({title: 'VSE', template: data.status});
+					hide();
+				}
+    		});
+    	}
+    	else if($scope.gameReportData.report_type == "is"){
+    		show();
+    		document.getElementById("game-report-table").innerHTML = "";
+    		tbl_row = "<tr><th>Symbol</th><th>Total Invested (Rs)</th><th>% of the Total<br/>Virtual Portfolios</th></tr>";
+    		var mostInvestedShare = UserProfile.getMostInvestedShare();
+    		mostInvestedShare.get({gameid:window.localStorage["gameID"], date:$scope.reportData.date}, function(data){
+    			if(data.result){
+    				$scope.report = data.most_invested_share;
+    				for(var i=0;i<$scope.report.length;i++){
+    					tbl_row = tbl_row +
+    					"<tr>" +
+    					"<td>" + $scope.report[i].security_id + "</td>" +
+    					"<td>" + $filter('number')($scope.report[i].total_invested, 2) + "</td>" +
+    					"<td>" + 0.00 + "</td>" +
+    					"</tr>";
+    				}
+    				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
+					hide();
+					$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
+    			}else{
+					$ionicPopup.alert({title: 'VSE', template: data.status});
+					hide();
+				}
+    		});
+    	}
+    	$scope.$apply();
     	
     	
     };
     
     //Close the report modal
     $scope.closeReport = function() {
-    	$scope.reportModal.hide();
+    	$scope.gameReportModal.hide();
     };
 })
 .directive('gestureOnHold',function($ionicGesture ) {
