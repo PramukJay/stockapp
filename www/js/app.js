@@ -1482,7 +1482,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
       //String - A legend template
       legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].strokeColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
     };
-    $scope.$apply();
     };
     
     //Close the report modal
@@ -1627,7 +1626,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				}
     		});
     	}
-    	$scope.$apply();
     	
     	
     };
