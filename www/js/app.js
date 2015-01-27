@@ -1693,7 +1693,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	    		});
     		}
     	}
-    	
     };
     
     //Close the report modal
