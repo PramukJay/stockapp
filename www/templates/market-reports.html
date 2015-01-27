@@ -14,24 +14,25 @@
          <option value="pp">Top Portfolio Performers</option>
          <option value="ai">Active Investors</option>
          <option value="is">Most Invested Share</option>
+         <option value="ms">Most Traded Stcok</option>
         </select>
        </td>
       </tr>
      </table>
      <table class="default">
-      <tr ng-show="reportData.report_type!='ai' && reportData.report_type!='pm' && reportData.report_type!='pp'">
-       <th colspan="2" style="text-align: center; font-size: 12px;" colspan="2">Select Date Rage</th>
+      <tr>
+       <th colspan="2" style="text-align: center; font-size: 12px;" colspan="2">Select Date or Date Rage</th>
       </tr>
-      <tr ng-show="gameReportData.report_type!='ai' && gameReportData.report_type!='pm' && gameReportData.report_type!='pp' && gameReportData.report_type!='is'">
-       <td style="font-size: 12px; width: 50%;">From:</td>
+      <tr ng-show="gameReportData.report_type=='ms'">
+       <td style="font-size: 12px; width: 50%;">From :</td>
        <td style="font-size: 12px; width: 50%;"><input style="border-radius: 5px;height: 35px;width: 180px;background-color: #ffffff;color: black;" type="date" ng-model="gameReportData.fromDate" /></td>
       </tr>
-      <tr ng-show="gameReportData.report_type!='ai' && gameReportData.report_type!='pm' && gameReportData.report_type!='pp' && gameReportData.report_type!='is'">
-       <td style="font-size: 12px;">To:</td>
+      <tr ng-show="gameReportData.report_type=='ms'">
+       <td style="font-size: 12px;">To :</td>
        <td style="font-size: 12px; width: 50%;"><input style="border-radius: 5px;height: 35px;width: 180px;background-color: #ffffff;color: black;" type="date" ng-model="gameReportData.toDate" /></td>
       </tr>
       <tr ng-show="gameReportData.report_type=='is'">
-       <td style="font-size: 12px; width: 50%;">Date:</td>
+       <td style="font-size: 12px; width: 50%;">Date :</td>
        <td style="font-size: 12px; width: 50%;"><input style="border-radius: 5px;height: 35px;width: 180px;background-color: #ffffff;color: black;" type="date" ng-model="gameReportData.date" /></td>
       </tr>
       <tr>
