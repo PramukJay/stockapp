@@ -193,6 +193,7 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/ionic/js/angular/angular-animate.min.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/ionic/js/angular/angular-resource.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/ionic/js/angular/angular-resource.min.js \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/ionic/js/angular/angular-resource.min.js.map \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/ionic/js/angular/angular-sanitize.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/ionic/js/angular/angular-sanitize.min.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/lib/ionic/js/angular/angular.js \

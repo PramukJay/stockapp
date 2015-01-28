@@ -20,18 +20,18 @@
      </table>
      <table class="default">
       <tr>
-       <th colspan="2" style="text-align: center; font-size: 12px;" colspan="2">Select Date Rage</th>
+       <th colspan="2" style="text-align: center; font-size: 12px;" colspan="2">Select Date or Date Rage</th>
       </tr>
       <tr ng-show="reportData.report_type=='gl' || reportData.report_type=='th' || reportData.report_type=='cs'">
-       <td style="font-size: 12px; width: 50%;">From:</td>
+       <td style="font-size: 12px; width: 50%;">From :</td>
        <td style="font-size: 12px; width: 50%;"><input style="border-radius: 5px;height: 35px;width: 180px;background-color: #ffffff;color: black;" type="date" ng-model="reportData.fromDate" /></td>
       </tr>
       <tr ng-show="reportData.report_type=='gl' || reportData.report_type=='th' || reportData.report_type=='cs'">
-       <td style="font-size: 12px; width: 50%;">To:</td>
+       <td style="font-size: 12px; width: 50%;">To :</td>
        <td style="font-size: 12px; width: 50%;"><input style="border-radius: 5px;height: 35px;width: 180px;background-color: #ffffff;color: black;" type="date" ng-model="reportData.toDate" /></td>
       </tr>
       <tr ng-show="reportData.report_type=='vr'">
-       <td style="font-size: 12px; width: 50%;">Date:</td>
+       <td style="font-size: 12px; width: 50%;">Date :</td>
        <td style="font-size: 12px; width: 50%;"><input style="border-radius: 5px;height: 35px;width: 180px;background-color: #ffffff;color: black;" type="date" ng-model="reportData.date" /></td>
       </tr>
       <tr>
