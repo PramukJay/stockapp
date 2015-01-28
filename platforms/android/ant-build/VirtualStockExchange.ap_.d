@@ -253,6 +253,7 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.inappbrowser \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.network-information \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.statusbar \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/com.brodysoft.sqlitePlugin/www \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/com.brodysoft.sqlitePlugin/www/SQLitePlugin.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/com.ionic.keyboard/www \
@@ -269,6 +270,8 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.network-information/www/network.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen/www \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen/www/splashscreen.js \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.statusbar/www \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/plugins/org.apache.cordova.statusbar/www/statusbar.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/account.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/announcement.html \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/templates/chart_test.html \

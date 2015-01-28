@@ -2866,8 +2866,8 @@ a.subdued {
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
-    /*font-size: 17px;*/
-    font-size: 20px;
+    font-size: 17px;
+    /*font-size: 20px;*/
     line-height: 44px; }
     .bar .title.title-left {
       text-align: left; }
@@ -2893,9 +2893,9 @@ a.subdued {
       .bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before {
         vertical-align: top;
         /*font-size: 32px;
-        line-height: 32px;*/
+        line-height: 32px;
         font-size: 38px;
-        line-height: 38px; }
+        line-height: 38px; */}
     .bar .button.button-clear {
       padding-right: 2px;
       padding-left: 2px;
@@ -5728,12 +5728,12 @@ progress {
   line-height: 42px;
   cursor: pointer; }
   .button:hover {
-    color: #444;
-    text-decoration: none; }
+    /*color: #444;
+    text-decoration: none;*/ }
   .button.active, .button.activated {
-    border-color: #a2a2a2;
+    /*border-color: #a2a2a2;
     background-color: #e5e5e5;
-    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15);*/ }
   .button:after {
     position: absolute;
     top: -6px;
@@ -6042,7 +6042,7 @@ progress {
     box-shadow: none;
     opacity: 0.3; }
   .button-icon .icon:before, .button-icon.icon:before {
-    font-size: 32px; }
+    font-size: 30px !important; }
 
 .button-clear {
   -webkit-transition: opacity 0.1s;

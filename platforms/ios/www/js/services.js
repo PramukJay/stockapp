@@ -127,9 +127,10 @@ angular.module('starter.services', ['ngResource'])
 		},
 		
 		  getBuySellSecurities: function(){
-			  return $resource(base+'buyandsell/', {
+			  return $resource(base+'buyandsell/:gameid/:userid', {gameid: '@gameid', userid: '@userid'}, {
 				  get: {
 					  method: 'GET',
+					  params: {gameid: '@gameid', userid: '@userid'},
 					  isArray: false
 					 // headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
 				  }
@@ -162,6 +163,126 @@ angular.module('starter.services', ['ngResource'])
 		  		get: {
 		  			method: 'GET',
 		  			params: {gameid: '@gameid', userid: '@userid', sid: '@sid'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  buySecurity: function(){
+		  	return $resource(base+'/buysellstock/:gameid/:userid/:sid/:ttype/:qty/:total/:mprice', {gameid: '@gameid', userid: '@userid', sid: '@sid', ttype: '@ttype', qty: '@qty', total: '@total', mprice: '@mprice'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid', userid: '@userid', sid: '@sid', ttype: '@ttype', qty: '@qty', total: '@total', mprice: '@mprice'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getLeaderboard: function(){
+		  	return $resource(base+'/leaderboard/:gameid', {gameid: '@gameid'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getShareTransactions: function(){
+		  	return $resource(base+'/sharetransactions/:userid/:gameid', {userid: '@userid', gameid: '@gameid'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params : {userid: '@userid', gameid: '@gameid'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getGainLoose: function(){
+		  	return $resource(base+'/gainlossreport/:userid/:gameid/:from/:to', {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getTransactionHistory: function(){
+		  	return $resource(base+'/transactionhistory/:userid/:gameid/:from/:to', {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getCashMovement: function(){
+		  	return $resource(base+'/cashmovement/:userid/:gameid/:from/:to', {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getValuation: function(){
+		  	return $resource(base+'/portfoliovaluation/:userid/:gameid/:date', {userid: '@userid', gameid: '@gameid', date: '@date'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {userid: '@userid', gameid: '@gameid', date: '@date'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getActiveInvestors: function(){
+		  	return $resource(base+'/activeinvestors/:gameid', {gameid: '@gameid'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getTopPortfolioManagers: function(){
+		  	return $resource(base+'/topmanagers/:gameid', {gameid: '@gameid'}, {
+		  		get:{
+		  			method: 'GET',
+		  			params: {gameid: '@gameid'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getTopPortfolioPerformers: function(){
+		  	return $resource(base+'/topportfolioperformers/:gameid', {gameid: '@gameid'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getMostInvestedShare: function(){
+		  	return $resource(base+'/mostinvestedshare/:gameid/:date', {gameid: '@gameid', date: '@date'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid', date: '@date'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getMostTradedStock: function(){
+		  	return $resource(base+'/mosttradedstock/:gameid/:from/:to', {gameid: '@gameid', from: '@from', to: '@to'}, {
+		  		get: {
+		  			method: 'GET',
+		  			params: {gameid: '@gameid', from: '@from', to: '@to'},
 		  			isArray:false
 		  		}
 		  	});

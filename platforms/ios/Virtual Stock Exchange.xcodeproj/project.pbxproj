@@ -50,6 +50,7 @@
 		3C82329645E448ED9FAD6D05 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D807F2315AB4F1E9520A071 /* CDVSplashScreen.m */; };
 		A851BDDD78034136BD9AA746 /* DatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1A63FADA524F2595FEC0CD /* DatePicker.m */; };
 		5754DC00ED1E4A2B9C9A50D4 /* DatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A43D1EF4D66446AE92E8462A /* DatePicker.xib */; };
+		5B9B5A0614734B36A617EED9 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 738CE68125574D3F961930A2 /* CDVStatusBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,8 @@
 		FF1A63FADA524F2595FEC0CD /* DatePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DatePicker.m"; path = "com.plugin.datepicker/DatePicker.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		CCD6004B5CB347E5B15091FF /* DatePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DatePicker.h"; path = "com.plugin.datepicker/DatePicker.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		A43D1EF4D66446AE92E8462A /* DatePicker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "DatePicker.xib"; path = "DatePicker.xib"; sourceTree = "<group>"; fileEncoding = 4; };
+		738CE68125574D3F961930A2 /* CDVStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVStatusBar.m"; path = "org.apache.cordova.statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		F20BF8AD5E6E47A988C5F8BF /* CDVStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVStatusBar.h"; path = "org.apache.cordova.statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +282,8 @@
 				E4F7228DA7C24676B1643440 /* CDVSplashScreen.h */,
 				FF1A63FADA524F2595FEC0CD /* DatePicker.m */,
 				CCD6004B5CB347E5B15091FF /* DatePicker.h */,
+				738CE68125574D3F961930A2 /* CDVStatusBar.m */,
+				F20BF8AD5E6E47A988C5F8BF /* CDVStatusBar.h */,
 			);
 			name = Plugins;
 			path = "Virtual Stock Exchange/Plugins";
@@ -484,6 +489,7 @@
 				3F0D5D455D7B45919BAF434D /* CDVReachability.m in Sources */,
 				3C82329645E448ED9FAD6D05 /* CDVSplashScreen.m in Sources */,
 				A851BDDD78034136BD9AA746 /* DatePicker.m in Sources */,
+				5B9B5A0614734B36A617EED9 /* CDVStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

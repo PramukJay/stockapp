@@ -1,9 +1,9 @@
 <ion-view title="My Portfolio">
-  <ion-content >
+  <ion-content has-bouncing="true">
   <center>
   	<!--input type="text" ng-model="testData" /><br /-->
   	<div style="width: 100%;">
-		<img style="width: 250px; margin: 0 auto;" src="./img/vstox.png" />
+		<img style="width: 160px; margin: 10px auto;" src="./img/vstox.png" />
 	</div>
   	<form ng-submit="loadUser()" novalidate>
 		<div class="list" style="width: 70%;">
@@ -14,14 +14,14 @@
 				<input type="password" ng-model="loginData.pass" placeholder="Password">
 			</label>
 			<label class="item" style="width: 100%;">
-				<button class="button button-block button-positive" type="submit">LOGIN</button>
+				<button class="button custom-button reports-button" type="submit">LOGIN</button>
 			</label>
 			
 		</div>
 	</form>
-	<a class="button button-block button-positive" style="width: 65%" href="#" onclick="window.open('http://vstox.com/index.php/account/index', '_system', 'local=yes'); return false;">SIGNUP</a>
+	<button class="button custom-button reports-button" href="#" onclick="window.open('http://vstox.com/index.php/account/index', '_system', 'local=yes'); return false;">SIGNUP</button>
 	<div >
-		<img style="width: 100px; margin-top: 25%" src="./img/erbenlogo.png" />
+		<img style="width: 100px; margin:25px auto;" src="./img/erbenlogo.png" />
 	</div>
   </ion-content>
 </ion-view>

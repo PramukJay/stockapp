@@ -38,6 +38,10 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/org/apache/cordova/networkinformation/NetworkManager$1.class \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/org/apache/cordova/networkinformation/NetworkManager.class \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/org/apache/cordova/splashscreen/SplashScreen.class \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/org/apache/cordova/statusbar/StatusBar$1.class \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/org/apache/cordova/statusbar/StatusBar$2.class \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/org/apache/cordova/statusbar/StatusBar$3.class \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/org/apache/cordova/statusbar/StatusBar.class \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/org/pgsqlite/SQLitePlugin$1.class \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/org/pgsqlite/SQLitePlugin$Action.class \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/classes/org/pgsqlite/SQLitePlugin$DBQuery.class \

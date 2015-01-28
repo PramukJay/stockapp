@@ -5,7 +5,7 @@
       <button class="button button-clear" ng-click="closeBuySell()"><i class="icon ion-ios7-close-outline"></i></button>
     </div>
   </ion-header-bar>
-  <ion-content>
+  <ion-content has-bouncing="true">
     <table class="buyandsell-1">
     	<tr>
     		<td style="text-align: left; border-radius: 10px 10px 0 0;"><strong>Name :</strong> {{name}}</td>
@@ -17,7 +17,7 @@
     <br />
     <table class="buyandsell-2">
     	<tr>
-    		<td style="text-align: left;"><strong>Buying Power :</strong> {{buying_power | number:2}}</td>
+    		<td style="text-align: left;" class="head-trading"><strong>Buying Power :</strong> {{buying_power | number:2}}</td>
     	</tr>
     </table>
     <br />
@@ -27,7 +27,7 @@
 
     	</tr>
     	<tr>
-    		<td style="text-align: left; border-radius: 0 0 10px 10px;"><strong>Available Quantity :</strong></td>
+    		<td style="text-align: left; border-radius: 0 0 10px 10px;"><strong>Available Quantity :</strong> {{available_quantity}}</td>
 
     	</tr>
     </table>
@@ -56,30 +56,26 @@
     		<td colspan="2" style="text-align: left; vertical-align: middle;">
     			<select ng-model="parseData.action" style="width: 100px;">
     				<option selected="selected" disabled="disabled">Select</option>
-    				<option >Buy</option>
-    				<option>Sell</option>
+    				<option >BUY</option>
+    				<option>SELL</option>
     			</select>
     		</td>
     	</tr>
     	<tr>
     		<td style="text-align: right; vertical-align: middle;"><strong>Quantity :</strong></td>
-    		<td colspan="2" style="text-align: left; vertical-align: middle;"><input ng-model="parseData.quantity" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="border-radius: 5px; height: 20px; width: 100px; background-color: #ffffff; color: black;" /></td>
+    		<td style="text-align: left; vertical-align: middle;"><input ng-model="parseData.quantity" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="border-radius: 5px; height: 20px; width: 100px; background-color: #ffffff; color: black;" /></td>
     	</tr>
     	 <tr>
     		<td style="text-align: right; vertical-align: middle;"><strong>Price :</strong></td>
-    		<td colspan="2" style="text-align: left; vertical-align: middle;"><strong></strong> {{final_price | number:2}}</td>
+    		<td style="text-align: left; vertical-align: middle;"><strong></strong> {{final_price | number:2}}</td>
     	</tr>
     	<tr>
-    		<td style="text-align: right; padding: 10px;">
+    		<td style="text-align: center; padding: 10px;" colspan="2">
   				<a type="button" class="custom-button" ng-click="openPreview()">Preview my order</a>
-  			</td>
-  			<td style="text-align: left; padding: 10px;">
   				<a type="button" class="custom-button" ng-click="closeBuySell()">Cancel</a>
-  			</td>
-  			<td style="text-align: left; padding: 10px;">
   				<a type="button" class="custom-button" ng-click="addToWatchlist(symbol)">Add to Watchlist</a>
   			</td>
-    	</tr>
+  		</tr>
     </table>
   </ion-content>
  </div>

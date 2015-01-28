@@ -13,13 +13,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 
 .run(function($ionicPlatform, $cordovaSQLite, $ionicPopup) {
 	$ionicPlatform.ready(function() {
-		
 		if (window.cordova && window.cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 		}
 		if (window.StatusBar) {
 			// org.apache.cordova.statusbar required
-			StatusBar.styleDefault();
+			StatusBar.hide();
 		}
 		if(window.Connection){
 			if(navigator.connection.type == Connection.NONE){
@@ -414,6 +413,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	$scope.$on('$destroy', function() {
         // Make sure that the interval is destroyed too
         $interval.cancel(refresh);
+        load = true;
       });
 	
 	
