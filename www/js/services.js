@@ -69,6 +69,7 @@ angular.module('starter.services', ['ngResource'])
 	};
 	return forum;
 })
+
 .factory('UserProfile', function($resource){
 	return{
 		getPortfolio: function(){
