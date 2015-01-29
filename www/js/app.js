@@ -948,7 +948,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     
     //Open the buy and sell modal
     $scope.showBuySell = function(security, page) {
-    	if(!time){
+    	if(time){
     		if(window.localStorage["NumberOfTransactions"] > 0){
 	    		if(page == 1){
 		    		$scope.parseData.action = "Select";
