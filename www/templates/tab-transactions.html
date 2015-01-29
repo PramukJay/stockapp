@@ -6,7 +6,7 @@
     <div>
       <table class="default">
       	<tr>
-      		<th>Date</th>
+      		<th style='text-align:left;'>Date</th>
       		<th>Transaction<br />Type</th>
       		<th>Symbol</th>
       		<th>Market<br />Price</th>
@@ -14,7 +14,7 @@
       		<th>Total</th>
       	</tr>
       	<tr ng-repeat="transaction in shareTransactionArr">
-      		<td>{{transaction.date}}</td>
+      		<td style='text-align:left;'>{{transaction.date}}</td>
       		<td>{{transaction.transaction_type}}</td>
       		<td>{{transaction.security_id}}</td>
       		<td>{{transaction.market_price}}</td>

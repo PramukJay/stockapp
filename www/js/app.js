@@ -1484,7 +1484,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				$scope.reportModal.show();
 				show();
 				document.getElementById("report-table").innerHTML = "";
-				tbl_row = "<tr><th>Date</th><th>Transaction Type</th><th>Symbol</th><th>Position</th><th>Total Value (Rs)</th></tr>";
+				tbl_row = "<tr><th style='text-align:left;'>Date</th><th>Transaction Type</th><th>Symbol</th><th>Position</th><th>Total Value (Rs)</th></tr>";
 				var tr_history = UserProfile.getTransactionHistory();
 				tr_history.get({userid:window.localStorage["userID"], gameid:window.localStorage["gameID"], from:$scope.reportData.fromDate, to:$scope.reportData.toDate}, function(data){
 					if(data.result){
@@ -1493,7 +1493,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 						for(var i=0;i<$scope.report.length;i++){
 							tbl_row = tbl_row +
 							"<tr>" +
-							"<td>" + $scope.report[i].date + "</td>" +
+							"<td style='text-align:left;'>" + $scope.report[i].date + "</td>" +
 							"<td>" + $scope.report[i].transaction_type + "</td>" +
 							"<td>" + $scope.report[i].security_id + "</td>" +
 							"<td>" + $scope.report[i].quantity + "</td>" +
@@ -1517,7 +1517,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				$scope.reportModal.show();
 				show();
 				document.getElementById("report-table").innerHTML = "";
-				tbl_row = "<tr><th>Date</th><th>Description</th><th>Amount (Rs)</th><th>Amount Balance (Rs)</th></tr>";
+				tbl_row = "<tr><th style='text-align:left;'>Date</th><th>Description</th><th>Amount (Rs)</th><th>Amount Balance (Rs)</th></tr>";
 				var cash_movement = UserProfile.getCashMovement();
 				cash_movement.get({userid:window.localStorage["userID"], gameid:window.localStorage["gameID"], from:$scope.reportData.fromDate, to:$scope.reportData.toDate}, function(data){
 					if(data.result){
@@ -1526,7 +1526,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 						for(var i=0;i<$scope.report.length;i++){
 							tbl_row = tbl_row +
 							"<tr>" +
-							"<td>" + $scope.report[i].date + "</td>" +
+							"<td style='text-align:left;'>" + $scope.report[i].date + "</td>" +
 							"<td>" + $scope.report[i].description + "</td>" +
 							"<td>" + $filter('number')($scope.report[i].amount, 2) + "</td>" +
 							"<td>" + $filter('number')($scope.report[i].account_balance, 2) + "</td>" +
@@ -1549,7 +1549,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				$scope.reportModal.show();
 				show();
 				document.getElementById("report-table").innerHTML = "";
-				tbl_row = "<tr><th>Symbol</th><th>Number of Shares</th><th>Average Cost (Rs)</th><th>Total Cost(Rs)</th><th>Market Price (Rs)</th><th>Market Value (Rs)</th><th>Gain/Loss (Rs)</th></tr>";
+				tbl_row = "<tr><th style='text-align:left;'>Symbol</th><th>Number of Shares</th><th>Average Cost (Rs)</th><th>Total Cost(Rs)</th><th>Market Price (Rs)</th><th>Market Value (Rs)</th><th>Gain/Loss (Rs)</th></tr>";
 				var valuation = UserProfile.getValuation();
 				valuation.get({userid:window.localStorage["userID"], gameid:window.localStorage["gameID"],date:$scope.reportData.date}, function(data){
 					if(data.result){
