@@ -818,6 +818,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 			var tot_port_val = parseFloat(tot_share_port_val);
 			var bank_bal = parseFloat(data.user_balance[0].bank_balance);
 			$scope.totalPortfolioValue = tot_port_val+ bank_bal;
+			window.localStorage["NumberOfTransactions"] = data.transactions_left[0].num_trans;
+	    	time = data.time;
 			hide();
 			//$ionicPopup.alert({title: 'Stock App', template: $scope.securitiesArr});
 		}, function(error){
