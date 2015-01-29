@@ -850,6 +850,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     $scope.closePreview = function() {
     	$scope.previewModal.hide();
     };
+    
+    $scope.$on('$destroy',function(){
+    	$scope.modal.remove();
+        $scope.previewModal.remove();
+    });
 	
 	$scope.logout = function(){
 		show();
@@ -860,7 +865,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	
 	//Open the buy and sell modal
     $scope.showBuySell = function(security, page) {
-    	if(!time){
+    	if(time){
     		if(window.localStorage["NumberOfTransactions"] > 0){
 	    		if(page == 1){
 		    		$scope.parseData.action = "Select";
@@ -899,7 +904,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 			    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
 			   });
 	    	}else{
-	    		$ionicPopup.alert({title: 'VSE', template: 'You have exceeded your transaction for a day.'});
+	    		$ionicPopup.alert({title: 'VSE', template: 'You have exceeded your transactions for a day.'});
 	    	}
     	}else{
     		$ionicPopup.alert({title: 'VSE', template: 'Virtual Stock Exchange (VstoX) is currently closed. Trading hours are from 18:00 to 09:00 the following day.'});
@@ -1096,7 +1101,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     
     //Open the buy and sell modal
     $scope.showBuySell = function(security, page) {
-    	if(!time){
+    	if(time){
     		if(window.localStorage["NumberOfTransactions"] > 0){
 	    		if(page == 1){
 		    		$scope.parseData.action = "Select";
@@ -1135,7 +1140,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 			    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
 			   });
 	    	}else{
-	    		$ionicPopup.alert({title: 'VSE', template: 'You have exceeded your transaction for a day.'});
+	    		$ionicPopup.alert({title: 'VSE', template: 'You have exceeded your transactions for a day.'});
 	    	}
     	}else{
     		$ionicPopup.alert({title: 'VSE', template: 'Virtual Stock Exchange (VstoX) is currently closed. Trading hours are from 18:00 to 09:00 the following day.'});
@@ -1150,6 +1155,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     $scope.closePreview = function() {
     	$scope.previewModal.hide();
     };
+    
+    $scope.$on('$destroy',function(){
+    	$scope.modal.remove();
+        $scope.previewModal.remove();
+    });
     
     //Opening the buy and sell modal
     $scope.openPreview = function() {
