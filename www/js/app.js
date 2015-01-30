@@ -1728,6 +1728,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     
     	if($scope.gameReportData.report_type == "ai"){
     		$scope.gameReportModal.show();
+    		$scope.showChatrt = false;
     		show();
     		document.getElementById("game-report-table").innerHTML = "";
 			tbl_row = "<tr><th style='text-align:left;'>Player</th><th>Number of Transaction</th></tr>";
@@ -1753,6 +1754,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     		});
     	}else if($scope.gameReportData.report_type == "pm"){
     		$scope.gameReportModal.show();
+    		$scope.showChatrt = false;
     		show();
     		document.getElementById("game-report-table").innerHTML = "";
     		tbl_row = "<tr><th style='text-align:left;'>Player</th><th style='text-align: right;'>Total Portfolio (Rs)</th></tr>";
@@ -1787,6 +1789,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     	}
     	else if($scope.gameReportData.report_type == "pp"){
     		$scope.gameReportModal.show();
+    		$scope.showChatrt = false;
     		show();
     		document.getElementById("game-report-table").innerHTML = "";
     		tbl_row = "<tr><th style='text-align:left;'>Player</th><th>Total Gains</th><th>Portfolio Return (%)<br/>Per Player</th></tr>";
@@ -1801,8 +1804,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     					"<td>" + $filter('number')($scope.report[i].total_gains, 2) + "</td>" +
     					"<td>" + $filter('number')($scope.report[i].portfolio_return, 2) + "</td>" +
     					"</tr>";
+    					name[i] = $scope.report[i].real_name;
+    					values[i] = $scope.report[i].portfolio_return;
     				}
     				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
+    				genarateChart(name, values);
+    				$scope.showChatrt = true;
 					hide();
 					//$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
     			}else{
@@ -1817,6 +1824,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				$ionicPopup.alert({title: 'VSE', template: 'Enter date'});
     		}else{
     			$scope.gameReportModal.show();
+    			$scope.showChatrt = false;
 				show();
     			document.getElementById("game-report-table").innerHTML = "";
     			tbl_row = "<tr><th style='text-align:left;'>Symbol</th><th>Total Invested (Rs)</th><th>% of the Total<br/>Virtual Portfolios</th></tr>";
@@ -1849,6 +1857,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     			$ionicPopup.alert({title: 'VSE', template: 'Enter date range'});
     		}else{
 	    		$scope.gameReportModal.show();
+	    		$scope.showChatrt = false;
 	    		show();
 	    		document.getElementById("game-report-table").innerHTML = "";
 	    		tbl_row = "<tr><th style='text-align:left;'>Symbol</th><th>Count</th></tr>";

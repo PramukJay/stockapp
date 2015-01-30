@@ -1722,9 +1722,13 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     
     //Open the report modal
     $scope.openReport = function() {
+    	var name = [];
+    	var values = [];
+    	$scope.showChatrt = false;
     
     	if($scope.gameReportData.report_type == "ai"){
     		$scope.gameReportModal.show();
+    		$scope.showChatrt = false;
     		show();
     		document.getElementById("game-report-table").innerHTML = "";
 			tbl_row = "<tr><th style='text-align:left;'>Player</th><th>Number of Transaction</th></tr>";
@@ -1750,6 +1754,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     		});
     	}else if($scope.gameReportData.report_type == "pm"){
     		$scope.gameReportModal.show();
+    		$scope.showChatrt = false;
     		show();
     		document.getElementById("game-report-table").innerHTML = "";
     		tbl_row = "<tr><th style='text-align:left;'>Player</th><th style='text-align: right;'>Total Portfolio (Rs)</th></tr>";
@@ -1763,8 +1768,15 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     					"<td style='text-align:left;'>" + $scope.report[i].real_name + "</td>" +
     					"<td style='text-align: right;'>" + $filter('number')($scope.report[i].total, 2) + "</td>" +
     					"</tr>";
+    					if(i<=9){
+    						name[i] = $scope.report[i].real_name;
+    						values[i] = $scope.report[i].total;
+    					}
+    					
     				}
     				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
+    				genarateChart(name, values);
+    				$scope.showChatrt = true;
 					hide();
 					//$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
 					
@@ -1774,18 +1786,115 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				}
     			
     		});
-    		//var name = $scope.report[0].real_name;
-    		//alert($scope.report[0].real_name);
-    		// Chart.js Data
+    	}
+    	else if($scope.gameReportData.report_type == "pp"){
+    		$scope.gameReportModal.show();
+    		$scope.showChatrt = false;
+    		show();
+    		document.getElementById("game-report-table").innerHTML = "";
+    		tbl_row = "<tr><th style='text-align:left;'>Player</th><th>Total Gains</th><th>Portfolio Return (%)<br/>Per Player</th></tr>";
+    		var portfolioPerformers = UserProfile.getTopPortfolioPerformers();
+    		portfolioPerformers.get({gameid:window.localStorage["gameID"]}, function(data){
+    			if(data.result){
+    				$scope.report = data.top_portfolio_performers;
+    				for(var i=0;i<$scope.report.length;i++){
+    					tbl_row = tbl_row +
+    					"<tr>" +
+    					"<td style='text-align:left;'>" + $scope.report[i].real_name + "</td>" +
+    					"<td>" + $filter('number')($scope.report[i].total_gains, 2) + "</td>" +
+    					"<td>" + $filter('number')($scope.report[i].portfolio_return, 2) + "</td>" +
+    					"</tr>";
+    					name[i] = $scope.report[i].real_name;
+    					values[i] = $scope.report[i].portfolio_return;
+    				}
+    				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
+    				genarateChart(name, values);
+    				$scope.showChatrt = true;
+					hide();
+					//$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
+    			}else{
+					$ionicPopup.alert({title: 'VSE', template: data.status});
+					hide();
+				}
+    		});
+    	}
+    	else if($scope.gameReportData.report_type == "is"){
+    		
+    		if ($scope.gameReportData.date == null ||$scope.gameReportData.date == ""){
+				$ionicPopup.alert({title: 'VSE', template: 'Enter date'});
+    		}else{
+    			$scope.gameReportModal.show();
+    			$scope.showChatrt = false;
+				show();
+    			document.getElementById("game-report-table").innerHTML = "";
+    			tbl_row = "<tr><th style='text-align:left;'>Symbol</th><th>Total Invested (Rs)</th><th>% of the Total<br/>Virtual Portfolios</th></tr>";
+    			var mostInvestedShare = UserProfile.getMostInvestedShare();
+	    		mostInvestedShare.get({gameid:window.localStorage["gameID"], date:$scope.gameReportData.date}, function(data){
+	    			if(data.result){
+	    				$scope.report = data.most_invested_share;
+	    				for(var i=0;i<$scope.report.length;i++){
+	    					tbl_row = tbl_row +
+	    					"<tr>" +
+	    					"<td style='text-align:left;'>" + $scope.report[i].security_id + "</td>" +
+	    					"<td>" + $filter('number')($scope.report[i].total_invested, 2) + "</td>" +
+	    					"<td>" + 0.00 + "</td>" +
+	    					"</tr>";
+	    				}
+	    				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
+						hide();
+						//$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
+	    			}else{
+						$ionicPopup.alert({title: 'VSE', template: data.status});
+						hide();
+					}
+	    		});
+    		}
+
+    	}
+    	else if($scope.gameReportData.report_type == "ms"){
+    		
+    		if ($scope.gameReportData.fromDate == null ||$scope.gameReportData.fromDate == "" || $scope.gameReportData.toDate == null ||$scope.gameReportData.toDate == "" ){
+    			$ionicPopup.alert({title: 'VSE', template: 'Enter date range'});
+    		}else{
+	    		$scope.gameReportModal.show();
+	    		$scope.showChatrt = false;
+	    		show();
+	    		document.getElementById("game-report-table").innerHTML = "";
+	    		tbl_row = "<tr><th style='text-align:left;'>Symbol</th><th>Count</th></tr>";
+	    		var mostTradedStock = UserProfile.getMostTradedStock();
+	    		mostTradedStock.get({gameid:window.localStorage["gameID"], from:$scope.gameReportData.fromDate, to:$scope.gameReportData.toDate}, function(data){
+	    			if(data.result){
+	    				$scope.report = data.most_traded_stock;
+	    				for(var i=0;i<$scope.report.length;i++){
+	    					tbl_row = tbl_row +
+	    					"<tr>" +
+	    					"<td style='text-align:left;'>" + $scope.report[i].security_id + "</td>" +
+	    					"<td>" + $scope.report[i].count + "</td>" +
+	    					"</tr>";
+	    				}
+	    				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
+						hide();
+						//$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
+	    			}else{
+						$ionicPopup.alert({title: 'VSE', template: data.status});
+						hide();
+					}
+	    		});
+    		}
+    	}
+    };
+    
+    function genarateChart(names, values){
+    	// Chart.js Data
 		    $scope.data = {
-		      labels: ['name', 'February', 'March', 'April', 'May', 'June', 'July'],
+		      labels: names,
 		      datasets: [
 		        {
 		          fillColor: 'rgba(151,187,205,0.5)',
 		          strokeColor: 'rgba(151,187,205,0.8)',
 		          highlightFill: 'rgba(151,187,205,0.75)',
 		          highlightStroke: 'rgba(151,187,205,1)',
-		          data: [28, 48, 40, 19, 86, 27, 90]
+		          data: values
 		        }
 		      ]
 		    };
@@ -1823,96 +1932,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 		      //String - A legend template
 		      legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
 		    };
-    	}
-    	else if($scope.gameReportData.report_type == "pp"){
-    		$scope.gameReportModal.show();
-    		show();
-    		document.getElementById("game-report-table").innerHTML = "";
-    		tbl_row = "<tr><th style='text-align:left;'>Player</th><th>Total Gains</th><th>Portfolio Return (%)<br/>Per Player</th></tr>";
-    		var portfolioPerformers = UserProfile.getTopPortfolioPerformers();
-    		portfolioPerformers.get({gameid:window.localStorage["gameID"]}, function(data){
-    			if(data.result){
-    				$scope.report = data.top_portfolio_performers;
-    				for(var i=0;i<$scope.report.length;i++){
-    					tbl_row = tbl_row +
-    					"<tr>" +
-    					"<td style='text-align:left;'>" + $scope.report[i].real_name + "</td>" +
-    					"<td>" + $filter('number')($scope.report[i].total_gains, 2) + "</td>" +
-    					"<td>" + $filter('number')($scope.report[i].portfolio_return, 2) + "</td>" +
-    					"</tr>";
-    				}
-    				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
-					hide();
-					//$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
-    			}else{
-					$ionicPopup.alert({title: 'VSE', template: data.status});
-					hide();
-				}
-    		});
-    	}
-    	else if($scope.gameReportData.report_type == "is"){
-    		
-    		if ($scope.gameReportData.date == null ||$scope.gameReportData.date == ""){
-				$ionicPopup.alert({title: 'VSE', template: 'Enter date'});
-    		}else{
-    			$scope.gameReportModal.show();
-				show();
-    			document.getElementById("game-report-table").innerHTML = "";
-    			tbl_row = "<tr><th style='text-align:left;'>Symbol</th><th>Total Invested (Rs)</th><th>% of the Total<br/>Virtual Portfolios</th></tr>";
-    			var mostInvestedShare = UserProfile.getMostInvestedShare();
-	    		mostInvestedShare.get({gameid:window.localStorage["gameID"], date:$scope.gameReportData.date}, function(data){
-	    			if(data.result){
-	    				$scope.report = data.most_invested_share;
-	    				for(var i=0;i<$scope.report.length;i++){
-	    					tbl_row = tbl_row +
-	    					"<tr>" +
-	    					"<td style='text-align:left;'>" + $scope.report[i].security_id + "</td>" +
-	    					"<td>" + $filter('number')($scope.report[i].total_invested, 2) + "</td>" +
-	    					"<td>" + 0.00 + "</td>" +
-	    					"</tr>";
-	    				}
-	    				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
-						hide();
-						//$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
-	    			}else{
-						$ionicPopup.alert({title: 'VSE', template: data.status});
-						hide();
-					}
-	    		});
-    		}
-
-    	}
-    	else if($scope.gameReportData.report_type == "ms"){
-    		
-    		if ($scope.gameReportData.fromDate == null ||$scope.gameReportData.fromDate == "" || $scope.gameReportData.toDate == null ||$scope.gameReportData.toDate == "" ){
-    			$ionicPopup.alert({title: 'VSE', template: 'Enter date range'});
-    		}else{
-	    		$scope.gameReportModal.show();
-	    		show();
-	    		document.getElementById("game-report-table").innerHTML = "";
-	    		tbl_row = "<tr><th style='text-align:left;'>Symbol</th><th>Count</th></tr>";
-	    		var mostTradedStock = UserProfile.getMostTradedStock();
-	    		mostTradedStock.get({gameid:window.localStorage["gameID"], from:$scope.gameReportData.fromDate, to:$scope.gameReportData.toDate}, function(data){
-	    			if(data.result){
-	    				$scope.report = data.most_traded_stock;
-	    				for(var i=0;i<$scope.report.length;i++){
-	    					tbl_row = tbl_row +
-	    					"<tr>" +
-	    					"<td style='text-align:left;'>" + $scope.report[i].security_id + "</td>" +
-	    					"<td>" + $scope.report[i].count + "</td>" +
-	    					"</tr>";
-	    				}
-	    				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
-						hide();
-						//$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
-	    			}else{
-						$ionicPopup.alert({title: 'VSE', template: data.status});
-						hide();
-					}
-	    		});
-    		}
-    	}
-    };
+    }
     
     //Close the report modal
     $scope.closeReport = function() {
