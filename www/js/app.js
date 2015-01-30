@@ -1903,7 +1903,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 		    $scope.options =  {
 		
 		      // Sets the chart to be responsive
-		      responsive: true,
+		      responsive: false,
 		
 		      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
 		      scaleBeginAtZero : true,

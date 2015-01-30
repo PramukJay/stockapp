@@ -659,6 +659,11 @@ ion-nav-view {
 	color: #fff;
 }
 
+.chart {
+	width: 100%;
+	height: auto;
+}
+
 @media only screen and (min-width: 590px) and (max-width: 1280px) {
 	.pane, .view {
 		width: 92%;

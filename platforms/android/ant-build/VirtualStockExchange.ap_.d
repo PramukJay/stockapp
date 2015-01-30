@@ -77,6 +77,7 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/ionic.png \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/logo.png \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/vstox.png \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/js/angular-touch.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/js/app.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/js/controllers.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/js/news.html \

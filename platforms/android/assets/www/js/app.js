@@ -9,7 +9,7 @@ var transactions_left = window.localStorage["NumberOfTransactions"];
 window.localStorage["token"] = "u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ";
 var broker_rate = 1.12;
 var time = false;
-angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services'])
+angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services', 'ngTouch'])
 
 .run(function($ionicPlatform, $cordovaSQLite, $ionicPopup) {
 	$ionicPlatform.ready(function() {
@@ -1724,9 +1724,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     $scope.openReport = function() {
     	var name = [];
     	var values = [];
+    	$scope.showChatrt = false;
     
     	if($scope.gameReportData.report_type == "ai"){
     		$scope.gameReportModal.show();
+    		$scope.showChatrt = false;
     		show();
     		document.getElementById("game-report-table").innerHTML = "";
 			tbl_row = "<tr><th style='text-align:left;'>Player</th><th>Number of Transaction</th></tr>";
@@ -1752,6 +1754,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     		});
     	}else if($scope.gameReportData.report_type == "pm"){
     		$scope.gameReportModal.show();
+    		$scope.showChatrt = false;
     		show();
     		document.getElementById("game-report-table").innerHTML = "";
     		tbl_row = "<tr><th style='text-align:left;'>Player</th><th style='text-align: right;'>Total Portfolio (Rs)</th></tr>";
@@ -1772,6 +1775,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     					
     				}
     				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
+    				genarateChart(name, values);
+    				$scope.showChatrt = true;
 					hide();
 					//$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
 					
@@ -1781,57 +1786,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				}
     			
     		});
-    		
-    		// Chart.js Data
-		    $scope.data = {
-		      labels: name,
-		      datasets: [
-		        {
-		          fillColor: 'rgba(151,187,205,0.5)',
-		          strokeColor: 'rgba(151,187,205,0.8)',
-		          highlightFill: 'rgba(151,187,205,0.75)',
-		          highlightStroke: 'rgba(151,187,205,1)',
-		          data: values
-		        }
-		      ]
-		    };
-		
-		    // Chart.js Options
-		    $scope.options =  {
-		
-		      // Sets the chart to be responsive
-		      responsive: true,
-		
-		      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-		      scaleBeginAtZero : true,
-		
-		      //Boolean - Whether grid lines are shown across the chart
-		      scaleShowGridLines : true,
-		
-		      //String - Colour of the grid lines
-		      scaleGridLineColor : "rgba(0,0,0,.05)",
-		
-		      //Number - Width of the grid lines
-		      scaleGridLineWidth : 1,
-		
-		      //Boolean - If there is a stroke on each bar
-		      barShowStroke : true,
-		
-		      //Number - Pixel width of the bar stroke
-		      barStrokeWidth : 2,
-		
-		      //Number - Spacing between each of the X value sets
-		      barValueSpacing : 5,
-		
-		      //Number - Spacing between data sets within X values
-		      barDatasetSpacing : 1,
-		
-		      //String - A legend template
-		      legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
-		    };
     	}
     	else if($scope.gameReportData.report_type == "pp"){
     		$scope.gameReportModal.show();
+    		$scope.showChatrt = false;
     		show();
     		document.getElementById("game-report-table").innerHTML = "";
     		tbl_row = "<tr><th style='text-align:left;'>Player</th><th>Total Gains</th><th>Portfolio Return (%)<br/>Per Player</th></tr>";
@@ -1846,8 +1804,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     					"<td>" + $filter('number')($scope.report[i].total_gains, 2) + "</td>" +
     					"<td>" + $filter('number')($scope.report[i].portfolio_return, 2) + "</td>" +
     					"</tr>";
+    					name[i] = $scope.report[i].real_name;
+    					values[i] = $scope.report[i].portfolio_return;
     				}
     				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
+    				genarateChart(name, values);
+    				$scope.showChatrt = true;
 					hide();
 					//$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
     			}else{
@@ -1862,6 +1824,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				$ionicPopup.alert({title: 'VSE', template: 'Enter date'});
     		}else{
     			$scope.gameReportModal.show();
+    			$scope.showChatrt = false;
 				show();
     			document.getElementById("game-report-table").innerHTML = "";
     			tbl_row = "<tr><th style='text-align:left;'>Symbol</th><th>Total Invested (Rs)</th><th>% of the Total<br/>Virtual Portfolios</th></tr>";
@@ -1894,6 +1857,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     			$ionicPopup.alert({title: 'VSE', template: 'Enter date range'});
     		}else{
 	    		$scope.gameReportModal.show();
+	    		$scope.showChatrt = false;
 	    		show();
 	    		document.getElementById("game-report-table").innerHTML = "";
 	    		tbl_row = "<tr><th style='text-align:left;'>Symbol</th><th>Count</th></tr>";
@@ -1919,6 +1883,56 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     		}
     	}
     };
+    
+    function genarateChart(names, values){
+    	// Chart.js Data
+		    $scope.data = {
+		      labels: names,
+		      datasets: [
+		        {
+		          fillColor: 'rgba(151,187,205,0.5)',
+		          strokeColor: 'rgba(151,187,205,0.8)',
+		          highlightFill: 'rgba(151,187,205,0.75)',
+		          highlightStroke: 'rgba(151,187,205,1)',
+		          data: values
+		        }
+		      ]
+		    };
+		
+		    // Chart.js Options
+		    $scope.options =  {
+		
+		      // Sets the chart to be responsive
+		      responsive: false,
+		
+		      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+		      scaleBeginAtZero : true,
+		
+		      //Boolean - Whether grid lines are shown across the chart
+		      scaleShowGridLines : true,
+		
+		      //String - Colour of the grid lines
+		      scaleGridLineColor : "rgba(0,0,0,.05)",
+		
+		      //Number - Width of the grid lines
+		      scaleGridLineWidth : 1,
+		
+		      //Boolean - If there is a stroke on each bar
+		      barShowStroke : true,
+		
+		      //Number - Pixel width of the bar stroke
+		      barStrokeWidth : 2,
+		
+		      //Number - Spacing between each of the X value sets
+		      barValueSpacing : 5,
+		
+		      //Number - Spacing between data sets within X values
+		      barDatasetSpacing : 1,
+		
+		      //String - A legend template
+		      legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+		    };
+    }
     
     //Close the report modal
     $scope.closeReport = function() {
