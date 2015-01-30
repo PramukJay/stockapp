@@ -1722,6 +1722,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     
     //Open the report modal
     $scope.openReport = function() {
+    	var name = [];
+    	var values = [];
+    	$scope.showChatrt = false;
     
     	if($scope.gameReportData.report_type == "ai"){
     		$scope.gameReportModal.show();
@@ -1763,8 +1766,15 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     					"<td style='text-align:left;'>" + $scope.report[i].real_name + "</td>" +
     					"<td style='text-align: right;'>" + $filter('number')($scope.report[i].total, 2) + "</td>" +
     					"</tr>";
+    					if(i<=9){
+    						name[i] = $scope.report[i].real_name;
+    						values[i] = $scope.report[i].total;
+    					}
+    					
     				}
     				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
+    				genarateChart(name, values);
+    				$scope.showChatrt = true;
 					hide();
 					//$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
 					
@@ -1774,55 +1784,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				}
     			
     		});
-    		//var name = $scope.report[0].real_name;
-    		//alert($scope.report[0].real_name);
-    		// Chart.js Data
-		    $scope.data = {
-		      labels: ['name', 'February', 'March', 'April', 'May', 'June', 'July'],
-		      datasets: [
-		        {
-		          fillColor: 'rgba(151,187,205,0.5)',
-		          strokeColor: 'rgba(151,187,205,0.8)',
-		          highlightFill: 'rgba(151,187,205,0.75)',
-		          highlightStroke: 'rgba(151,187,205,1)',
-		          data: [28, 48, 40, 19, 86, 27, 90]
-		        }
-		      ]
-		    };
-		
-		    // Chart.js Options
-		    $scope.options =  {
-		
-		      // Sets the chart to be responsive
-		      responsive: true,
-		
-		      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-		      scaleBeginAtZero : true,
-		
-		      //Boolean - Whether grid lines are shown across the chart
-		      scaleShowGridLines : true,
-		
-		      //String - Colour of the grid lines
-		      scaleGridLineColor : "rgba(0,0,0,.05)",
-		
-		      //Number - Width of the grid lines
-		      scaleGridLineWidth : 1,
-		
-		      //Boolean - If there is a stroke on each bar
-		      barShowStroke : true,
-		
-		      //Number - Pixel width of the bar stroke
-		      barStrokeWidth : 2,
-		
-		      //Number - Spacing between each of the X value sets
-		      barValueSpacing : 5,
-		
-		      //Number - Spacing between data sets within X values
-		      barDatasetSpacing : 1,
-		
-		      //String - A legend template
-		      legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
-		    };
     	}
     	else if($scope.gameReportData.report_type == "pp"){
     		$scope.gameReportModal.show();
@@ -1913,6 +1874,56 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     		}
     	}
     };
+    
+    function genarateChart(names, values){
+    	// Chart.js Data
+		    $scope.data = {
+		      labels: names,
+		      datasets: [
+		        {
+		          fillColor: 'rgba(151,187,205,0.5)',
+		          strokeColor: 'rgba(151,187,205,0.8)',
+		          highlightFill: 'rgba(151,187,205,0.75)',
+		          highlightStroke: 'rgba(151,187,205,1)',
+		          data: values
+		        }
+		      ]
+		    };
+		
+		    // Chart.js Options
+		    $scope.options =  {
+		
+		      // Sets the chart to be responsive
+		      responsive: true,
+		
+		      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+		      scaleBeginAtZero : true,
+		
+		      //Boolean - Whether grid lines are shown across the chart
+		      scaleShowGridLines : true,
+		
+		      //String - Colour of the grid lines
+		      scaleGridLineColor : "rgba(0,0,0,.05)",
+		
+		      //Number - Width of the grid lines
+		      scaleGridLineWidth : 1,
+		
+		      //Boolean - If there is a stroke on each bar
+		      barShowStroke : true,
+		
+		      //Number - Pixel width of the bar stroke
+		      barStrokeWidth : 2,
+		
+		      //Number - Spacing between each of the X value sets
+		      barValueSpacing : 5,
+		
+		      //Number - Spacing between data sets within X values
+		      barDatasetSpacing : 1,
+		
+		      //String - A legend template
+		      legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+		    };
+    }
     
     //Close the report modal
     $scope.closeReport = function() {
