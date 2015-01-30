@@ -15,7 +15,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	$ionicPlatform.ready(function() {
 		if (window.cordova && window.cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+			//cordova.plugins.Keyboard.disableScroll(false);
 		}
+		ionic.Platform.isFullScreen = true;
 		if (window.StatusBar) {
 			// org.apache.cordova.statusbar required
 			StatusBar.hide();
@@ -599,7 +601,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 		
 	}	
 })
-.controller('ListedSecuritiesCtrl', function($scope,$http, $ionicLoading) {
+.controller('ListedSecuritiesCtrl', function($scope,$http, $ionicLoading, UserProfile) {
 	function show() {
 	    $ionicLoading.show({
 	      template: '<span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
@@ -615,8 +617,14 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	
 	show();
 	function loadListedsSequrities(){
+		
+		var listedSecurities = UserProfile.getListedSecurities();
+		listedSecurities.get(function(data){
+			$scope.secutiryArr = data.securities;
+			hide();
+		});
 
-		$scope.sequrityUrl = "https://api.import.io/store/data/e7302ec9-f2d2-426c-a3db-82ec25a955df/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FindexDetails.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
+		/*$scope.sequrityUrl = "https://api.import.io/store/data/e7302ec9-f2d2-426c-a3db-82ec25a955df/_query?input/webpage/url=http%3A%2F%2Flk.duinvest.com%2Fportal%2FLKCSE%2FindexDetails.html&_user=a2cae542-39a3-445b-91fb-7924849050c9&_apikey=Y%2BumIeebILxqCQPBxz79RKlNNpyTIrFVtA3JYUjE%2FOgupkWJC4g%2FWX8BYAGhQ2%2BLEzqRm1yo%2BzFnbNnEp7xerg%3D%3D";
 		
 		
 		$http.get($scope.sequrityUrl).success(function(res, status){
@@ -629,7 +637,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 			//$scope.testData = "Error";
 	    });
 		
-		$scope.loading = false;
+		$scope.loading = false;*/
 	}
 	
 })
@@ -867,7 +875,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	
 	//Open the buy and sell modal
     $scope.showBuySell = function(security, page) {
-    	if(time){
+    	if(!time){
     		if(window.localStorage["NumberOfTransactions"] > 0){
 	    		if(page == 1){
 		    		$scope.parseData.action = "Select";
@@ -1103,7 +1111,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     
     //Open the buy and sell modal
     $scope.showBuySell = function(security, page) {
-    	if(time){
+    	if(!time){
     		if(window.localStorage["NumberOfTransactions"] > 0){
 	    		if(page == 1){
 		    		$scope.parseData.action = "Select";

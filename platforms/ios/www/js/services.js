@@ -69,6 +69,7 @@ angular.module('starter.services', ['ngResource'])
 	};
 	return forum;
 })
+
 .factory('UserProfile', function($resource){
 	return{
 		getPortfolio: function(){
@@ -283,6 +284,15 @@ angular.module('starter.services', ['ngResource'])
 		  		get: {
 		  			method: 'GET',
 		  			params: {gameid: '@gameid', from: '@from', to: '@to'},
+		  			isArray:false
+		  		}
+		  	});
+		  },
+		  
+		  getListedSecurities: function(){
+		  	return $resource(base+'/securities', {
+		  		get: {
+		  			method: 'GET',
 		  			isArray:false
 		  		}
 		  	});

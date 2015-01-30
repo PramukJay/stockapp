@@ -287,6 +287,15 @@ angular.module('starter.services', ['ngResource'])
 		  			isArray:false
 		  		}
 		  	});
+		  },
+		  
+		  getListedSecurities: function(){
+		  	return $resource(base+'/securities', {
+		  		get: {
+		  			method: 'GET',
+		  			isArray:false
+		  		}
+		  	});
 		  }
 	};
 });
