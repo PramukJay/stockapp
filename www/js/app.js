@@ -14,7 +14,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 .run(function($ionicPlatform, $cordovaSQLite, $ionicPopup) {
 	$ionicPlatform.ready(function() {
 		if (window.cordova && window.cordova.plugins.Keyboard) {
-			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
 			//cordova.plugins.Keyboard.disableScroll(false);
 		}
 		ionic.Platform.isFullScreen = true;
@@ -875,7 +875,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	
 	//Open the buy and sell modal
     $scope.showBuySell = function(security, page) {
-    	if(!time){
+    	if(time){
     		if(window.localStorage["NumberOfTransactions"] > 0){
 	    		if(page == 1){
 		    		$scope.parseData.action = "Select";
@@ -1111,7 +1111,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     
     //Open the buy and sell modal
     $scope.showBuySell = function(security, page) {
-    	if(!time){
+    	if(time){
     		if(window.localStorage["NumberOfTransactions"] > 0){
 	    		if(page == 1){
 		    		$scope.parseData.action = "Select";
@@ -1436,7 +1436,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				$scope.reportModal.show();
 				show();
 				document.getElementById("report-table").innerHTML = "";
-				tbl_row = "<tr><th style='text-align:left;'>Symbol</th><th>Share Quantity</th><th>Total Sales</th><th>Cost of Perchases (Rs)</th><th>Realized Gain/Loss (Rs)</th></tr>";
+				tbl_row = "<tr><th style='text-align:left; padding: 10px;'>Symbol</th><th>Share Quantity</th><th>Total Sales</th><th>Cost of Purchases (Rs)</th><th style='padding-right:10px;'>Realized Gain/Loss (Rs)</th></tr>";
 				//alert(tbl_row);
 				var gain_loose = UserProfile.getGainLoose();
 				gain_loose.get({userid:window.localStorage["userID"], gameid:window.localStorage["gameID"], from:$scope.reportData.fromDate, to:$scope.reportData.toDate}, function(data){
@@ -1450,7 +1450,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 						for(var i=0;i<$scope.report.length;i++){
 							tbl_row = tbl_row +
 							"<tr>" +
-							"<td style='text-align:left;'>" + $scope.report[i].security_id + "</td>" +
+							"<td style='text-align:left; padding-left: 10px;'>" + $scope.report[i].security_id + "</td>" +
 							"<td>" + $filter('number')($scope.report[i].total_qty, 2) + "</td>" +
 							"<td>" + $filter('number')($scope.report[i].total_sales, 2) + "</td>" +
 							"<td>" + $filter('number')($scope.report[i].cost_of_purchase, 2) + "</td>";
@@ -1460,18 +1460,18 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 							realized_gain_loss = tot_sales - cost_of_purchases;
 							tot_gain_loss = tot_gain_loss + realized_gain_loss;
 							
-							tbl_row = tbl_row + "<td>" + $filter('number')(realized_gain_loss, 2) + "</td>" +
+							tbl_row = tbl_row + "<td style='padding-right:10px;'>" + $filter('number')(realized_gain_loss, 2) + "</td>" +
 							"</tr>";
 						}
 						//alert(tbl_row);
 						
 						tbl_row = tbl_row + 
 						"<tr>" +
-						"<td style='text-align:left;'><b>Total</b></td>" +
+						"<td style='text-align:left; padding-left: 10px;'><b>Total</b></td>" +
 						"<td></td>" + 
 						"<td><b>" + $filter('number')(tot_sales, 2) + "</b></td>" +
 						 "<td><b>" +$filter('number')(cost_of_purchases, 2)  + "</b></td>" +
-						"<td><b>" + $filter('number')(tot_gain_loss, 2) + "</b></td>" +
+						"<td style='padding-right:10px;'><b>" + $filter('number')(tot_gain_loss, 2) + "</b></td>" +
 						"</tr>";
 						
 	
@@ -1494,7 +1494,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				$scope.reportModal.show();
 				show();
 				document.getElementById("report-table").innerHTML = "";
-				tbl_row = "<tr><th style='text-align:left;'>Date</th><th>Transaction Type</th><th>Symbol</th><th>Position</th><th>Total Value (Rs)</th></tr>";
+				tbl_row = "<tr><th style='text-align:left; padding-left: 10px;'>Date</th><th style='text-align:left;'>Transaction Type</th><th style='text-align:left;'>Symbol</th><th>Position</th><th style='padding-right:10px;'>Total Value (Rs)</th></tr>";
 				var tr_history = UserProfile.getTransactionHistory();
 				tr_history.get({userid:window.localStorage["userID"], gameid:window.localStorage["gameID"], from:$scope.reportData.fromDate, to:$scope.reportData.toDate}, function(data){
 					if(data.result){
@@ -1503,11 +1503,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 						for(var i=0;i<$scope.report.length;i++){
 							tbl_row = tbl_row +
 							"<tr>" +
-							"<td style='text-align:left;'>" + $scope.report[i].date + "</td>" +
-							"<td>" + $scope.report[i].transaction_type + "</td>" +
-							"<td>" + $scope.report[i].security_id + "</td>" +
+							"<td style='text-align:left; padding-left:10px;'>" + $scope.report[i].date + "</td>" +
+							"<td style='text-align:left;'>" + $scope.report[i].transaction_type + "</td>" +
+							"<td style='text-align:left;'>" + $scope.report[i].security_id + "</td>" +
 							"<td>" + $scope.report[i].quantity + "</td>" +
-							 "<td>" + $filter('number')($scope.report[i].total, 2) + "</td>" +
+							 "<td style='padding-right:10px;'>" + $filter('number')($scope.report[i].total, 2) + "</td>" +
 							"</tr>";
 						}
 						document.getElementById("report-table").innerHTML = b_tag + tbl_row + e_tag;
@@ -1527,7 +1527,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				$scope.reportModal.show();
 				show();
 				document.getElementById("report-table").innerHTML = "";
-				tbl_row = "<tr><th style='text-align:left;'>Date</th><th>Description</th><th>Amount (Rs)</th><th>Amount Balance (Rs)</th></tr>";
+				tbl_row = "<tr><th style='text-align:left; padding-left: 10px;'>Date</th><th style='text-align:left;'>Description</th><th>Amount (Rs)</th><th style='padding-right:10px;'>Amount Balance (Rs)</th></tr>";
 				var cash_movement = UserProfile.getCashMovement();
 				cash_movement.get({userid:window.localStorage["userID"], gameid:window.localStorage["gameID"], from:$scope.reportData.fromDate, to:$scope.reportData.toDate}, function(data){
 					if(data.result){
@@ -1536,10 +1536,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 						for(var i=0;i<$scope.report.length;i++){
 							tbl_row = tbl_row +
 							"<tr>" +
-							"<td style='text-align:left;'>" + $scope.report[i].date + "</td>" +
-							"<td>" + $scope.report[i].description + "</td>" +
+							"<td style='text-align:left; padding-left: 10px;'>" + $scope.report[i].date + "</td>" +
+							"<td style='text-align:left;'>" + $scope.report[i].description + "</td>" +
 							"<td>" + $filter('number')($scope.report[i].amount, 2) + "</td>" +
-							"<td>" + $filter('number')($scope.report[i].account_balance, 2) + "</td>" +
+							"<td style='padding-right:10px;'>" + $filter('number')($scope.report[i].account_balance, 2) + "</td>" +
 							"</tr>";
 						}
 						document.getElementById("report-table").innerHTML = b_tag + tbl_row + e_tag;
@@ -1559,7 +1559,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				$scope.reportModal.show();
 				show();
 				document.getElementById("report-table").innerHTML = "";
-				tbl_row = "<tr><th style='text-align:left;'>Symbol</th><th>Number of Shares</th><th>Average Cost (Rs)</th><th>Total Cost(Rs)</th><th>Market Price (Rs)</th><th>Market Value (Rs)</th><th>Gain/Loss (Rs)</th></tr>";
+				tbl_row = "<tr><th style='text-align:left; padding-left: 10px;'>Symbol</th><th>Number of Shares</th><th>Average Cost (Rs)</th><th>Total Cost(Rs)</th><th>Market Price (Rs)</th><th>Market Value (Rs)</th><th style='padding-right:10px;'>Gain/Loss (Rs)</th></tr>";
 				var valuation = UserProfile.getValuation();
 				valuation.get({userid:window.localStorage["userID"], gameid:window.localStorage["gameID"],date:$scope.reportData.date}, function(data){
 					if(data.result){
@@ -1568,13 +1568,13 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 						for(var i=0;i<$scope.report.length;i++){
 							tbl_row = tbl_row +
 							"<tr>" +
-							"<td style='text-align:left;'>" + $scope.report[i].security_id + "</td>" +
+							"<td style='text-align:left; padding-left: 10px;'>" + $scope.report[i].security_id + "</td>" +
 							"<td>" + $filter('number')($scope.report[i].position, 0) + "</td>" +
 							"<td>" + $filter('number')($scope.report[i].avg_cost_price, 2) + "</td>" +
 							"<td>" + $filter('number')($scope.report[i].total_cost, 2) + "</td>"+
 							"<td>" + $filter('number')($scope.report[i].market_price, 2) + "</td>"+
 							"<td>" + $filter('number')($scope.report[i].market_value, 2) + "</td>"+
-							"<td>" + $filter('number')($scope.report[i].gain_loss, 2) + "</td>"+
+							"<td style='padding-right:10px;'>" + $filter('number')($scope.report[i].gain_loss, 2) + "</td>"+
 							"</tr>";
 							
 							tot_cost = tot_cost + parseFloat($scope.report[i].total_cost);
@@ -1587,13 +1587,13 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 						}
 						tbl_row = tbl_row + 
 							"<tr>" +
-							"<td style='text-align:left;'><b>Total</b></td>" +
+							"<td style='text-align:left; padding-left: 10px;'><b>Total</b></td>" +
 							"<td></td>" + 
 							"<td></td>" + 
 							"<td><b>" + $filter('number')(tot_cost, 2) + "</b></td>" +
 							"<td></td>" + 
 							 "<td><b>" +$filter('number')(market_value, 2)  + "</b></td>" +
-							"<td><b>" + $filter('number')(gain_lose, 2) + "</b></td>" +
+							"<td style='padding-right:10px;'><b>" + $filter('number')(gain_lose, 2) + "</b></td>" +
 							"</tr>";
 						document.getElementById("report-table").innerHTML = b_tag + tbl_row + e_tag;
 						hide();
@@ -1731,7 +1731,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     		$scope.showChatrt = false;
     		show();
     		document.getElementById("game-report-table").innerHTML = "";
-			tbl_row = "<tr><th style='text-align:left;'>Player</th><th>Number of Transaction</th></tr>";
+			tbl_row = "<tr><th style='text-align:left; padding-left: 10px;'>Player</th><th style='padding-right:10px;'>Number of Transaction</th></tr>";
     		var active_investors = UserProfile.getActiveInvestors();
     		active_investors.get({gameid:window.localStorage["gameID"]}, function(data){
     			if(data.result){
@@ -1740,8 +1740,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 					for(var i=0;i<$scope.report.length;i++){
 						tbl_row = tbl_row +
 						"<tr>" +
-						"<td style='text-align:left;'>" + $scope.report[i].real_name + "</td>" +
-						"<td>" + $filter('number')($scope.report[i].total_transactions, 0) + "</td>" +
+						"<td style='text-align:left; padding-left: 10px;'>" + $scope.report[i].real_name + "</td>" +
+						"<td style='padding-right:10px;'>" + $filter('number')($scope.report[i].total_transactions, 0) + "</td>" +
 						"</tr>";
 					}
 					document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;				
@@ -1757,7 +1757,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     		$scope.showChatrt = false;
     		show();
     		document.getElementById("game-report-table").innerHTML = "";
-    		tbl_row = "<tr><th style='text-align:left;'>Player</th><th style='text-align: right;'>Total Portfolio (Rs)</th></tr>";
+    		tbl_row = "<tr><th style='text-align:left; padding-left: 10px;'>Player</th><th style='padding-right:10px;'>Total Portfolio (Rs)</th></tr>";
     		var portfolioManagers = UserProfile.getTopPortfolioManagers();
     		portfolioManagers.get({gameid:window.localStorage["gameID"]}, function(data){
     			if(data.result){
@@ -1765,8 +1765,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     				for(var i = 0;i<$scope.report.length;i++){
     					tbl_row = tbl_row +
     					"<tr>" +
-    					"<td style='text-align:left;'>" + $scope.report[i].real_name + "</td>" +
-    					"<td style='text-align: right;'>" + $filter('number')($scope.report[i].total, 2) + "</td>" +
+    					"<td style='text-align:left; padding-left: 10px;'>" + $scope.report[i].real_name + "</td>" +
+    					"<td style='padding-right:10px;'>" + $filter('number')($scope.report[i].total, 2) + "</td>" +
     					"</tr>";
     					if(i<=9){
     						name[i] = $scope.report[i].real_name;
@@ -1792,7 +1792,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     		$scope.showChatrt = false;
     		show();
     		document.getElementById("game-report-table").innerHTML = "";
-    		tbl_row = "<tr><th style='text-align:left;'>Player</th><th>Total Gains</th><th>Portfolio Return (%)<br/>Per Player</th></tr>";
+    		tbl_row = "<tr><th style='text-align:left; padding-left: 10px;'>Player</th><th>Total Gains</th><th style='padding-right:10px;'>Portfolio Return (%)<br/>Per Player</th></tr>";
     		var portfolioPerformers = UserProfile.getTopPortfolioPerformers();
     		portfolioPerformers.get({gameid:window.localStorage["gameID"]}, function(data){
     			if(data.result){
@@ -1800,9 +1800,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     				for(var i=0;i<$scope.report.length;i++){
     					tbl_row = tbl_row +
     					"<tr>" +
-    					"<td style='text-align:left;'>" + $scope.report[i].real_name + "</td>" +
+    					"<td style='text-align:left; padding-left: 10px;'>" + $scope.report[i].real_name + "</td>" +
     					"<td>" + $filter('number')($scope.report[i].total_gains, 2) + "</td>" +
-    					"<td>" + $filter('number')($scope.report[i].portfolio_return, 2) + "</td>" +
+    					"<td style='padding-right:10px;'>" + $filter('number')($scope.report[i].portfolio_return, 2) + "</td>" +
     					"</tr>";
     					name[i] = $scope.report[i].real_name;
     					values[i] = $scope.report[i].portfolio_return;
@@ -1827,7 +1827,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     			$scope.showChatrt = false;
 				show();
     			document.getElementById("game-report-table").innerHTML = "";
-    			tbl_row = "<tr><th style='text-align:left;'>Symbol</th><th>Total Invested (Rs)</th><th>% of the Total<br/>Virtual Portfolios</th></tr>";
+    			tbl_row = "<tr><th style='text-align:left; padding-left: 10px;'>Symbol</th><th style='padding-right:10px;'>Total Invested (Rs)</th></tr>";
     			var mostInvestedShare = UserProfile.getMostInvestedShare();
 	    		mostInvestedShare.get({gameid:window.localStorage["gameID"], date:$scope.gameReportData.date}, function(data){
 	    			if(data.result){
@@ -1835,9 +1835,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	    				for(var i=0;i<$scope.report.length;i++){
 	    					tbl_row = tbl_row +
 	    					"<tr>" +
-	    					"<td style='text-align:left;'>" + $scope.report[i].security_id + "</td>" +
-	    					"<td>" + $filter('number')($scope.report[i].total_invested, 2) + "</td>" +
-	    					"<td>" + 0.00 + "</td>" +
+	    					"<td style='text-align:left; padding-left: 10px;'>" + $scope.report[i].security_id + "</td>" +
+	    					"<td style='padding-right:10px;'>" + $filter('number')($scope.report[i].total_invested, 2) + "</td>" +
 	    					"</tr>";
 	    				}
 	    				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
@@ -1860,7 +1859,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	    		$scope.showChatrt = false;
 	    		show();
 	    		document.getElementById("game-report-table").innerHTML = "";
-	    		tbl_row = "<tr><th style='text-align:left;'>Symbol</th><th>Count</th></tr>";
+	    		tbl_row = "<tr><th style='text-align:left; padding-left: 10px;'>Symbol</th><th style='padding-right:10px;'>Count</th></tr>";
 	    		var mostTradedStock = UserProfile.getMostTradedStock();
 	    		mostTradedStock.get({gameid:window.localStorage["gameID"], from:$scope.gameReportData.fromDate, to:$scope.gameReportData.toDate}, function(data){
 	    			if(data.result){
@@ -1868,8 +1867,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	    				for(var i=0;i<$scope.report.length;i++){
 	    					tbl_row = tbl_row +
 	    					"<tr>" +
-	    					"<td style='text-align:left;'>" + $scope.report[i].security_id + "</td>" +
-	    					"<td>" + $scope.report[i].count + "</td>" +
+	    					"<td style='text-align:left; padding-left: 10px;'>" + $scope.report[i].security_id + "</td>" +
+	    					"<td style='padding-right:10px;'>" + $scope.report[i].count + "</td>" +
 	    					"</tr>";
 	    				}
 	    				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;

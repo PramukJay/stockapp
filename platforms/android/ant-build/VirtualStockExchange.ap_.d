@@ -35,7 +35,6 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/res/drawable-xxhdpi/ic_action_remove.png \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/_where-is-www.txt \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www \
-/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/cordova.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/cordova_plugins.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/css \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img \
@@ -76,6 +75,8 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/ico-securities.png \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/ionic.png \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/logo.png \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/report-1.png \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/report-2.png \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img/vstox.png \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/js/angular-touch.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/js/app.js \
