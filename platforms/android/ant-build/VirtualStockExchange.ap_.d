@@ -35,6 +35,7 @@
 /Users/iosdeveloper/Documents/stockapp/platforms/android/ant-build/res/drawable-xxhdpi/ic_action_remove.png \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/_where-is-www.txt \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www \
+/Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/cordova.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/cordova_plugins.js \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/css \
 /Users/iosdeveloper/Documents/stockapp/platforms/android/assets/www/img \

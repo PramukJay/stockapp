@@ -22,7 +22,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 			// org.apache.cordova.statusbar required
 			StatusBar.hide();
 		}
-		if(window.Connection){
+		/*if(window.Connection){
+			//alert("hi");
 			if(navigator.connection.type == Connection.NONE){
 				$ionicPopup.confirm({
 					title: "Internet Disconnected",
@@ -34,6 +35,21 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 					}
 				});
 			}
+		}*/
+		
+		document.addEventListener("offline", onOffline, false);
+		
+		function onOffline(){
+			$ionicPopup.confirm({
+					title: "Internet Disconnected",
+					content: "This application requires a working internet connection."
+				})
+				.then(function(result){
+					if(result || !result){
+						ionic.Platform.exitApp();
+					}
+				});
+				//alert("hi");
 		}
 		
 	});
@@ -602,6 +618,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	}	
 })
 .controller('ListedSecuritiesCtrl', function($scope,$http, $ionicLoading, UserProfile) {
+	
 	function show() {
 	    $ionicLoading.show({
 	      template: '<span class="icon ion-loading-c" style="font-size:30px !important; color: #0039a9"></span>'
@@ -696,7 +713,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				}
 			}, function(error){
 				hide();
-				$ionicPopup.alert({title: 'VSE', template: 'error '+error});
+				$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 			});
 		}else{
 			$ionicPopup.alert({title: 'VSE', template: 'Please enter username & password.'});
@@ -831,7 +848,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 			hide();
 			//$ionicPopup.alert({title: 'Stock App', template: $scope.securitiesArr});
 		}, function(error){
-			$ionicPopup.alert({title: 'VSE', template: 'error '+error});
+			hide();
+			$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 		});
 	}
 	
@@ -911,7 +929,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 		 			$scope.available_quantity = data.quantity;
 		    		hide();
 		    	}, function(error){
-			    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
+		    		hide();
+			    $ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 			   });
 	    	}else{
 	    		$ionicPopup.alert({title: 'VSE', template: 'You have exceeded your transactions for a day.'});
@@ -958,7 +977,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				$ionicPopup.alert({title: 'VSE', template: data.error});
 			}
 		}, function(error){
-			$ionicPopup.alert({title: 'VSE', template: 'error '+error});
+			hide();
+			$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 		});
 		
 	};
@@ -984,6 +1004,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				hide_1();
 				$ionicPopup.alert({title: 'VSE', template: data.error});
 			}
+		}, function(error){
+			hide();
+			$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 		});
 	};
 	
@@ -1020,7 +1043,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 			hide();	
 			//$ionicPopup.alert({title: 'Stock App', template: $scope.securitiesArr});
 		}, function(error){
-			$ionicPopup.alert({title: 'VSE', template: 'error '+error});
+			hide();
+			$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 		});
     }
     
@@ -1084,7 +1108,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	    hide(); 
 	    
 	   }, function(error){
-	    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
+	   	hide();
+	    $ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 	   });
      }
      
@@ -1147,7 +1172,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 		 			$scope.available_quantity = data.quantity;
 		    		hide();
 		    	}, function(error){
-			    $ionicPopup.alert({title: 'VSE', template: 'error '+error});
+		    		hide();
+			    	$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 			   });
 	    	}else{
 	    		$ionicPopup.alert({title: 'VSE', template: 'You have exceeded your transactions for a day.'});
@@ -1210,7 +1236,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				$ionicPopup.alert({title: 'VSE', template: data.error});
 			}
 		}, function(error){
-			$ionicPopup.alert({title: 'VSE', template: 'error '+error});
+			hide();
+			$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 		});
 		
 	};
@@ -1236,6 +1263,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 				hide_1();
 				$ionicPopup.alert({title: 'VSE', template: data.error});
 			}
+		}, function(error){
+			hide();
+			$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 		});
 	};
 	
@@ -1274,7 +1304,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 			
 			hide();	
 		}, function(error){
-			$ionicPopup.alert({title: 'VSE', template: 'error '+error});
+			hide();
+			$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 		});
 	}
 	
@@ -1308,7 +1339,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 		        		$ionicPopup.alert({title: 'VSE', template: data.error});
 		        	}
 		        }, function(error){
-		        	$ionicPopup.alert({title: 'VSE', template: 'error '+error});
+		        	hide();
+		        	$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 		        });
 			}
 		});
@@ -1337,6 +1369,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 		leaderboard.get({gameid:window.localStorage["gameID"]}, function(data){
 			$scope.leaderboardArr = data.leader_board;
 			hide();
+		}, function(error){
+			hide();
+			$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 		});
 	}
 	
@@ -1364,6 +1399,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     	share_transactions.get({userid:window.localStorage["userID"], gameid:window.localStorage["gameID"]}, function(data){
     		$scope.shareTransactionArr = data.transactions;
     		hide();
+    	}, function(error){
+    		hide();
+    		$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
     	});
     }
     
@@ -1485,6 +1523,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 						$ionicPopup.alert({title: 'VSE', template: data.status});
 						hide();
 					}
+				}, function(error){
+					hide();
+					$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 				});
 			}
 		}else if($scope.reportData.report_type == "th"){
@@ -1517,6 +1558,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 						$ionicPopup.alert({title: 'VSE', template: data.status});
 						hide();
 					}
+				}, function(error){
+					hide();
+					$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 				});
 			}
 
@@ -1549,6 +1593,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 						$ionicPopup.alert({title: 'VSE', template: data.status});
 						hide();
 					}
+				}, function(error){
+					hide();
+					$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 				});
 			}
 
@@ -1602,6 +1649,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 						$ionicPopup.alert({title: 'VSE', template: data.status});
 						hide();
 					}
+				}, function(error){
+					hide();
+					$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 				});
 			}			
 		}
@@ -1751,6 +1801,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 					$ionicPopup.alert({title: 'VSE', template: data.status});
 					hide();
 				}
+    		}, function(error){
+    			hide();
+    			$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
     		});
     	}else if($scope.gameReportData.report_type == "pm"){
     		$scope.gameReportModal.show();
@@ -1785,6 +1838,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 					hide();
 				}
     			
+    		}, function(error){
+    			hide();
+    			$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
     		});
     	}
     	else if($scope.gameReportData.report_type == "pp"){
@@ -1816,6 +1872,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 					$ionicPopup.alert({title: 'VSE', template: data.status});
 					hide();
 				}
+    		}, function(error){
+    			hide();
+    			$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
     		});
     	}
     	else if($scope.gameReportData.report_type == "is"){
@@ -1838,14 +1897,24 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	    					"<td style='text-align:left; padding-left: 10px;'>" + $scope.report[i].security_id + "</td>" +
 	    					"<td style='padding-right:10px;'>" + $filter('number')($scope.report[i].total_invested, 2) + "</td>" +
 	    					"</tr>";
+	    					if(i<=9){
+	    						name[i] = $scope.report[i].security_id;
+	    						values[i] = $scope.report[i].total_invested;
+	    					}
+	    					
 	    				}
 	    				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
+	    				genarateChart(name, values);
+    					$scope.showChatrt = true;
 						hide();
 						//$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
 	    			}else{
 						$ionicPopup.alert({title: 'VSE', template: data.status});
 						hide();
 					}
+	    		}, function(error){
+	    			hide();
+	    			$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 	    		});
     		}
 
@@ -1870,14 +1939,23 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	    					"<td style='text-align:left; padding-left: 10px;'>" + $scope.report[i].security_id + "</td>" +
 	    					"<td style='padding-right:10px;'>" + $scope.report[i].count + "</td>" +
 	    					"</tr>";
+	    					if(i<=9){
+	    						name[i] = $scope.report[i].security_id;
+	    						values[i] = $scope.report[i].count;
+	    					}
 	    				}
 	    				document.getElementById("game-report-table").innerHTML = b_tag + tbl_row + e_tag;
+	    				genarateChart(name, values);
+    					$scope.showChatrt = true;
 						hide();
 						//$ionicPopup.alert({title: 'VSE', template: document.getElementById("game-report-table").innerHTML});
 	    			}else{
 						$ionicPopup.alert({title: 'VSE', template: data.status});
 						hide();
 					}
+	    		}, function(error){
+	    			hide();
+	    			$ionicPopup.alert({title: 'VSE', template: 'Something went wrong'});
 	    		});
     		}
     	}
