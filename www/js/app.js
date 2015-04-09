@@ -637,6 +637,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 		
 		var listedSecurities = UserProfile.getListedSecurities();
 		listedSecurities.get(function(data){
+			console.log(data);
 			$scope.secutiryArr = data.securities;
 			hide();
 		});
@@ -656,6 +657,15 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 		
 		$scope.loading = false;*/
 	}
+	
+	$scope.loadBuySell = function(){
+		if(window.localStorage["userID"]){
+			window.location.href="#/portfoliohome/" + window.localStorage["userID"];
+		}
+		else{
+			window.location.href = "#/myportfolio";
+		}
+	};
 	
 })
 .controller('MyPortfolioCtrl', function($scope, $ionicPopup, $state, $ionicLoading, UserProfile) {
@@ -1367,7 +1377,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
 	function loadLeaderboard(){
 		var leaderboard = UserProfile.getLeaderboard();
 		leaderboard.get({gameid:window.localStorage["gameID"]}, function(data){
+			//console.log(data);
 			$scope.leaderboardArr = data.leader_board;
+			//console.log($scope.leaderboardArr);
 			hide();
 		}, function(error){
 			hide();
@@ -1397,6 +1409,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'tc.chartjs', 'starter.services
     function loadShareTransactions(){
     	var share_transactions = UserProfile.getShareTransactions();
     	share_transactions.get({userid:window.localStorage["userID"], gameid:window.localStorage["gameID"]}, function(data){
+    		console.log(data);
     		$scope.shareTransactionArr = data.transactions;
     		hide();
     	}, function(error){

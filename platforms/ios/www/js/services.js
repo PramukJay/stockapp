@@ -1,4 +1,6 @@
-var base = "http://104.131.20.63:3346/";
+//var base = "http://104.131.20.63:3346/";
+var base = "http://app-api.virtualstocktrainer.com/api/v1/";
+var token = "u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ";
 
 angular.module('starter.services', ['ngResource'])
 
@@ -77,8 +79,8 @@ angular.module('starter.services', ['ngResource'])
 				get: {
 					method: 'GET',
 					params: {username: '@username', pass: '@pass'},
-					isArray: false
-					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
+					isArray: false,
+					headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 				}
 			});
 		},
@@ -88,8 +90,8 @@ angular.module('starter.services', ['ngResource'])
 				get: {
 					method: 'GET',
 					params: {id: '@id'},
-					isArray: false
-					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
+					isArray: false,
+					headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 				}
 			});
 		},
@@ -99,8 +101,8 @@ angular.module('starter.services', ['ngResource'])
 				get: {
 					method: 'GET',
 					params: {id: '@id'},
-					isArray: false
-					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
+					isArray: false,
+					headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 				}
 			});
 		},
@@ -110,8 +112,8 @@ angular.module('starter.services', ['ngResource'])
 				get: {
 					method: 'GET',
 					params: {gameid: '@gameid', id: '@id'},
-					isArray: false
-					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
+					isArray: false,
+					headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 				}
 			});
 		},
@@ -121,8 +123,8 @@ angular.module('starter.services', ['ngResource'])
 				get: {
 					method: 'GET',
 					params: {gameid: '@gameid', id: '@id'},
-					isArray: false
-					//headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
+					isArray: false,
+					headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 				}
 			});
 		},
@@ -132,8 +134,8 @@ angular.module('starter.services', ['ngResource'])
 				  get: {
 					  method: 'GET',
 					  params: {gameid: '@gameid', userid: '@userid'},
-					  isArray: false
-					 // headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
+					  isArray: false,
+					  headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 				  }
 			  });
 		  },
@@ -143,157 +145,173 @@ angular.module('starter.services', ['ngResource'])
 				  get: {
 					  method: 'GET',
 					  params: {gameid: '@gameid', userid: '@userid', sid: '@sid'},
-					  isArray: false
-					 // headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : 'u7WSOkQC5FKUxpm9B2ykQpDea38Hs5soUYFnC0oJ'}
+					  isArray: false,
+					  headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 				  }
 			  });
 		  },
 		  
 		  setWatchlist: function(){
-		  	return $resource(base+'/addtowatchlist/:gameid/:userid/:sid', {gameid: '@gameid', userid: '@userid', sid: '@sid'}, {
+		  	return $resource(base+'addtowatchlist/:gameid/:userid/:sid', {gameid: '@gameid', userid: '@userid', sid: '@sid'}, {
 		  		get: {
 		  			method: 'GET',
 		  			params: {gameid: '@gameid', userid: '@userid', sid: '@sid'},
-		  			isArray:false
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  },
 		  
 		  deleteWatchlist: function(){
-		  	return $resource(base+'/removefromwatchlist/:gameid/:userid/:sid', {gameid: '@gameid', userid: '@userid', sid: '@sid'}, {
+		  	return $resource(base+'removefromwatchlist/:gameid/:userid/:sid', {gameid: '@gameid', userid: '@userid', sid: '@sid'}, {
 		  		get: {
 		  			method: 'GET',
 		  			params: {gameid: '@gameid', userid: '@userid', sid: '@sid'},
-		  			isArray:false
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  },
 		  
 		  buySecurity: function(){
-		  	return $resource(base+'/buysellstock/:gameid/:userid/:sid/:ttype/:qty/:total/:mprice', {gameid: '@gameid', userid: '@userid', sid: '@sid', ttype: '@ttype', qty: '@qty', total: '@total', mprice: '@mprice'}, {
+		  	return $resource(base+'buysellstock/:gameid/:userid/:sid/:ttype/:qty/:total/:mprice', {gameid: '@gameid', userid: '@userid', sid: '@sid', ttype: '@ttype', qty: '@qty', total: '@total', mprice: '@mprice'}, {
 		  		get: {
 		  			method: 'GET',
 		  			params: {gameid: '@gameid', userid: '@userid', sid: '@sid', ttype: '@ttype', qty: '@qty', total: '@total', mprice: '@mprice'},
-		  			isArray:false
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  },
 		  
 		  getLeaderboard: function(){
-		  	return $resource(base+'/leaderboard/:gameid', {gameid: '@gameid'}, {
+		  	return $resource(base+'leaderboard/:gameid', {gameid: '@gameid'}, {
 		  		get: {
 		  			method: 'GET',
 		  			params: {gameid: '@gameid'},
-		  			isArray:false
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  },
 		  
 		  getShareTransactions: function(){
-		  	return $resource(base+'/sharetransactions/:userid/:gameid', {userid: '@userid', gameid: '@gameid'}, {
+		  	return $resource(base+'sharetransactions/:userid/:gameid', {userid: '@userid', gameid: '@gameid'}, {
 		  		get: {
 		  			method: 'GET',
 		  			params : {userid: '@userid', gameid: '@gameid'},
-		  			isArray:false
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  },
 		  
 		  getGainLoose: function(){
-		  	return $resource(base+'/gainlossreport/:userid/:gameid/:from/:to', {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'}, {
+		  	return $resource(base+'gainlossreport/:userid/:gameid/:from/:to', {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'}, {
 		  		get: {
 		  			method: 'GET',
 		  			params: {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'},
-		  			isArray:false
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  },
 		  
 		  getTransactionHistory: function(){
-		  	return $resource(base+'/transactionhistory/:userid/:gameid/:from/:to', {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'}, {
+		  	return $resource(base+'transactionhistory/:userid/:gameid/:from/:to', {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'}, {
 		  		get: {
 		  			method: 'GET',
 		  			params: {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'},
-		  			isArray:false
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  },
 		  
 		  getCashMovement: function(){
-		  	return $resource(base+'/cashmovement/:userid/:gameid/:from/:to', {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'}, {
+		  	return $resource(base+'cashmovement/:userid/:gameid/:from/:to', {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'}, {
 		  		get: {
 		  			method: 'GET',
 		  			params: {userid: '@userid', gameid: '@gameid', from: '@from', to: '@to'},
-		  			isArray:false
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  },
 		  
 		  getValuation: function(){
-		  	return $resource(base+'/portfoliovaluation/:userid/:gameid/:date', {userid: '@userid', gameid: '@gameid', date: '@date'}, {
+		  	return $resource(base+'portfoliovaluation/:userid/:gameid/:date', {userid: '@userid', gameid: '@gameid', date: '@date'}, {
 		  		get: {
 		  			method: 'GET',
 		  			params: {userid: '@userid', gameid: '@gameid', date: '@date'},
-		  			isArray:false
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  },
 		  
 		  getActiveInvestors: function(){
-		  	return $resource(base+'/activeinvestors/:gameid', {gameid: '@gameid'}, {
+		  	return $resource(base+'activeinvestors/:gameid', {gameid: '@gameid'}, {
 		  		get: {
 		  			method: 'GET',
 		  			params: {gameid: '@gameid'},
-		  			isArray:false
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  },
 		  
 		  getTopPortfolioManagers: function(){
-		  	return $resource(base+'/topmanagers/:gameid', {gameid: '@gameid'}, {
+		  	return $resource(base+'topmanagers/:gameid', {gameid: '@gameid'}, {
 		  		get:{
 		  			method: 'GET',
 		  			params: {gameid: '@gameid'},
-		  			isArray:false
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  },
 		  
 		  getTopPortfolioPerformers: function(){
-		  	return $resource(base+'/topportfolioperformers/:gameid', {gameid: '@gameid'}, {
+		  	return $resource(base+'topportfolioperformers/:gameid', {gameid: '@gameid'}, {
 		  		get: {
 		  			method: 'GET',
 		  			params: {gameid: '@gameid'},
-		  			isArray:false
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  },
 		  
 		  getMostInvestedShare: function(){
-		  	return $resource(base+'/mostinvestedshare/:gameid/:date', {gameid: '@gameid', date: '@date'}, {
+		  	return $resource(base+'mostinvestedshare/:gameid/:date', {gameid: '@gameid', date: '@date'}, {
 		  		get: {
 		  			method: 'GET',
 		  			params: {gameid: '@gameid', date: '@date'},
-		  			isArray:false
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  },
 		  
 		  getMostTradedStock: function(){
-		  	return $resource(base+'/mosttradedstock/:gameid/:from/:to', {gameid: '@gameid', from: '@from', to: '@to'}, {
+		  	return $resource(base+'mosttradedstock/:gameid/:from/:to', {gameid: '@gameid', from: '@from', to: '@to'}, {
 		  		get: {
 		  			method: 'GET',
 		  			params: {gameid: '@gameid', from: '@from', to: '@to'},
-		  			isArray:false
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  },
 		  
 		  getListedSecurities: function(){
-		  	return $resource(base+'/securities', {
+		  	return $resource(base+'securities/', {}, {
 		  		get: {
 		  			method: 'GET',
-		  			isArray:false
+		  			params: {},
+		  			isArray:false,
+		  			headers:{'Access-Control-Allow-Origin':'*', 'X-Auth-Token' : token}
 		  		}
 		  	});
 		  }

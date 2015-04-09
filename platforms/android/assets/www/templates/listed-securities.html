@@ -9,8 +9,8 @@
 			<th style="text-align: left;">Company Name</th>
 		</tr>
 		<tr ng-repeat="comp in secutiryArr">
-			<td style="text-align: left; width: 100px;"><a href="#/tab/buyandsell" style="text-decoration: none; color: white;">{{comp.security_id}}</a></td>
-			<td style="text-align: left;"><a href="#/tab/buyandsell" style="text-decoration: none; color: white;">{{comp.security_name}}</a></td>
+			<td style="text-align: left; width: 100px;"><a ng-click="loadBuySell()" style="text-decoration: none; color: white;">{{comp.security_id}}</a></td>
+			<td style="text-align: left;"><a ng-click="loadBuySell()" style="text-decoration: none; color: white;">{{comp.security_name}}</a></td>
 		</tr>
 	</table>
 	</div>

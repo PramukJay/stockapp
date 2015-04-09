@@ -1,6 +1,6 @@
-# view AndroidManifest.xml #generated:7
+# view AndroidManifest.xml #generated:6
 -keep class com.erbenlab.app.stock.VirtualStockExchange { <init>(...); }
 
-# view AndroidManifest.xml #generated:13
+# view AndroidManifest.xml #generated:12
 -keep class org.pgsqlite.SQLitePlugin { <init>(...); }
 
